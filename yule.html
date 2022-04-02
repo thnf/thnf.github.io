@@ -134,6 +134,14 @@ var _hmt = _hmt || [];
         background-color: #3e8e41;
       }
     </style>
+	<style>
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 120;
+}
+</style>
 <style type="text/css">
       .sliceNav[data-v-22406776] {
         position: fixed;
@@ -709,27 +717,7 @@ background-attachment: fixed;
         </div>
       </div>
     </div>
-    <div
-      style="
-        background: #fcfcfc;
-        border-radius: 5px;
-        box-shadow: 1px 1px 8px #000;
-      "
-    >
-      <div style="margin: 10px; line-height: 22px; text-align: left">
-        <iframe
-          scrolling="yes"
-          src="https://api.btstu.cn/yan/api.php"
-          allowtransparency="true"
-          width="100%"
-          height="44"
-          frameborder="0"
-        ></iframe>
-      </div>
-    </div>
-    <main id="pjax-container">
-      <div data-v-90bffe18="" id="app" class="lfe-vars">
-        <div data-v-90bffe18="" class="main-container">
+	  <div class="sticky"> <div data-v-90bffe18="" class="main-container">
         <main data-v-90bffe18="" class="wrapped lfe-body" style="background-color: rgb(239, 239, 239)">
           <div data-v-fb37913c="" data-v-90bffe18="" currenttemplate="UserShow" currenttheme="[object Object]">
             <div data-v-796309f8="" data-v-4e1a17e0="" data-v-fb37913c="" class="card user-header-container padding-0" slot="main">
@@ -737,7 +725,7 @@ background-attachment: fixed;
                 <div data-v-7092f3a4="" data-v-4e1a17e0="" class="menu" data-v-796309f8="" style="--main-color: #3498db">
                   <!---->
                   <ul data-v-7092f3a4="" class="items">
-                    <li data-v-7092f3a4="">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li data-v-7092f3a4="">
                       <span data-v-7092f3a4="" class="entry">
                         <a href="/earthnfc.html"><button data-v-370e72e2="" data-v-42c20b13="" type="button" class="lfe-form-sz-middle" data-v-52820d90="" style="
                               border-color: #FF9800;
@@ -783,7 +771,11 @@ background-attachment: fixed;
             <!---->
           </div>
         </main>
-      </div>
+      </div></div>
+    
+    <main id="pjax-container">
+      <div data-v-90bffe18="" id="app" class="lfe-vars">
+       
         <div name="music">
           <img src="./雪龙吟.png" width="193" height="50" /><audio
             style="background: rgb(254, 76, 97); color: rgb(255, 255, 255)"
@@ -795,6 +787,24 @@ background-attachment: fixed;
           </audio>
         </div>
       </div>
+	    <div
+      style="
+        background: #fcfcfc;
+        border-radius: 5px;
+        box-shadow: 1px 1px 8px #000;
+      "
+    >
+      <div style="margin: 10px; line-height: 22px; text-align: left">
+        <iframe
+          scrolling="yes"
+          src="https://api.btstu.cn/yan/api.php"
+          allowtransparency="true"
+          width="100%"
+          height="44"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
       <a id="11"></a>
     <div class="category-tools mt-1">
   <div class="category-list-text">
