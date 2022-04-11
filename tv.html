@@ -440,14 +440,93 @@ background-attachment: fixed;
   
   
   <body>
+	  <form action="https://www.newfii.com/index.php/vod/search.html" method="get" target="_blank">
+     <div class="search-input l">
+          <input type="search" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" value="" class="search-txt l" name="wd" id="ssk" placeholder="请输入关键字搜索"><button id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" class="search-btn r">
+            奈落影视搜索
+          </button>
+        </div>
+    </form>
+	  <form action="https://www.4ltv.com/search/-------------.html" method="get" target="_blank">
+     <div class="search-input l">
+          <input type="search" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" value="" id="ssk" class="search-txt l" name="wd" placeholder="请输入关键字搜索"><button style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" id="ssb" class="search-btn r">
+            思乐影视搜索
+          </button>
+        </div>
+    </form>
+	  <div>
+        <input type="search" value="" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255); border-radius: 14px;
+        padding: 5px;
+        width: 64%;
+        height: 50px;" id="wpk" name="wpk"><button style="color: rgb(255, 255, 255); background: rgb(19, 194, 194);border-radius: 14px;
+        padding: 5px;
+        height: 50px;" onclick="wps()" id="wps">
+          歪片搜索
+        </button>
+        <script>
+          function wps() {
+            input_val = document.getElementById("wpk").value;
+            window.open(
+              "https://waipian3.com/search-" + input_val+"-------------/",
+              "_blank"
+            );
+          }
+        </script>
+        <script>
+          var input = document.getElementById("wpk");
+          input.addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+              document.getElementById("wps").click();
+            }
+          });
+        </script>
+      </div>
 	 <form action="https://www.tkys.tv/vodsearch.html" method="get" target="_blank">
      <div class="search-input l">
-          <input type="search" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" value="" class="search-txt l" name="wd" id="ssk" placeholder="请输入关键字搜索"><button id style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" class="search-btn r">
+          <input type="search" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" value="" class="search-txt l" name="wd" id="ssk" placeholder="请输入关键字搜索"><button id style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" class="search-btn r" id="ssb">
             天空影视搜索
           </button>
         </div>
     </form>
-    
+    <div>
+        <input type="search" value="" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255); border-radius: 14px;
+        padding: 5px;
+        width: 64%;
+        height: 50px;" name="wpk" id="dygk"><button style="color: rgb(255, 255, 255); background: rgb(19, 194, 194); border-radius: 14px;
+        padding: 5px;
+        height: 50px;" id="dygs" onclick="dygs()">
+          电影狗搜索
+        </button>
+        <script>
+          function dygs() {
+            input_val = document.getElementById("dygk").value;
+            window.open(
+              "https://www.dianyinggou.com/so/" + input_val,
+              "_blank"
+            );
+          }
+        </script>
+        <script>
+          var input = document.getElementById("dygk");
+          input.addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+              document.getElementById("dygs").click();
+            }
+          });
+        </script>
+      </div>
+	  
+	  <form action="http://www.vip1280.net/search.html/" method="get" target="_blank">
+     <div class="search-input l">
+          <input type="search" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" value="" class="search-txt l" name="wd" id="ssk" placeholder="请输入关键字搜索"><button style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" class="search-btn r" id="ssb">
+            VIP影视搜索
+          </button>
+        </div>
+    </form>
+	  
+	  
    <main id="pjax-container">
       
 
