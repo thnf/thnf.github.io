@@ -1,353 +1,38 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>404</title>
-<meta http-equiv="refresh" content="4;url=https://thnf.github.io/"> 
-<style>
-body {
-  background: #000;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  font-family: 'Anton', sans-serif;
-  justify-content: center;
-  align-items: center;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
-}
-
-div {
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
-.rail {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-transform: rotateX(-30deg) rotateY(-30deg);
-          transform: rotateX(-30deg) rotateY(-30deg);
-}
-.rail .stamp {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #141414;
-  color: #fff;
-  font-size: 7rem;
-}
-.rail .stamp:nth-child(1) {
-  -webkit-animation: stampSlide 40000ms -2300ms linear infinite;
-          animation: stampSlide 40000ms -2300ms linear infinite;
-}
-.rail .stamp:nth-child(2) {
-  -webkit-animation: stampSlide 40000ms -4300ms linear infinite;
-          animation: stampSlide 40000ms -4300ms linear infinite;
-}
-.rail .stamp:nth-child(3) {
-  -webkit-animation: stampSlide 40000ms -6300ms linear infinite;
-          animation: stampSlide 40000ms -6300ms linear infinite;
-}
-.rail .stamp:nth-child(4) {
-  -webkit-animation: stampSlide 40000ms -8300ms linear infinite;
-          animation: stampSlide 40000ms -8300ms linear infinite;
-}
-.rail .stamp:nth-child(5) {
-  -webkit-animation: stampSlide 40000ms -10300ms linear infinite;
-          animation: stampSlide 40000ms -10300ms linear infinite;
-}
-.rail .stamp:nth-child(6) {
-  -webkit-animation: stampSlide 40000ms -12300ms linear infinite;
-          animation: stampSlide 40000ms -12300ms linear infinite;
-}
-.rail .stamp:nth-child(7) {
-  -webkit-animation: stampSlide 40000ms -14300ms linear infinite;
-          animation: stampSlide 40000ms -14300ms linear infinite;
-}
-.rail .stamp:nth-child(8) {
-  -webkit-animation: stampSlide 40000ms -16300ms linear infinite;
-          animation: stampSlide 40000ms -16300ms linear infinite;
-}
-.rail .stamp:nth-child(9) {
-  -webkit-animation: stampSlide 40000ms -18300ms linear infinite;
-          animation: stampSlide 40000ms -18300ms linear infinite;
-}
-.rail .stamp:nth-child(10) {
-  -webkit-animation: stampSlide 40000ms -20300ms linear infinite;
-          animation: stampSlide 40000ms -20300ms linear infinite;
-}
-.rail .stamp:nth-child(11) {
-  -webkit-animation: stampSlide 40000ms -22300ms linear infinite;
-          animation: stampSlide 40000ms -22300ms linear infinite;
-}
-.rail .stamp:nth-child(12) {
-  -webkit-animation: stampSlide 40000ms -24300ms linear infinite;
-          animation: stampSlide 40000ms -24300ms linear infinite;
-}
-.rail .stamp:nth-child(13) {
-  -webkit-animation: stampSlide 40000ms -26300ms linear infinite;
-          animation: stampSlide 40000ms -26300ms linear infinite;
-}
-.rail .stamp:nth-child(14) {
-  -webkit-animation: stampSlide 40000ms -28300ms linear infinite;
-          animation: stampSlide 40000ms -28300ms linear infinite;
-}
-.rail .stamp:nth-child(15) {
-  -webkit-animation: stampSlide 40000ms -30300ms linear infinite;
-          animation: stampSlide 40000ms -30300ms linear infinite;
-}
-.rail .stamp:nth-child(16) {
-  -webkit-animation: stampSlide 40000ms -32300ms linear infinite;
-          animation: stampSlide 40000ms -32300ms linear infinite;
-}
-.rail .stamp:nth-child(17) {
-  -webkit-animation: stampSlide 40000ms -34300ms linear infinite;
-          animation: stampSlide 40000ms -34300ms linear infinite;
-}
-.rail .stamp:nth-child(18) {
-  -webkit-animation: stampSlide 40000ms -36300ms linear infinite;
-          animation: stampSlide 40000ms -36300ms linear infinite;
-}
-.rail .stamp:nth-child(19) {
-  -webkit-animation: stampSlide 40000ms -38300ms linear infinite;
-          animation: stampSlide 40000ms -38300ms linear infinite;
-}
-.rail .stamp:nth-child(20) {
-  -webkit-animation: stampSlide 40000ms -40300ms linear infinite;
-          animation: stampSlide 40000ms -40300ms linear infinite;
-}
-
-@-webkit-keyframes stampSlide {
-  0% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-            transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-  }
-  100% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-            transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-  }
-}
-
-@keyframes stampSlide {
-  0% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-            transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(130px);
-  }
-  100% {
-    -webkit-transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-            transform: rotateX(90deg) rotateZ(-90deg) translateZ(-200px) translateY(-3870px);
-  }
-}
-.world {
-  -webkit-transform: rotateX(-30deg) rotateY(-30deg);
-          transform: rotateX(-30deg) rotateY(-30deg);
-}
-.world .forward {
-  position: absolute;
-  -webkit-animation: slide 2000ms linear infinite;
-          animation: slide 2000ms linear infinite;
-}
-.world .box {
-  width: 200px;
-  height: 200px;
-  -webkit-transform-origin: 100% 100%;
-          transform-origin: 100% 100%;
-  -webkit-animation: roll 2000ms cubic-bezier(1, 0.01, 1, 1) infinite;
-          animation: roll 2000ms cubic-bezier(1, 0.01, 1, 1) infinite;
-}
-.world .box .wall {
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  background: rgba(10, 10, 10, 0.8);
-  border: 1px solid #fafafa;
-  box-sizing: border-box;
-}
-.world .box .wall::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 7rem;
-}
-.world .box .wall:nth-child(1) {
-  -webkit-transform: translateZ(100px);
-          transform: translateZ(100px);
-}
-.world .box .wall:nth-child(2) {
-  -webkit-transform: rotateX(180deg) translateZ(100px);
-          transform: rotateX(180deg) translateZ(100px);
-}
-.world .box .wall:nth-child(3) {
-  -webkit-transform: rotateX(90deg) translateZ(100px);
-          transform: rotateX(90deg) translateZ(100px);
-}
-.world .box .wall:nth-child(3)::before {
-  -webkit-transform: rotateX(180deg) rotateZ(90deg) translateZ(-1px);
-          transform: rotateX(180deg) rotateZ(90deg) translateZ(-1px);
-  -webkit-animation: zeroFour 4000ms -2000ms linear infinite;
-          animation: zeroFour 4000ms -2000ms linear infinite;
-}
-.world .box .wall:nth-child(4) {
-  -webkit-transform: rotateX(-90deg) translateZ(100px);
-          transform: rotateX(-90deg) translateZ(100px);
-}
-.world .box .wall:nth-child(4)::before {
-  -webkit-transform: rotateX(180deg) rotateZ(-90deg) translateZ(-1px);
-          transform: rotateX(180deg) rotateZ(-90deg) translateZ(-1px);
-  -webkit-animation: zeroFour 4000ms -2000ms linear infinite;
-          animation: zeroFour 4000ms -2000ms linear infinite;
-}
-.world .box .wall:nth-child(5) {
-  -webkit-transform: rotateY(90deg) translateZ(100px);
-          transform: rotateY(90deg) translateZ(100px);
-}
-.world .box .wall:nth-child(5)::before {
-  -webkit-transform: rotateX(180deg) translateZ(-1px);
-          transform: rotateX(180deg) translateZ(-1px);
-  -webkit-animation: zeroFour 4000ms linear infinite;
-          animation: zeroFour 4000ms linear infinite;
-}
-.world .box .wall:nth-child(6) {
-  -webkit-transform: rotateY(-90deg) translateZ(100px);
-          transform: rotateY(-90deg) translateZ(100px);
-}
-.world .box .wall:nth-child(6)::before {
-  -webkit-transform: rotateX(180deg) rotateZ(180deg) translateZ(-1px);
-          transform: rotateX(180deg) rotateZ(180deg) translateZ(-1px);
-  -webkit-animation: zeroFour 4000ms linear infinite;
-          animation: zeroFour 4000ms linear infinite;
-}
-
-@-webkit-keyframes zeroFour {
-  0% {
-    content: '4';
-  }
-  100% {
-    content: '0';
-  }
-}
-
-@keyframes zeroFour {
-  0% {
-    content: '4';
-  }
-  100% {
-    content: '0';
-  }
-}
-@-webkit-keyframes roll {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  85% {
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
-  87% {
-    -webkit-transform: rotateZ(88deg);
-            transform: rotateZ(88deg);
-  }
-  90% {
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
-}
-@keyframes roll {
-  0% {
-    -webkit-transform: rotateZ(0deg);
-            transform: rotateZ(0deg);
-  }
-  85% {
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
-  87% {
-    -webkit-transform: rotateZ(88deg);
-            transform: rotateZ(88deg);
-  }
-  90% {
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
-  100% {
-    -webkit-transform: rotateZ(90deg);
-            transform: rotateZ(90deg);
-  }
-}
-@-webkit-keyframes slide {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  100% {
-    -webkit-transform: translateX(-200px);
-            transform: translateX(-200px);
-  }
-}
-@keyframes slide {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-  100% {
-    -webkit-transform: translateX(-200px);
-            transform: translateX(-200px);
-  }
-}
-</style>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<title>该页面不存在-404.life</title>
+  <style type="text/css">
+      body{font-family:Calibri,Candara,Segoe,"Segoe UI",Optima,Arial,sans-serif;}#page{display:table;}body{background:#0078d7;}body{color:#fefeff;}#page{height:100%;}body{height:100vh;}h3,h2,body,h1{margin-left:0;}body,#page{margin-bottom:0;}#page{margin-left:auto;}h1,h3,h2,body{margin-right:0;}body{margin-top:0;}h1{font-weight:normal;}h1{font-weight:300;}h2,h3,h1,h4{padding-left:0;}#page{margin-right:auto;}#page{margin-top:-.625pc;}#page{width:70%;}h3,h2,h4,h1{padding-bottom:0;}h4,h2,h1,h3{padding-right:0;}h4,h3,h2,h1{padding-top:0;}h1,h4,h3,h2{margin-bottom:18.75pt;}#page{font-size:1.9vw;}#container{display:table-cell;}#container{vertical-align:middle;}h2,h5,h3,h1,h4{margin-top:0;}h2{font-weight:normal;}#details{display:flex;}h2{font-weight:300;}#details{flex-flow:row;}h3{font-weight:normal;}h3{font-weight:300;}#details{flex-wrap:nowrap;}#image img{width:4em;}h4{font-weight:normal;}#details{padding-top:.104166667in;}h4{font-weight:300;}#image img{height:4em;}h4,h5{margin-left:0;}#qr{flex:0 1 auto;}h4,h5{margin-right:0;}h5{font-weight:normal;}h5{font-weight:300;}#image{background:white;}h5{padding-left:0;}h5{padding-bottom:0;}h5{padding-right:0;}h5{padding-top:0;}#image{padding-left:.052083333in;}h5{margin-bottom:18.75pt;}h1{font-size:6.5em;}h1{margin-bottom:10px;}h2{font-size:1.5em;}h4{font-size:1.4em;}h4{line-height:1.5em;}h5{line-height:1.1em;}#image{padding-bottom:.052083333in;}h5{font-size:1.3em;}#image{padding-right:.052083333in;}#image{padding-top:.052083333in;}#image{line-height:0;}#stopcode{padding-left:10px;}#stopcode{flex:1 1 auto;}@media (min-width: 840px){#page{font-size:140%;}#page{width:50pc;}}
+    </style>
 </head>
 <body>
-<font color="white" size="10">3秒后跳转至主页</font>
-<div class="rail">
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
-  <div class="stamp four">4</div>
-  <div class="stamp zero">0</div>
+<div id="page">
+<div id="container">
+<h1>:(</h1>
+<h2>你的网页遇到了一些问题，网页正在优化和上报故障信息，我们在未来将改善和减少这种情况的发生.</h2>
+<h2>完成 <span id="percentage">0</span>%</h2>
+
 </div>
-<div class="world">
-  <div class="forward">
-    <div class="box">
-      <div class="wall"></div>
-      <div class="wall"></div>
-      <div class="wall"></div>
-      <div class="wall"></div>
-      <div class="wall"></div>
-      <div class="wall"></div>
-    </div>
-  </div>
 </div>
-</body>
-</html>
+<script type="text/javascript">
+  var percentageElement = document.getElementById("percentage");
+var percentage = 0;
+
+function process() {
+  percentage += parseInt(Math.random() * 10);
+  if (percentage > 100) {
+    percentage = 100;
+    window.location.href='https://thnf.github.io/';
+  }
+  percentageElement.innerText = percentage;
+  processInterval();
+}
+
+function processInterval() {
+  setTimeout(process, Math.random() * (1000 - 500) + 500)
+}
+processInterval();
+</script>
+
+
+</body></html>
