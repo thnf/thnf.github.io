@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /earthnfc.html
+Allow: /jiaoyu.html
+Allow: /yule.html
+Allow: /tv.html
+Disallow: /
