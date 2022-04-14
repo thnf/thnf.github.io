@@ -1,7 +1,6 @@
 User-agent: *
-Allow: /earthnfc.html
-Allow: /jiaoyu.html
-Allow: /yule.html
-Allow: /tv.html
-Allow: /index.html
-Allow: /
+Disallow: /*.png$
+Disallow: /*.gif$
+Disallow: /*.jpg$
+Disallow: /*.css$
+Disallow: /*.js$
