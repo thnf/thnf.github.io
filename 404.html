@@ -11,9 +11,18 @@
 <h1>:(404</h1>
 <h2>你的网页遇到了一些问题，网页正在优化和上报故障信息，我们在未来将改善和减少这种情况的发生.</h2>
 <h2>完成 <span id="percentage">0</span>%</h2>
-
+<img id="fzf" alt="404" src="/4041.gif" width="300">
 </div>
 </div>
+  <script>
+     window.onload=fzf();
+    
+	function fzf()
+{
+  var a=Math.ceil(Math.random()*4);
+document.getElementById("fzf").src="/404"+a+".gif";
+}
+</script>
 <script type="text/javascript">
   var percentageElement = document.getElementById("percentage");
 var percentage = 0;
