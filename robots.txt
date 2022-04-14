@@ -4,4 +4,4 @@ Allow: /jiaoyu.html
 Allow: /yule.html
 Allow: /tv.html
 Allow: /index.html
-Disallow: /
+Allow: /
