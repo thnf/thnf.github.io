@@ -4,3 +4,4 @@ Disallow: /*.gif$
 Disallow: /*.jpg$
 Disallow: /*.css$
 Disallow: /*.js$
+Disallow: /*.ico$
