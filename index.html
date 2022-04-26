@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,9 +7,210 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>信息学网站总网10.8</title>
 <link rel="shortcut icon" href="/favicon.webp">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/font_976687_qeapkx5ntp.css">
 </head>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
 
-<frameset cols="100%">
-    <frame src="/earthnfc.html">
-</frameset>
-</html>
+  }
+::-webkit-scrollbar{display: none;}
+  .sidebar {
+    position: fixed;
+    overflow: auto;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background: #f3d494;
+    transition: all .5s ease;
+  }
+
+  .sidebar .top {
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgb(14, 44, 70);
+    user-select: none;
+
+  }
+
+  .sidebar ul a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+    color: #fff;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgb(17, 73, 118);
+    transition: .4s;
+  }
+
+  ul li:hover a {
+    padding-left: 4px;
+    color: #ffc801;
+    border-left: 5px solid #ffc801;
+    transition: all 0.5s;
+  }
+
+  .sidebar ul a i {
+    margin-right: 16px;
+  }
+
+  #check {
+    display: none;
+  }
+
+  label #btn,
+  label #cancel {
+    position: fixed;
+    cursor: pointer;
+    background-color: #0089ff;
+    border-radius: 3px;
+  }
+
+  label #btn {
+    left: 44px;
+    top: 7px;
+    font-size: 2px;
+    color: #fff;
+    padding: 6px 10px;
+    transition: all .5s;
+  }
+
+  label #cancel {
+    z-index: 1;
+    left: -145px;
+    top: 10px;
+    font-size: 2px;
+    color: rgb(188, 190, 223);
+    padding: 4px 9px;
+    transition: all .5s ease;
+  }
+
+  #check:checked~.sidebar {
+    left: 0;
+  }
+
+  #check:checked~label #btn {
+    left: 10px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #check:checked~label #cancel {
+    left: 150px;
+
+  }
+
+  .content {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    transition: all .5s;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #check:checked~.content {
+    margin-left: 200px;
+  }
+
+  .item {
+    width: 30%;
+    height: 300px;
+    background-color: deepskyblue;
+  }
+</style>
+<body>
+   
+  <input type="checkbox" id="check">
+  <label for="check">
+    <i class="fa fa-bars" id="btn"><i class="iconfont icon-more-circle"></i></i>
+    <i class="fa fa-times" id="cancel"><i class="iconfont icon-logout"></i></i>
+  </label>
+  <div class="sidebar">
+    <div class="top">Hi~</div>
+   <div class="mdui-card-media mdui-ripple mdui-ripple-white" style="border-radius: 0px">
+            <img id="background" src="assets/images/background.png" style="height:110px;width:200px; "/>
+            <div class="mdui-card-media-covered mdui-card-media-covered-gradient">
+                <div class="mdui-card-primary" style="position:relative;">
+                    <div class="mdui-typo-title mdui-text-color-white drawer-title-text" style="background-color: white;">   <span id="titleText">
+                            阁下，请稍等…
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <script>
+        var titleText = document.getElementById('titleText');
+        var MyDate = new Date();
+        var hour = MyDate.getHours();
+        var str = '阁下，请稍等…',
+            url = 'background.png';
+        var background = document.getElementById('background');
+        if(hour >= 23 && hour <= 2){
+            str = '阁下，午夜了，还不休息吗？';
+            url = 'wuye.jpg';
+        }else
+        if(hour < 23 && hour >= 22){
+            str = '阁下，是时候睡觉了呢！';
+            url = 'wuye.jpg';
+        }else
+        if(hour < 22 && hour >= 18){
+            str = '阁下，晚上好！';
+            url = 'wuye.jpg';
+        }else
+        if(hour < 17 && hour >= 13){
+            str = '阁下，下午好，有尝试美味的下午茶吗？';
+            url = 'xiawu.jpg';
+        }else
+        if(hour < 18 && hour >= 17){
+            str = '阁下，傍晚好，要一起观赏夕阳吗？';
+            url = 'bangwan.jpg';
+        }else
+        if(hour < 13 && hour >= 12){
+            str = '阁下，午好，午饭食用了吗？';
+            url = 'zhongwu.jpg';
+        }else
+        if(hour < 12 && hour >= 8){
+            str = '阁下，上午好！';
+            url = 'shangwu.jpg';
+        }else
+        if(hour < 8 && hour >= 5){
+            str = '阁下！早上好！';
+            url = 'richu.jpg';
+        }else
+        if(hour < 5 && hour >= 3){
+            str = '阁下，不要告诉我你又要通宵！';
+            url = 'wuye.png';
+        }else{
+            str = '阁下 ，真的不准备睡觉吗？';
+            url = 'wuye.png';
+        }
+        titleText.innerHTML ='<span style="white-space: per-warp;" >'+str+'</span>';
+        background.src = './'+url;
+          window.setInterval("timelyFun()",1000*3600);
+    </script>
+    <ul style="overflow: auto;">
+      <audio style="height:44px;width:200px;background: rgb(254, 76, 97); color: rgb(255, 255, 255)" controls="controls" loop="">
+            <source type="audio/mpeg" src="https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C">
+            <embed src="https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C" width="100" height="50">
+          </audio>
+   <!--   <li><a href="#"><i class="fa fa-address-book"></i>菜单管理</a></li>
+      <li><a href="#"><i class="fa fa-telegram"></i>商品分类</a></li>
+      <li><a href="#"><i class="fa fa-address-book"></i>用户管理</a></li>-->
+      <li><a href="#"><i class="fa fa-telegram"></i><iframe scrolling="yes" src="https://sg.loyinchat.cn/api/yiyan.php" allowtransparency="true" width="180" height="90" frameborder="0"></iframe></a></li>
+     
+    </ul>
+  </div>
+  <div class="content"><iframe scrolling="yes" src="/earthnfc.html" allowtransparency="true" width="100%" height="100%" frameborder="0"></iframe></div></body></html>
