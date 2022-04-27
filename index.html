@@ -152,6 +152,8 @@
             </div>
         </div>
        <script>
+           window.onload=hellowl();
+          function hellowl(){
         var titleText = document.getElementById('titleText');
         var MyDate = new Date();
         var hour = MyDate.getHours();
@@ -199,7 +201,12 @@
         }
         titleText.innerHTML ='<span style="white-space: per-warp;" >'+str+'</span>';
         background.src = './'+url;
-          window.setInterval("timelyFun()",1000*3600);
+          }
+           function nextIntegralPointAfterLogin(){
+     hellowl();
+setInterval("hellowl();",60*60*1000);
+
+}
     </script>
     <ul style="overflow: auto;">
       <audio style="height:44px;width:244px;background: rgb(254, 76, 97); color: rgb(255, 255, 255)" controls="controls" loop="">
