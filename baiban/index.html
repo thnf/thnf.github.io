@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线白板 - Whiteboard Online - 熙卒信息总网</title>
+    <meta name="description" content="一款高颜值的支持压感的在线白板应用">
+    <link rel="stylesheet" href="/style.css">
+    
+   
+</head>
+
+<!-- 
+本程序作者：@daidr
+开源地址：https://github.com/daidr/douBoard
+-->
+
+<body>
+    <canvas height="100%" width="100%" id="mainCanvas"></canvas>
+    <div id="toolbar-container">
+        <div class="eraser"></div>
+        <div class="toolbar">
+            <div class="toolbar-pen active">笔</div>
+            <div class="toolbar-eraser">橡皮</div>
+        </div>
+        <div class="toolbarmenu">
+            <div class="toolbarmenu-pen">
+                <div class="width-viewer"></div>
+                <div class="switcher-container" type="width">
+                    <div class="width-switcher-4">
+                        <span></span>
+                    </div>
+                    <div class="width-switcher-3">
+                        <span></span>
+                    </div>
+                    <div class="width-switcher-2">
+                        <span></span>
+                    </div>
+                    <div class="width-switcher-1 active">
+                        <span></span>
+                    </div>
+                </div>
+                <div class="switcher-container" type="color">
+                </div>
+            </div>
+            <div class="toolbarmenu-eraser">
+                <p class="clearAll"><img src="/trashcan.svg" width="21px">清空画布</p>
+            </div>
+        </div>
+    </div>
+    <script src="/core.js"></script>
+
+
+</body></html>
