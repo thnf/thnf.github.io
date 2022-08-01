@@ -1,1 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>计算器-熙卒信息总网</title>
+      <meta name="viewport" content="width=device-width">
+      <link rel="stylesheet" href="./class.css">
+    </head>
+    <body>
+        <table border="10" cellspacing="10" cellpadding="10" align="center">
+            <tr style="background-color: darkgrey;">
+                <th colspan="4" align="left">
+                  <p>内核：<select id="select">
+  <option value="Microsoft Math Solver">Microsoft Math Solver</option>
+  <option value="数学帝国">数学帝国</option>
+</select></p><input value="" id="box" placeholder="输入代数式(手动输入或使用生成器)" type="search">
+                <input value="换行" id="enter" onclick="enter()" type="button"></th>
+            </tr>
+            <tr align="center">
+                <td style="width: 30px; background-color:#eee"><button id="squre" onclick="squre()">mⁿ</button></td>
+                <td style="width: 30px; background-color:#eee"><button id="x" onclick="x()">x</button></td>
+                <td style="width: 30px; background-color:#eee"><button id="y" onclick="y()">y</button></td>
+                 <td style="background-color:#eee;"><button id="delete1" onclick="delete1()">←</button></td>
+            </tr>
+          <tr align="center">
+                <td style="background-color:#eee;"><button id="sqrt" onclick="sqrt()">√</button></td>
+            <td style="background-color:#eee;"><button id="leftkh" onclick="leftkh()">(</button></td>
+            <td style="background-color:#eee;"><button id="rightkh" onclick="rightkh()">)</button></td>
+            <td style="width: 30px; background-color:#eee"><button id="put" onclick="put()">+</button></td>
+            </tr>
+            <tr align="center">
+                <td><button id="7" onclick="seven()">7</button></td>
+                <td><button id="8" onclick="eight()">8</button></td>
+                <td><button id="9" onclick="nine()">9</button></td>
+                <td style="background-color:#eee;"><button id="cut" onclick="cut()">-</button></td>
+            </tr>
+            <tr align="center">
+                <td><button id="4" onclick="four()">4</button></td>
+                <td><button id="5" onclick="five()">5</button></td>
+                <td><button id="6" onclick="six()">6</button></td>
+                <td style="background-color:#eee;"><button id="ride" onclick="ride()">×</button></td>
+            </tr>
+            <tr align="center">
+                <td><button id="1" onclick="one()">1</button></td>
+                <td><button id="2" onclick="two()">2</button></td>
+                <td><button id="3" onclick="three()">3</button></td>
+                <td style="background-color:#eee;"><button id="division" onclick="division()">÷</button></td>
+            </tr>
+            <tr align="center">
+                <td><button id="0" onclick="zero()">0</button></td>
+                <td style="background-color:#eee;"><button id="point" onclick="point()">.</button></td>
+                <td style="background-color:#eee;"><button id="same" onclick="same()">=</button></td>
+                <td style="background-color:#eee;"><button id="answer" onclick="answer()">求解</button></td>
+            </tr>
 
+        </table>
+       <script>
+        var way="普通";
+         //main
+function answer(){
+  if(document.getElementById("box").value.length!=0){
+     if(document.getElementById("select").value=="Microsoft Math Solver") {    window.open("https://mathsolver.microsoft.com/zh/solve-problem/"+document.getElementById("box").value,"_blank");
+  }
+   
+  else if(document.getElementById("select").value=="数学帝国"){
+   if(way=="普通") { window.open("https://zh.numberempire.com/factoringcalculator.php?function="+document.getElementById("box").value,"_blank");
+  }
+    if(way=="方程"){
+      var a=document.getElementById("box").value;
+      var var1=""
+      for(var i=0;i<a.length;i++){
+            if(a[i]>="A"&a[i]<="Z"){
+                a[i]=a[i]-"A";
+                if(var1=="")
+                var1=a[i];
+                else var1=var1+","+a[i];
+            }
+            if(a[i]>="a"&a[i]<="z"){
+                if(var1=="")
+                var1=a[i];
+                else var1=var1+","+a[i];
+            }
+          } 
+          window.open("https://zh.numberempire.com/equationsolver.php?result_type=false&answers=&_p1=2029&function="+a+"&var="+var1,"_blank");
+
+    }
+}
+  }
+  else {
+      
+  }
+}
+         //符号
+         function enter(){
+           document.getElementById("box").value=document.getElementById("box").value+",";
+         }
+function squre(){document.getElementById("box").value=document.getElementById("box").value+"()^()";
+}
+
+function sqrt(){document.getElementById("box").value=document.getElementById("box").value+"sqrt()";
+}
+
+         function rightkh(){document.getElementById("box").value=document.getElementById("box").value+")";
+}
+
+function leftkh(){document.getElementById("box").value=document.getElementById("box").value+"(";
+}
+
+
+         
+         function sqrt(){document.getElementById("box").value=document.getElementById("box").value+"sqrt()";
+}
+         
+function delete1(){  
+  var a=document.getElementById("box").value;
+   var out="";
+  if(a.length!=0){
+    for(var i=0;i<a.length-1;i++){
+            out=out+a[i];
+          } 
+  }
+  document.getElementById("box").value=out;
+        }
+
+         function x(){  document.getElementById("box").value=document.getElementById("box").value+"x";
+        }
+         function y(){  document.getElementById("box").value=document.getElementById("box").value+"y";
+        }
+         function put(){  document.getElementById("box").value=document.getElementById("box").value+"+";
+        }
+         function cut(){  
+           document.getElementById("box").value=document.getElementById("box").value+"-";
+        }
+         function ride(){  document.getElementById("box").value=document.getElementById("box").value+"*";
+        }
+         function division(){  document.getElementById("box").value=document.getElementById("box").value+"/";
+        }
+         function point(){  document.getElementById("box").value=document.getElementById("box").value+".";
+        }
+         function same(){  document.getElementById("box").value=document.getElementById("box").value+"=";
+               way="方程";          
+        }
+
+         
+      //数字
+         function one(){  document.getElementById("box").value=document.getElementById("box").value+"1";
+        }
+
+         function two(){  document.getElementById("box").value=document.getElementById("box").value+"2";
+        }
+         function three(){  document.getElementById("box").value=document.getElementById("box").value+"3";
+        }
+         function four(){  document.getElementById("box").value=document.getElementById("box").value+"4";
+        }
+         function five(){  document.getElementById("box").value=document.getElementById("box").value+"5";
+        }
+         function six(){  document.getElementById("box").value=document.getElementById("box").value+"6";
+        }
+         function seven(){  document.getElementById("box").value=document.getElementById("box").value+"7";
+        }
+         function eight(){  document.getElementById("box").value=document.getElementById("box").value+"8";
+        }
+         function nine(){  document.getElementById("box").value=document.getElementById("box").value+"9";
+        }
+         function zero(){  document.getElementById("box").value=document.getElementById("box").value+"0";
+        }
+      </script>
+    </body>
+</html>
