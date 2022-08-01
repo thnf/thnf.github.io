@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>计算器-熙卒信息总网</title>
       <meta name="viewport" content="width=device-width">
-      <link rel="stylesheet" href="./class.css">
+      <link rel="stylesheet" href="class.css">
     </head>
     <body>
         <table border="10" cellspacing="10" cellpadding="10" align="center">
@@ -14,7 +14,8 @@
   <option value="Microsoft Math Solver">Microsoft Math Solver</option>
   <option value="数学帝国">数学帝国</option>
 </select></p><input value="" id="box" placeholder="输入代数式(手动输入或使用生成器)" type="search">
-                <input value="换行" id="enter" onclick="enter()" type="button"></th>
+                <input value="换行" id="enter" onclick="enter()" type="button">
+                <input value="清空" id="c" onclick="c()" type="button"></th>
             </tr>
             <tr align="center">
                 <td style="width: 30px; background-color:#eee"><button id="squre" onclick="squre()">mⁿ</button></td>
@@ -58,39 +59,65 @@
         var way="普通";
          //main
 function answer(){
+     var a=document.getElementById("box").value;
+     var main="";
+     for(var i=0;i<a.length;i++){
+            if(a[i]=="="){
+              way="方程";
+              break;
+            } 
+            else way="普通";
+          } 
   if(document.getElementById("box").value.length!=0){
-     if(document.getElementById("select").value=="Microsoft Math Solver") {    window.open("https://mathsolver.microsoft.com/zh/solve-problem/"+document.getElementById("box").value,"_blank");
+     if(document.getElementById("select").value=="Microsoft Math Solver") {    window.open("https://mathsolver.microsoft.com/zh/solve-problem/"+a,"_blank");
   }
    
   else if(document.getElementById("select").value=="数学帝国"){
-   if(way=="普通") { window.open("https://zh.numberempire.com/factoringcalculator.php?function="+document.getElementById("box").value,"_blank");
+   if(way=="普通") { 
+       for(var i=0;i<a.length;i++){
+            if(a[i]=="+") main=main+"%2B";
+            else main=main+a[i];
+          } 
+       window.open("https://zh.numberempire.com/factoringcalculator.php?function="+main,"_blank");
   }
     if(way=="方程"){
-      var a=document.getElementById("box").value;
-      var var1=""
+      var var1="";
       for(var i=0;i<a.length;i++){
             if(a[i]>="A"&a[i]<="Z"){
-                a[i]=a[i]-"A";
+                if(var1.includes(a[i])==false){
+                     a[i]=a[i]-"A";
                 if(var1=="")
                 var1=a[i];
                 else var1=var1+","+a[i];
+                }
+               
             }
             if(a[i]>="a"&a[i]<="z"){
+              if(var1.includes(a[i])==false){
                 if(var1=="")
                 var1=a[i];
                 else var1=var1+","+a[i];
+              }
             }
-          } 
-          window.open("https://zh.numberempire.com/equationsolver.php?result_type=false&answers=&_p1=2029&function="+a+"&var="+var1,"_blank");
+            if(a[i]=="+") main=main+"%2B";
+            else main=main+a[i];
+          }
+          window.open("https://zh.numberempire.com/equationsolver.php?result_type=false&answers=&_p1=2029&function="+main+"&var="+var1,"_blank");
 
     }
 }
   }
   else {
-      
+      window.alert("不能为空！");
   }
 }
          //符号
+function c(){document.getElementById("box").value="";
+             way="普通";
+}
+
+
+         
          function enter(){
            document.getElementById("box").value=document.getElementById("box").value+",";
          }
