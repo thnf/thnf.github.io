@@ -236,6 +236,7 @@ setInterval("hellowl();",4*44*888);
      </th>
      <th> <li><a href="#"><i class="fa fa-address-book"></i><button onclick="tools()" style="border-radius: 14px; padding: 5px; height: 44px; border-color: #e72424d9; background-color:#e72424d9;">工具箱</button></a></li>
      </th></tr></table>
+
         	   <!-- <span class="mask"><input type="hidden" value="2022-6-18 14:44:44" id="date2">
 
         <div id="timer"></div></span>
@@ -301,6 +302,18 @@ setInterval("hellowl();",4*44*888);
     }
 </script>
   </div>
+  <script>
+    window.onload=jump1();
+    function jump1(){
+      var url = getRequestParam('url');
+    if(!url){
+        return;
+      }
+    }else{
+      document.getElementById("main").src=url;
+    }
+    }
+</script>
   <script>
     function zhuye() { document.getElementById("main").src="/earthnfc.html";
    } 
