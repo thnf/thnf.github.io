@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<head><title>MarkDown</title>
+</head>
+<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/pandao/editor.md@1.5.0/css/editormd.min.css">
+<style type="text/css">
+	body{
+		font-family:"Helvetica Neue","Helvetica","Microsoft Yahei","微软雅黑","Lantinghei SC","STXihei","WenQuanYi Micro Hei",Arial,sans-serif;
+		text-align:justify;margin:auto;font-size:14px;line-height:1.6em;
+		color:#333;background:#fefefe;padding:15px;margin:30px auto;position: relative;
+		-webkit-font-smoothing: antialiased;font-smoothing: antialiased;
+	}
+	
+	article,footer,header,nav{margin:0 auto}
+	article{margin-top:4em;margin-bottom:4em;min-height:400px}
+	footer{margin-bottom:50px}
+	video{margin:2em 0;border:1px solid #ddd}
+	nav{font-size:.9em;font-style:italic;border-bottom:1px solid #ddd;padding:1em 0}
+	nav p{margin:0}
+	details{margin: 15px 0;}
+	summary{cursor:pointer;padding: 4px;}
+	summary:focus{outline: none;box-shadow: 0 0 3px #2196F3;}
+	.h1,h1{font-size:2.2em;}
+	.h2,h2{font-size:1.9em;}
+	.h3,h3{font-size:1.6em;}
+	.h4,h4{font-size:1.3em;}
+	.h5,h5{font-size:1.2em;}
+	.h6,h6{font-size:1.1em;}
+	.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{
+		font-family:inherit;font-weight:500;color: #333;
+		line-height: 1.2em;padding: 0.3em 0;margin: 0.8em 0 0.4em 0;
+		word-break: break-all;
+	}
+	.h1,h1{letter-spacing: 1px;border-bottom: 1px solid #ddd;}
+	.h2,h2{padding-bottom: 0.15em;}
+	p{-webkit-hypens:auto;-moz-hypens:auto;hyphens:auto;margin:10px 0;}
+	p,li,div,ul{word-wrap: break-all;}
+	blockquote{margin-left:1em;padding:10px 15px;margin:10px 0 20px 0;border-left:10px solid #ddd;background: #f6f6f6;}
+	blockquote p{margin:0;font-weight:400;}
+	pre{display:block;padding:0;overflow:auto;margin:0 0 10px;font-size:1em;line-height:1.42857143;
+		word-break:break-all;word-wrap:break-word;color:#333;background:none;border-radius:4px}
+	code,kbd,pre,samp{
+		font-family:Consolas,'Liberation Mono','Ubuntu Mono',Menlo,Courier,sans-serif;
+	}
+	a{color:#1980e6;text-decoration:none}
+	a:hover{text-decoration:underline}
+	a img{border:none}
+	img{max-width: 100%;}
+	h1 a,h1 a:hover{text-decoration:none}
+	hr{border: 0 none;height: 4px;margin:1.2em 0;
+	    background: rgba(0, 0, 0, 0) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+	}
+	@media screen and (min-width: 900px) {
+		body {width: 900px;}
+	}
+	ul,ol{padding:0.2em 0 0.2em 2em;}
+	table {border-collapse: collapse;border-spacing: 0;margin-bottom: 20px;}
+	table thead{background: #eee;}
+	table td,table th{padding: .5em;border: 1px solid #ddd;line-height: 1.5;}
+	.markdown-flow{background:#fff;padding: 15px;}
+	.markdown-flow .label{color:#444;}
+	.markdown-latex {
+		text-align: center;font-size:1.3em;color: #000;
+		margin-bottom: 1.5em;overflow: hidden;overflow-x:auto;
+	}
+	.latex-inline .katex-display{display:inline-block;font-size: 0.8em;}
+	.markdown-menu ul{padding:0 10px 20px 20px;}
+	.markdown-menu li{
+		font-size:14px;list-style:none;
+		line-height:1.8em;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+	}
+	.markdown-menu-h2{padding-left:2em;}
+	.markdown-menu-h3{padding-left:4em;}
+	.markdown-menu-h4{padding-left:6em;}
+	.markdown-menu-h5{padding-left:8em;}
+	.markdown-menu-h6{padding-left:10em;}
+
+	.print-btn{
+		position:absolute;padding:4px 20px;color:#444;font-size:1em;
+		background:#eee;background:rgba(200,200,200,0.2);margin-top: -45px;right:15px;
+	}
+	.print-btn:hover{text-decoration: none;background: #14a2ff;color: #fff;}
+
+	.hidden{display:none !important;}
+
+	/*打印样式*/
+	@media print {
+		body{padding:0 1.5cm;margin:0 auto 10px auto;font-size:13px;}
+		.print-btn{display: none;}
+	}
+	
+	ol.linenums {
+	    padding-left: 2.5em;
+	}
+	ol.linenums li {
+	    list-style-type: decimal!important;
+	}
+</style>
+<body>
+<a href="javascript:window.print();" class="print-btn">打印(Print)</a>
+<!-- MarkDown Content -->
+
+<h1 id="h1-thnf-ga-earthnfc-10-8-"><a name="thnf.ga/ 熙卒(Earthnfc)万能网页工具-信息学网站总网10.8使用说明" class="reference-link"></a><span class="header-link octicon octicon-link"></span>thnf.ga/ 熙卒(Earthnfc)万能网页工具-信息学网站总网10.8使用说明</h1><h3 id="h3--"><a name="一、使用方式：" class="reference-link"></a><span class="header-link octicon octicon-link"></span>一、使用方式：</h3><h4 id="h4--1"><a name="方式1" class="reference-link"></a><span class="header-link octicon octicon-link"></span>方式1</h4><h5 id="h5--"><a name="万能方式。" class="reference-link"></a><span class="header-link octicon octicon-link"></span>万能方式。</h5><p>在任何网页的网址前面加上 thnf.ga/ (万能，thnf为earthnfc简称，ga为嘎的意思)，即可展示用于该网页的在线工具，并且点击工具时一般会直达针对该网页的功能详情页，无需再复制和粘贴网页链接。<br>例如：<br><a href="https://www.thnf.ml/">https://www.thnf.ml/</a><br>在网址前面加上wn.run/ ，变为<br>thnf.ga/<a href="https://https://www.thnf.ml/">https://https://www.thnf.ml/</a></p>
+<h4 id="h4--2"><a name="方式2" class="reference-link"></a><span class="header-link octicon octicon-link"></span>方式2</h4><h5 id="h5--"><a name="书签脚本方式。" class="reference-link"></a><span class="header-link octicon octicon-link"></span>书签脚本方式。</h5><p>第一步：拖动下方按钮到浏览器的书签栏(也称网页收藏夹)，相当于添加一个网页小书签，但书签的网址项里填的是一串脚本。</p>
+<p>如果是移动端浏览器或其他pc浏览器，无法用上面拖动的方式，可以手动添加一个书签，书签名称可以自定义，比如“万能命令书签”，并在书签的网址项里输入下面的代码。 ios使用书签脚本 android使用书签脚本</p>
+<pre class="prettyprint linenums prettyprinted"><ol class="linenums"><li class="L0"><code class="lang-javascript"><span class="pln">javascript</span><span class="pun">:(</span><span class="kwd">function</span><span class="pun">(){</span><span class="pln">window</span><span class="pun">.</span><span class="pln">open</span><span class="pun">(</span><span class="str">"https://wannengrun.com/f/#"</span><span class="pun">+</span><span class="pln">document</span><span class="pun">.</span><span class="pln">location</span><span class="pun">.</span><span class="pln">href</span><span class="pun">)})()</span></code></li></ol></pre>
+<p>第二步：后面浏览任意网页时，有小需求了，只需点击一下书签栏里的“万能命令书签”，即可马上展示用于该网页的各类工具。</p>
+<h3 id="h3--"><a name="二、介绍" class="reference-link"></a><span class="header-link octicon octicon-link"></span>二、介绍</h3><p>wn万能命令是一个在线工具快捷跳转平台，将各种高质量的在线工具按应用站点聚合起来，让你以方便快捷好记的方式寻找和使用网页型在线工具。<br>浏览任意网页时，输入这个命令 thnf.ga/ 或点击一下固定的书签，就会展示出用于该网页的各种附加在线工具，比如 快速网页翻译(默认手机端网页翻译会比较繁琐)、快速网页长截图等，并且点击工具时一般会直达针对该网页的功能详情页。
+<p>特点：<br>1、方便快捷，只需输入一个命令或点击一下书签<br>2、无需下载、即用即走<br>3、无平台限制，pc、android、ios等都可使用<br>5、直达用于该网页的工具详情页<br>6、收录了很多高质量的工具
+</p>
+
+<!-- /MarkDown Content -->
+</body>
+<html>
+
