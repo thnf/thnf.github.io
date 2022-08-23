@@ -36,7 +36,7 @@ function main() {
 
   #earthnfc-badge svg {
   border-radius: 4px;
-    opacity: 0.7;
+    opacity: 0.4;
     transition-property: opacity, transform;
     transition: opacity 120ms, transform 120ms;
     transition-timing-function: ease-out;
