@@ -27,7 +27,7 @@ function main() {
   const badge = `
   <style>
   #earthnfc-badge {
-    position: absolute;
+    position: fixed;
     cursor: pointer;
     bottom: 16px;
     right: 16px;
