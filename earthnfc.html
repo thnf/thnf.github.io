@@ -964,120 +964,90 @@ background-attachment: fixed;
         />
       </a>
     </legend>
-    <form
-      id="form"
-      target="_blank"
-      name="bddn"
-      action="https://www.baidu.com/s"
-      class="fm"
-    >
-      <input type="hidden" name="ie" value="utf-8" /><input
-        type="hidden"
-        name="f"
-        value="8"
-      /><input type="hidden" name="rsv_bp" value="1" /><input
-        type="hidden"
-        name="rsv_idx"
-        value="1"
-      /><input type="hidden" name="ch" value="" /><input
-        type="hidden"
-        name="tn"
-        value="baidu"
-      /><input type="hidden" name="bar" value="" /><span
-        class="bg s_ipt_wr iptfocus quickdelete-wrap"
-        ><span class="soutu-btn"></span
-        ><input
-          type="search"
-          id="bddnn"
-          style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"
-          name="wd"
-          class="s_ipt"
-          maxlength="255"
-          autocomplete="off"
-        /><span id="hnwBtn" class="hand-write"></span
-        ><span class="bg s_btn_wr"
-          ><input
-            style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)"
-            type="submit"
-            id="ssb"
-            value="电脑版百度一下"
-            class="bg s_btn" /></span
-        ><input type="hidden" name="rn" value="" /><input
-          type="hidden"
-          name="fenlei"
-          value="256"
-        /><input type="hidden" name="oq" value="" /><input
-          type="hidden"
-          name="rsv_pq"
-          value="ad573c670016be4f"
-        /><input
-          type="hidden"
-          name="rsv_t"
-          value="4413Badbmn57b0ovE2M1o/wJ9ku+PQOm+uyfshoGzcO/MD0ItZ0w71vwaOA"
-        /><input type="hidden" name="rqlang" value="cn" /><input
-          type="hidden"
-          name="rsv_dl"
-          value="ib"
-        />
-      </span>
+    
+<div class="main">
+  <div class="search">
+    <form action="https://www.baidu.com/s" method="get" target="_blank">
+      <input class="input-text" type="search" name="wd" value="" placeholder="输入想要搜索的关键词" id="ssk" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="电脑版百度搜索" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >
+<input type="hidden" name="ie" value="utf-8">
+<input type="hidden" name="f" value="8">
+<input type="hidden" name="rsv-bp" value="1">
+<input type="hidden" name="rsv-idx" value="1">
+<input type="hidden" name="ch" value="0">
+<input type="hidden" name="tn" value="baidu">
+<input type="hidden" name="bar" value="0">
     </form>
-    <form
-      id="form"
-      target="_blank"
-      name="f"
-      action="https://m.baidu.com/s"
-      class="fm"
-    >
-      <input type="hidden" name="ie" value="utf-8" /><input
-        type="hidden"
-        name="f"
-        value="8"
-      /><input type="hidden" name="rsv_bp" value="1" /><input
-        type="hidden"
-        name="rsv_idx"
-        value="1"
-      /><input type="hidden" name="ch" value="" /><input
-        type="hidden"
-        name="tn"
-        value="baidu"
-      /><input type="hidden" name="bar" value="" /><span
-        class="bg s_ipt_wr iptfocus quickdelete-wrap"
-        ><span class="soutu-btn"></span
-        ><input
-          type="search"
-          id="ssk"
-          style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"
-          name="wd"
-          class="s_ipt"
-          maxlength="255"
-          autocomplete="off"
-        /><span id="hnwBtn" class="hand-write"></span
-        ><span class="bg s_btn_wr"
-          ><input
-            style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)"
-            id="ssb"
-            type="submit"
-            value="手机版百度一下"
-            class="bg s_btn" /></span
-        ><input type="hidden" name="rn" value="" /><input
-          type="hidden"
-          name="fenlei"
-          value="256"
-        /><input type="hidden" name="oq" value="" /><input
-          type="hidden"
-          name="rsv_pq"
-          value="ad573c670016be4f"
-        /><input
-          type="hidden"
-          name="rsv_t"
-          value="4413Badbmn57b0ovE2M1o/wJ9ku+PQOm+uyfshoGzcO/MD0ItZ0w71vwaOA"
-        /><input type="hidden" name="rqlang" value="cn" /><input
-          type="hidden"
-          name="rsv_dl"
-          value="ib"
-        />
-      </span>
+  </div>
+  <script type="text/javascript">
+    $('.search input[type="search"]').suggestion({
+      url:'https://www.baidu.com/sugrec',
+      FieldName:'wd',
+      parameter:{
+        'ie':'utf-8',
+        'json':1,
+        'prod':'pc',
+        'from':'pc_web'
+      },
+      jsonp:'cb',
+      onCallback:function(data){
+        var result = [];
+        if(data['g']){
+          result = data['g'].map(function(item){
+            return {
+              'value':item['q'],
+              'name':item['q']
+            };
+          });
+        }
+        return result;
+      }
+    });
+  </script>
+</div>
+
+<div class="main">
+  <div class="search">
+    <form action="https://m.baidu.com/s" method="get" target="_blank">
+      <input class="input-text" type="search" name="wd" value="" placeholder="输入想要搜索的关键词" id="ssk" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="手机版百度搜索" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >
+<input type="hidden" name="rn" value="0">
+<input type="hidden" name="fenlei" value="256">
+<input type="hidden" name="op" value="0">
+<input type="hidden" name="rsv-pq" value="ad573c670016be4f">
+<input type="hidden" name="rsv_t" value="4413Badbmn57b0ovE2M1o/wJ9ku+PQOm+uyfshoGzcO/MD0ItZ0w71vwaOA">
+<input type="hidden" name="rqlang" value="cn">
+<input type="hidden" name="rsv_dl" value="ib">
+<input type="hidden" name="" value="">
     </form>
+  </div>
+  <script type="text/javascript">
+    $('.search input[type="search"]').suggestion({
+      url:'https://www.baidu.com/sugrec',
+      FieldName:'wd',
+      parameter:{
+        'ie':'utf-8',
+        'json':1,
+        'prod':'pc',
+        'from':'pc_web'
+      },
+      jsonp:'cb',
+      onCallback:function(data){
+        var result = [];
+        if(data['g']){
+          result = data['g'].map(function(item){
+            return {
+              'value':item['q'],
+              'name':item['q']
+            };
+          });
+        }
+        return result;
+      }
+    });
+  </script>
+</div>
+
+
+
     <div>
       <div>
         <div>
