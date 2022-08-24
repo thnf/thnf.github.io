@@ -15,6 +15,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-menu:before{
+	content: '';
+	position: absolute;
+	top: .125em;
+	left: 0;
+	display: block;
+	height: .15em;
+	width: 1em;
+	background: currentColor;
+	-webkit-border-radius: .1em;
+	-moz-border-radius: .1em;
+	-o-border-radius: .1em;
+	-ms-border-radius: .1em;
+	border-radius: .1em;
+	-webkit-box-shadow:0 .3em currentColor, 0 .6em currentColor;
+	-moz-box-shadow:0 .3em currentColor, 0 .6em currentColor;
+	-o-box-shadow:0 .3em currentColor, 0 .6em currentColor;
+	-ms-box-shadow:0 .3em currentColor, 0 .6em currentColor;
+	box-shadow:0 .3em currentColor, 0 .6em currentColor;
+}
+
 .icon-warning-alt:before {
   content: "\e71c";
 }
