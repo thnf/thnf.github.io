@@ -90,65 +90,13 @@
         <div class="forbidden-tip">此网页被禁用javascript。现已终止访问该网页</div>
         <div class="visit-box">
             <div class="visit-choose"><a href="https://searchjump2.thnf.ml/">
-                    不能开启？继续访问
+                    不能开启？暂无法继续访问
                 </a>
             </div>
         </div>
     </div>
 
-    <script type="text/javascript">
-    function $(_s) {
-        return document.querySelector(_s)
-    }
-    addEventListener('hashchange', function() {
-        var hash = location.hash ? location.hash : '#url-forbidden';
-        showPage(hash)
-    }, false);
-
-    function showPage(_page) {
-        if (!$(_page).getAttribute('selected')) {
-            $('body>div[selected=true]').removeAttribute('selected');
-            $(_page).setAttribute('selected', 'true');
-            resetTitle($(_page).getAttribute('title'))
-        }
-    }
-
-    function resetTitle(_title) {
-        var iframe = document.querySelector("iframe[name='title-iframe']");
-        if (!iframe) {
-            iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.setAttribute('name', 'title-iframe');
-            iframe.onload = function() {
-                this.parentNode.removeChild(this)
-            }
-        }
-        iframe.src = 'http://3gimg.qq.com/mapp/title.html';
-        document.body.appendChild(iframe);
-        document.title = _title
-    }
-    var hash = location.hash;
-    if (hash) {
-        showPage(hash)
-    };
-    if (typeof window.onresize != 'undefined') {
-        window.onresize = function() {
-            setTimeout(function() {
-                if ($('#url-forbidden').offsetHeight > window.innerHeight - 60) {
-                    $('#url-forbidden .visit-box').style.position = 'relative';
-                } else {
-                    $('#url-forbidden .visit-box').style.position = 'absolute';
-                }
-            }, 100)
-        };
-        if ($('#url-forbidden').offsetHeight > window.innerHeight - 60) {
-            $('#url-forbidden .visit-box').style.position = 'relative';
-        }
-    }
-    </script>
-
-
-
+   
 </body></html> </noscript>
 </head>
 <body>

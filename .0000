@@ -2,3 +2,59 @@
 总https://www.dooccn.com/cpp/#id/62870de45757f44b805fdcaeafa052f9
 搜索头https://www.dooccn.com/cpp/#id/65419063d63fb07579eeb60416d8e56f // https://www.dooccn.com/cpp/#id/40b12ab8704cc9c7bd63512df07285ed
 分布https://www.dooccn.com/cpp/#id/f4e34ed93c7e92b7d868f3225d379d56
+
+
+function getParams()
+
+{
+$url = $_SERVER['HTTP_REFERER'];
+$refer_url = parse_url($url);
+
+$params = $refer_url['query'];
+
+$arr = array();
+
+if(!empty($params))
+
+{
+
+$paramsArr = explode('&',$params);
+
+foreach($paramsArr as $k=>$v)
+
+{
+
+$a = explode('=',$v);
+
+$arr[$a[0]] = $a[1];
+
+}
+
+}
+
+return $arr;
+
+}
+    $arr = getParams();
+              print $arr;
+$url= $arr["url"];
+              $q= $arr["q"];
+              echo $url;
+   /*  if($url=="baidufanyi"){
+    echo $jump."https://fanyi.baidu.com/#auto/auto/".$q.$end;
+    }
+    if($url=="baidubaike"){
+    echo $jump."https://baike.baidu.com/item/".$q.$end;
+    }
+    if($url=="dianyinggou"){
+    echo $jump."https://www.dianyinggou.com/so/".$q.$end;
+    }
+    if($url=="waipian"){
+    echo $jump."https://waipian3.com/search-".$q."-------------/".$end;
+    }
+    if($url=="xintiku"){
+    echo $jump."https://www.xintiku.com/search/".$q."/".$end;
+    }
+    if($url=="douyin"){
+    echo $jump."https://www.douyin.com/search/".$q.$end;
+    }   */
