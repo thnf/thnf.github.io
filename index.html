@@ -163,6 +163,7 @@
                 </div>
             </div>
         </div>
+     
        <script>
            window.onload=againl();
           function hellowl(){
@@ -304,18 +305,22 @@ setInterval("hellowl();",4*44*888);
   </div>
   <div class="content"><iframe id="main" scrolling="yes" src="/earthnfc.html#1" allowtransparency="true" width="100%" height="100%" frameborder="0" ></iframe>
   </div>
- <!-- <script>
-    window.onload=jump1();
-    function jump1(){
-      var url = getRequestParam('url');
-    if(!url){
-        return;
-      }
-   else{
-      document.getElementById("main").src=url;
+  <script> 
+  function getmsg(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
     }
-  }
-</script>-->
+    var thnf=getmsg(thnf);
+    if(thnf!=""){
+      document.getElementById("main").src=+thnf;
+    }
+    </script>
   <script>
     function zhuye() { document.getElementById("main").src="/earthnfc.html";
    } 
