@@ -5,7 +5,151 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>熙卒(earthnfc)搜索跳转</title>
-  <noscript><meta http-equiv="refresh" content="0.1; url=https://searchjump2.thnf.ml" />  </noscript>
+  <noscript><html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <style type="text/css">
+    html,
+    body,
+    div,
+    p,
+    h1,
+    h2,
+    h3,
+    ul,
+    li,
+    input {
+        margin: 0;
+        padding: 0;
+        font-family: 'Helvetica';
+    }
+    body {
+        -webkit-touch-callout: none;
+        background: #e6e6e6
+    }
+    a {
+        text-decoration: none;
+    }
+    body>div[id] {
+        display: none;
+    }
+    body>div[id][selected=true] {
+        display: block;
+    }
+    .forbidden-img {
+        height: 196px;
+        background: url(./aio_web_alert@2x.png) no-repeat bottom center;
+        background-size: 172px 116px;
+    }
+    .forbidden-tip {
+        font-size: 15px;
+        color: #000;
+        text-align: center;
+        padding: 18px 20px 0;
+    }
+    .visit-box {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        padding: 20px 0;
+    }
+    .visit-choose {
+        width: 100%;
+        color: #c7c7c7;
+        text-align: center;
+    }
+    .visit-choose a {
+        color: #2091e1;
+        padding: 0 10px;
+    }
+    .info-title {
+        padding: 29px 0 11px;
+        margin: 0 26px;
+        color: #000;
+        font-size: 18px;
+        font-weight: bold;
+        border-bottom: 1px solid #ddd;
+    }
+    .info-content {
+        line-height: 23px;
+        font-size: 15px;
+        margin: 0 26px;
+    }
+    .info-content p {
+        padding-top: 15px;
+    }
+    .inner-link {
+        color: #0057af;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="url-forbidden" selected="true" title="警告">
+        <div class="forbidden-img"></div>
+        <div class="forbidden-tip">此网页被禁用javascript。现已终止访问该网页</div>
+        <div class="visit-box">
+            <div class="visit-choose"><a href="https://searchjump2.thnf.ml/">
+                    不能开启？继续访问
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+    function $(_s) {
+        return document.querySelector(_s)
+    }
+    addEventListener('hashchange', function() {
+        var hash = location.hash ? location.hash : '#url-forbidden';
+        showPage(hash)
+    }, false);
+
+    function showPage(_page) {
+        if (!$(_page).getAttribute('selected')) {
+            $('body>div[selected=true]').removeAttribute('selected');
+            $(_page).setAttribute('selected', 'true');
+            resetTitle($(_page).getAttribute('title'))
+        }
+    }
+
+    function resetTitle(_title) {
+        var iframe = document.querySelector("iframe[name='title-iframe']");
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.setAttribute('name', 'title-iframe');
+            iframe.onload = function() {
+                this.parentNode.removeChild(this)
+            }
+        }
+        iframe.src = 'http://3gimg.qq.com/mapp/title.html';
+        document.body.appendChild(iframe);
+        document.title = _title
+    }
+    var hash = location.hash;
+    if (hash) {
+        showPage(hash)
+    };
+    if (typeof window.onresize != 'undefined') {
+        window.onresize = function() {
+            setTimeout(function() {
+                if ($('#url-forbidden').offsetHeight > window.innerHeight - 60) {
+                    $('#url-forbidden .visit-box').style.position = 'relative';
+                } else {
+                    $('#url-forbidden .visit-box').style.position = 'absolute';
+                }
+            }, 100)
+        };
+        if ($('#url-forbidden').offsetHeight > window.innerHeight - 60) {
+            $('#url-forbidden .visit-box').style.position = 'relative';
+        }
+    }
+    </script>
+
+
+
+</body></html> </noscript>
 </head>
 <body>
   <script>
