@@ -2832,52 +2832,14 @@ div.sticky {
                           >Microsoft Math Solver</a
                         >
                       </h3>
-                      <div>
-                        <input type="search"
-                          type="text"
-                          name="MicrosoftMathSolverk"
-                          id="MicrosoftMathSolverk"
-                          style="
-                            background: rgb(243, 156, 17);
-                            color: rgb(255, 255, 255);
-                          "
-                          placeholder="请输入数学计算问题"
-                        /><button
-                          id="MicrosoftMathSolver"
-                          onclick="MicrosoftMathSolver()"
-                          style="
-                            color: rgb(255, 255, 255);
-                            background: rgb(19, 194, 194);
-                          "
-                        >
-                          Microsoft搜索
-                        </button>
-                        <script>
-                          function MicrosoftMathSolver() {
-                            input_val = document.getElementById(
-                              "MicrosoftMathSolverk"
-                            ).value;
-                            window.open(
-                              "https://mathsolver.microsoft.com/zh/solve-problem/" +
-                                input_val,
-                              "_blank"
-                            );
-                          }
-                        </script>
-                        <script>
-                          var input = document.getElementById(
-                            "MicrosoftMathSolverk"
-                          );
-                          input.addEventListener("keyup", function (event) {
-                            event.preventDefault();
-                            if (event.keyCode === 13) {
-                              document
-                                .getElementById("MicrosoftMathSolver")
-                                .click();
-                            }
-                          });
-                        </script>
+
+
+                      <div class="search">
+                        <form action="https://www.thnf.ml/搜索跳转.html" method="get" target="_blank">
+                          <input class="input-text" type="search" name="q" value="" placeholder="请输入数学计算问题" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="Microsoft搜索" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >  <input type="hidden" name="url" value="Microsoftshuxue">
+                        </form>
                       </div>
+
                     </header>
                     <div class="tool-item-body">
                       <a
