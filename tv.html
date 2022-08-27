@@ -574,9 +574,9 @@ background-attachment: fixed;
   </script>
 </div>
 
-<div class="main">
-  <div class="search">
-    <form action="https://www.thnf.ml/搜索跳转.html" method="get" target="_blank">
+<div id="dianyinggou" class="main">
+ <noscript> <div class="search">
+    <form action="https://searchjump2.thnf.ml" method="get" target="_blank">
       <input class="input-text" type="search" name="q" value="" placeholder="输入想要搜索的关键词" id="ssk" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="电影狗搜索" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >
 <input type="hidden" name="url" value="dianyinggou">
     </form>
@@ -605,12 +605,51 @@ background-attachment: fixed;
         return result;
       }
     });
-  </script>
+  </script></noscript>
 </div>
 
-<div class="main">
-  <div class="search">
-    <form action="https://www.thnf.ml/搜索跳转.html" method="get" target="_blank">
+
+<script>
+var main="";
+main += "<div class=\"search\">";
+main += "    <form action=\"https:\/\/www.thnf.ml\/搜索跳转.html\" method=\"get\" target=\"_blank\">";
+main += "      <input class=\"input-text\" type=\"search\" name=\"q\" value=\"\" placeholder=\"输入想要搜索的关键词\" id=\"ssk\" style=\"background: rgb(243, 156, 17); color: rgb(255, 255, 255)\"><input class=\"input-submit\" type=\"submit\" value=\"电影狗搜索\" id=\"ssb\" style=\"color: rgb(255, 255, 255); background: rgb(19, 194, 194)\" >";
+main += "<input type=\"hidden\" name=\"url\" value=\"dianyinggou\">";
+main += "    <\/form>";
+main += "  <\/div>";
+main += "  <script type=\"text\/javascript\">";
+main += "    $('.search input[type=\"search\"]').suggestion({";
+main += "      url:'https:\/\/www.baidu.com\/sugrec',";
+main += "      FieldName:'wd',";
+main += "      parameter:{";
+main += "        'ie':'utf-8',";
+main += "        'json':1,";
+main += "        'prod':'pc',";
+main += "        'from':'pc_web'";
+main += "      },";
+main += "      jsonp:'cb',";
+main += "      onCallback:function(data){";
+main += "        var result = [];";
+main += "        if(data['g']){";
+main += "          result = data['g'].map(function(item){";
+main += "            return {";
+main += "              'value':item['q'],";
+main += "              'name':item['q']";
+main += "            };";
+main += "          });";
+main += "        }";
+main += "        return result;";
+main += "      }";
+main += "    });";
+main += "  <\/script>";
+
+dianyinggou.innerHTML =main;
+
+</script>
+
+<div id="waipian" class="main">
+ <noscript> <div class="search">
+    <form action="https://searchjump2.thnf.ml" method="get" target="_blank">
       <input class="input-text" type="search" name="q" value="" placeholder="输入想要搜索的关键词" id="ssk" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="歪片搜索" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >
 <input type="hidden" name="url" value="waipian">
     </form>
@@ -639,8 +678,44 @@ background-attachment: fixed;
         return result;
       }
     });
-  </script>
+  </script></noscript>
 </div>
+
+<script>
+  var main="";
+main += "<div class=\"search\">";
+main += "    <form action=\"https:\/\/www.thnf.ml\/搜索跳转.html\" method=\"get\" target=\"_blank\">";
+main += "      <input class=\"input-text\" type=\"search\" name=\"q\" value=\"\" placeholder=\"输入想要搜索的关键词\" id=\"ssk\" style=\"background: rgb(243, 156, 17); color: rgb(255, 255, 255)\"><input class=\"input-submit\" type=\"submit\" value=\"歪片搜索\" id=\"ssb\" style=\"color: rgb(255, 255, 255); background: rgb(19, 194, 194)\" >";
+main += "<input type=\"hidden\" name=\"url\" value=\"waipian\">";
+main += "    <\/form>";
+main += "  <\/div>";
+main += "  <script type=\"text\/javascript\">";
+main += "    $('.search input[type=\"search\"]').suggestion({";
+main += "      url:'https:\/\/www.baidu.com\/sugrec',";
+main += "      FieldName:'wd',";
+main += "      parameter:{";
+main += "        'ie':'utf-8',";
+main += "        'json':1,";
+main += "        'prod':'pc',";
+main += "        'from':'pc_web'";
+main += "      },";
+main += "      jsonp:'cb',";
+main += "      onCallback:function(data){";
+main += "        var result = [];";
+main += "        if(data['g']){";
+main += "          result = data['g'].map(function(item){";
+main += "            return {";
+main += "              'value':item['q'],";
+main += "              'name':item['q']";
+main += "            };";
+main += "          });";
+main += "        }";
+main += "        return result;";
+main += "      }";
+main += "    });";
+main += "  <\/script>";
+waipian.innerHTML=main;
+</script>
 
 <div class="main">
   <div class="search">
