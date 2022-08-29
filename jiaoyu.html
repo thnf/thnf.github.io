@@ -2506,85 +2506,7 @@ div.sticky {
                     </footer>
                   </div>
                 </li>
-                <li class="col-xs-12 col-lg-4">
-                  <div class="tool-item">
-                    <header class="tool-item-header">
-                      <h3>
-                        <a
-                          title="https://www.gushiwen.cn/"
-                          target="_blank"
-                          href="https://www.gushiwen.cn/"
-                          >古诗文网</a
-                        >
-                      </h3>
-                      <br />
-                      <div class="main">
-                        <div class="search">
-                          <form action="https://so.gushiwen.cn/search.aspx" method="get" target="_blank">
-                            <input class="input-text" type="search" name="value" value="" placeholder="输入想要搜索的关键词" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="古诗文搜索" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >
-                          </form>
-                        </div>
-                        <script type="text/javascript">
-                          $('.search input[type="search"]').suggestion({
-                            url:'https://www.baidu.com/sugrec',
-                            FieldName:'wd',
-                            parameter:{
-                              'ie':'utf-8',
-                              'json':1,
-                              'prod':'pc',
-                              'from':'pc_web'
-                            },
-                            jsonp:'cb',
-                            onCallback:function(data){
-                              var result = [];
-                              if(data['g']){
-                                result = data['g'].map(function(item){
-                                  return {
-                                    'value':item['q'],
-                                    'name':item['q']
-                                  };
-                                });
-                              }
-                              return result;
-                            }
-                          });
-                        </script>
-                      </div>
-                    </header>
-                    <div class="tool-item-body">
-                      <a target="_blank" href="https://www.gushiwen.cn/"
-                        ><img
-                          id="tp2"
-                          src="./a82eefc0-70a5-4f0c-a7b3-66eb579a6039_1.png"
-                          width="160"
-                          height="100"
-                      /></a>
-                    </div>
-                    <footer class="tool-item-footer">
-                      <div class="row between-xs middle-xs">
-                        <div class="col-xs-8">
-                          <a
-                            title="https://www.gushiwen.cn/"
-                            href="https://www.gushiwen.cn/"
-                            class="link-muted"
-                            target="_blank"
-                            ><i class="iconfont icon-url-shorten"></i
-                            >https://www.gushiwen.cn/</a
-                          >
-                        </div>
-                        <div class="col-xs-4 align-right">
-                          <a target="_blank" href="https://www.gushiwen.cn/"
-                            ><strong
-                              >进入网站
-                              <i
-                                class="iconfont icon-arrow-right-copy"
-                              ></i></strong
-                          ></a>
-                        </div>
-                      </div>
-                    </footer>
-                  </div>
-                </li>
+           
                 <li class="col-xs-12 col-lg-4">
                   <div class="tool-item">
                     <header class="tool-item-header">
@@ -2653,6 +2575,88 @@ div.sticky {
                         </div>
                         <div class="col-xs-4 align-right">
                           <a target="_blank" href="https://hanyu.baidu.com/"
+                            ><strong
+                              >进入网站
+                              <i
+                                class="iconfont icon-arrow-right-copy"
+                              ></i></strong
+                          ></a>
+                        </div>
+                      </div>
+                    </footer>
+                  </div>
+                </li>
+		        <li class="col-xs-12 col-lg-4">
+                  <div class="tool-item">
+                    <header class="tool-item-header">
+                      <h3>
+                        <a
+                          title="https://www.shidaquan.com/"
+                          target="_blank"
+                          href="https://www.shidaquan.com/"
+                          >古诗大全</a
+                        >
+                      </h3>
+                      <br />
+                      <div class="main">
+                        <div class="search">
+                          <form action="https://www.shidaquan.com/e/search/index.php" method="post" target="_blank">
+				  <input type="hidden" name="show" value="title">
+	<input type="hidden" name="classid" value="7">
+        <input type="hidden" name="tempid" value="1">
+                            <input class="input-text" type="search" name="keyboard" value="" placeholder="输入想要搜索的关键词" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit" value="古诗大全搜索" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)" >
+                          </form>
+                        </div>
+                        <script type="text/javascript">
+                          $('.search input[type="search"]').suggestion({
+                            url:'https://www.baidu.com/sugrec',
+                            FieldName:'wd',
+                            parameter:{
+                              'ie':'utf-8',
+                              'json':1,
+                              'prod':'pc',
+                              'from':'pc_web'
+                            },
+                            jsonp:'cb',
+                            onCallback:function(data){
+                              var result = [];
+                              if(data['g']){
+                                result = data['g'].map(function(item){
+                                  return {
+                                    'value':item['q'],
+                                    'name':item['q']
+                                  };
+                                });
+                              }
+                              return result;
+                            }
+                          });
+                        </script>
+                      </div>
+                    </header>
+                    <div class="tool-item-body">
+                      <a target="_blank" href="https://www.shidaquan.com/"
+                        ><img
+                          id="tp2"
+                          src="./gushidaquan.gif"
+                          width="160"
+                          height="100"
+                      /></a>
+                    </div>
+                    <footer class="tool-item-footer">
+                      <div class="row between-xs middle-xs">
+                        <div class="col-xs-8">
+                          <a
+                            title="https://www.shidaquan.com/"
+                            href="https://www.shidaquan.com/"
+                            class="link-muted"
+                            target="_blank"
+                            ><i class="iconfont icon-url-shorten"></i
+                            >https://www.shidaquan.com/</a
+                          >
+                        </div>
+                        <div class="col-xs-4 align-right">
+                          <a target="_blank" href="https://www.shidaquan.com/"
                             ><strong
                               >进入网站
                               <i
