@@ -215,9 +215,17 @@
         titleText.innerHTML ='<span style="white-space: per-warp;" >'+str+'</span>';
         background.src = './'+url;
           }
+          thnf(){
+            var str=document.getElementById("main").src;
+            var newUrl="?thnf="+str;
+var stateObject = 0;
+var title="0"
+history.replaceState(stateObject,title,newUrl);
+          }
            function againl(){
      hellowl();
 setInterval("hellowl();",4*44*888);
+setInterval("thnf();",4.4);
 
 }
     </script>
