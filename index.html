@@ -335,11 +335,11 @@ var thnf="";
     function   thnf(thnf){
             var str=parent.document.getElementById("main").contentWindow.location.href ;
 if(thnf!= str){
+thnf= str;
 var newUrl="?thnf="+str;
 var stateObject = 0;
 var title="0";
 history.replaceState(stateObject,title,newUrl);
-thnf= str;
 }
    }
     function zhuye() {
@@ -392,8 +392,6 @@ history.replaceState(stateObject,title,newUrl);
    } 
    function againll(){
     thnf();
-for(var i=0; i=-1; i= i){
-setTimeout("thnf();",4444);
-}
+    setInterval("thnf();",4.4);
    }
   </script></body></html>
