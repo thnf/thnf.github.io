@@ -330,12 +330,44 @@ setInterval("hellowl();",4*44*888);
   
     </script>
   <script>
+    // 加入收藏 兼容360和IE6 
+function collect(title,url) 
+{ 
+	//var index = url.indexOf("${base}");
+	//url = url.substring(0,index+13);
+	try 
+	{ 
+		window.external.addFavorite(url, title); 
+	} 
+	catch (e) 
+	{ 
+		try 
+		{ 
+			window.sidebar.addPanel(title, url, ""); 
+		} 
+		catch (e) 
+		{ 
+			alert("加入收藏失败，请自行添加"); 
+		} 
+	} 
+} 
     function thnfll() {     
+      var titlel="信息学总网 导航";
         str=parent.document.getElementById("main").contentWindow.location.href ;
+        str=str.split("#")[0];
+        if(str=="https://www.thnf.ml/earthnfc.html") title="信息学总网 导航-主页";
+        if(str=="https://www.thnf.ml/jiaoyu.html") title="信息学总网 导航-教育版";
+        if(str=="https://www.thnf.ml/yule.html") title="信息学总网 导航-娱乐版";
+        if(str=="https://www.thnf.ml/tv.html") title="信息学总网 导航-TV版";
+        if(str=="https://www.thnf.ml/betaweb.html") title="信息学总网 导航-抢先版";
+        if(str=="https://www.thnf.ml/tools.html") title="信息学总网 导航-工具箱";
+
          var newUrl="?thnf="+str;
 var stateObject = 0;
 var title="0"
 history.replaceState(stateObject,title,newUrl);
+url=window.location.search.substring(1);
+collect(titlel,url);
 }
     function zhuye() {
         var url="/earthnfc.html"
