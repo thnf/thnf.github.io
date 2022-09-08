@@ -355,13 +355,13 @@ function collect(title,url)
       var titlel="信息学总网 导航";
         str=parent.document.getElementById("main").contentWindow.location.href ;
         str=str.split("#")[0];
-        if(str=="https://www.thnf.ml/earthnfc.html") title="信息学总网 导航-主页";
-        if(str=="https://www.thnf.ml/jiaoyu.html") title="信息学总网 导航-教育版";
-        if(str=="https://www.thnf.ml/yule.html") title="信息学总网 导航-娱乐版";
-        if(str=="https://www.thnf.ml/tv.html") title="信息学总网 导航-TV版";
-        if(str=="https://www.thnf.ml/betaweb.html") title="信息学总网 导航-抢先版";
-        if(str=="https://www.thnf.ml/tools.html") title="信息学总网 导航-工具箱";
-
+        if(str=="https://www.thnf.ml/earthnfc.html") titlel="信息学总网 导航-主页";
+        if(str=="https://www.thnf.ml/jiaoyu.html") titlel="信息学总网 导航-教育版";
+        if(str=="https://www.thnf.ml/yule.html") titlel="信息学总网 导航-娱乐版";
+        if(str=="https://www.thnf.ml/tv.html") titlel="信息学总网 导航-TV版";
+        if(str=="https://www.thnf.ml/betaweb.html") titlel="信息学总网 导航-抢先版";
+        if(str=="https://www.thnf.ml/tools.html") titlel="信息学总网 导航-工具箱";
+        document.title=titlel;
          var newUrl="?thnf="+str;
 var stateObject = 0;
 var title="0"
