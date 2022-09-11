@@ -142,4 +142,4 @@ gr-main-header {
 .tou-6i3zyv {
     background-color: #19576c !important;
 }
-embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }</style></head>
+embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }</style>
