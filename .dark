@@ -1,3 +1,10 @@
+/*  body{
+    filter: invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%);
+ }*/
+
+
+
+
 <html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen">*:not(pre, pre *, code, .far, .fa, .glyphicon, [class*="vjs-"], .fab, .fa-github, .fas, .material-icons, .icofont, .typcn, mu, [class*="mu-"], .glyphicon, .icon) {
   -webkit-text-stroke: 0.2px !important;
   text-stroke: 0.2px !important;

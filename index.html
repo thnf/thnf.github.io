@@ -151,7 +151,35 @@
     <i class="fa fa-times" id="cancel"><i class="iconfont icon-logout"></i></i>
   </label>
   <div id="sidebar" class="sidebar">
-    <div class="top"><a href="#"><i class="fa fa-address-book"></i><button onclick="thnfll()" style="border-radius: 14px;padding: 5px;height: 40px;border-color: rgb(219 138 52);background-color: rgb(0 225 255);">收 藏 此 页 面</button></a></div>
+    <div class="top">
+      <a href="#"><i class="fa fa-address-book"></i><button onclick="moshi()" id="moshi" name="baitian" style="border-radius: 14px;padding: 5px;height: 40px;border-color: rgb(219 138 52);background-color: rgb(0 225 255);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><svg viewBox="-1.6 -1.6 35.2 35.2"><path fill="#333" stroke="transparent" stroke-width="0" d="M29.166,15.999l-5.279,1.878v-3.754L29.166,15.999z M25.333,6.748l-2.405,5.062l-2.654-2.656L25.333,6.748z M16.083,2.917l1.877,5.28h-3.755L16.083,2.917z M6.832,6.748l5.061,2.406l-2.655,2.656L6.832,6.748z M3,15.999l5.28-1.876v3.754 L3,15.999z M6.832,25.25l2.406-5.06l2.655,2.655L6.832,25.25L6.832,25.25z M16.083,29.084l-1.878-5.281h3.755L16.083,29.084z M25.333,25.25l-5.06-2.404l2.654-2.655L25.333,25.25z M9.542,15.999L9.542,15.999c0-3.612,2.929-6.541,6.542-6.541 c3.612,0,6.542,2.929,6.542,6.541c0,3.613-2.93,6.542-6.542,6.542C12.47,22.541,9.542,19.612,9.542,15.999L9.542,15.999z"></path></svg></svg>
+ </button></a>
+      <script>
+        function moshi(){
+        var namel = document.getElementById("moshi").name;
+          if(namel=="yejian"){
+              var mo=' <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><svg viewBox="-1.6 -1.6 35.2 35.2"><path fill="#333" stroke="transparent" stroke-width="0" d="M29.166,15.999l-5.279,1.878v-3.754L29.166,15.999z M25.333,6.748l-2.405,5.062l-2.654-2.656L25.333,6.748z M16.083,2.917l1.877,5.28h-3.755L16.083,2.917z M6.832,6.748l5.061,2.406l-2.655,2.656L6.832,6.748z M3,15.999l5.28-1.876v3.754 L3,15.999z M6.832,25.25l2.406-5.06l2.655,2.655L6.832,25.25L6.832,25.25z M16.083,29.084l-1.878-5.281h3.755L16.083,29.084z M25.333,25.25l-5.06-2.404l2.654-2.655L25.333,25.25z M9.542,15.999L9.542,15.999c0-3.612,2.929-6.541,6.542-6.541 c3.612,0,6.542,2.929,6.542,6.541c0,3.613-2.93,6.542-6.542,6.542C12.47,22.541,9.542,19.612,9.542,15.999L9.542,15.999z"></path></svg></svg>';
+            document.getElementById("moshi").innerHTML=mo;
+            document.getElementById("moshi").name="baitian";
+            var st='-webkit-filter: none; filter: none';
+            document.getElementById("html").style=st;
+          }
+          if(namel=="baitian"){
+              var mo='<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><svg viewBox="-1.6 -1.6 35.2 35.2"><path fill="#333" stroke="transparent" stroke-width="0" d="M23.893,29.75L23.893,29.75c-8.04,0-14.559-6.326-14.559-14.132c0-7.805,6.519-14.132,14.559-14.132l0,0 c-4.582,3.336-7.279,8.572-7.279,14.132S19.311,26.413,23.893,29.75z"></path></svg></svg>';
+            document.getElementById("moshi").innerHTML=mo;
+            document.getElementById("moshi").name="yejian";
+            var st='-webkit-filter: invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%); filter: invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%);';
+            document.getElementById("html").style=st;
+          }
+        }
+      </script>
+      ||
+      <a href="#"><i class="fa fa-address-book"></i><button onclick="thnfll()" style="border-radius: 14px;padding: 5px;height: 40px;border-color: rgb(219 138 52);background-color: rgb(0 225 255);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><svg viewBox="-1.6 -1.6 35.2 35.2"><path fill="#f9d709" stroke="transparent" stroke-width="0" d="M15.999,22.77l-8.884,6.454l3.396-10.44l-8.882-6.454l10.979,0.002l2.918-8.977l0.476-1.458l3.39,10.433h10.982l-8.886,6.454l3.397,10.443L15.999,22.77L15.999,22.77z"></path></svg>
+</button></a>
+     
+    </div>
    <div class="mdui-card-media mdui-ripple mdui-ripple-white" style="border-radius: 0px">
             <img id="background" src="/background.jpg" style="height:110px;width:244px; "/>
             <div class="mdui-card-media-covered mdui-card-media-covered-gradient">
