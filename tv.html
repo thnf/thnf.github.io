@@ -375,22 +375,32 @@ div.sticky {
     <script type="text/javascript" src="/jquery.min.js"></script>
 		<script type="text/javascript" src="/jquery.suggestion.js"></script>
     <style type="text/css">
-			.suggestion{
-				background: #fff;
-                z-index: 120;
-			}
-			.suggestion ul{
-				border:1px solid #ebebeb;
-			}
-			.suggestion li{
-				padding:0 10px;
-				line-height: 24px;
-				cursor: pointer;
-			}
-			.suggestion .active{
-				background: #ccc;
-			}
-		</style>
+      .suggestion{
+          position: relative;font-size: 14px;color: #121212;line-height: 24px;
+          background: #fff;
+                  z-index: 120;
+  
+        }
+        .suggestion ul{
+          border:1px solid #ebebeb;
+        }
+        .suggestion li{
+                   font-size: 14px;
+      transition: all .7s ease 0s;
+      border-top: 1px solid #F1F1F1;
+      line-height: 40px;
+      display: block;
+      margin: 0px;
+                  color: #1D1D1D;
+      text-decoration: none;
+          padding:0 10px;
+          line-height: 24px;
+          cursor: pointer;
+        }
+        .suggestion .active{
+          background: #ccc;
+        }
+      </style>
  <link rel="shortcut icon" href="/favicon.webp" />
  <meta
    name="viewport"
