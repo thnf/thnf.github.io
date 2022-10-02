@@ -79,7 +79,7 @@ function answer(){
             if(a[i]=="+") main=main+"%2B";
             else main=main+a[i];
           } 
-       window.open("https://zh.numberempire.com/factoringcalculator.php?function="+main,"_blank");
+       window.open("https://zh.numberempire.com/expressioncalculator.php?result_type=expression&function="+main,"_blank");
   }
     if(way=="方程"){
       var var1="";
@@ -122,10 +122,10 @@ function c(){document.getElementById("box").value="";
          function enter(){
            document.getElementById("box").value=document.getElementById("box").value+",";
          }
-function squre(){document.getElementById("box").value=document.getElementById("box").value+"()^()";
+function squre(){document.getElementById("box").value=document.getElementById("box").value+")^(";
 }
 
-function sqrt(){document.getElementById("box").value=document.getElementById("box").value+"sqrt()";
+function sqrt(){document.getElementById("box").value=document.getElementById("box").value+"sqrt(";
 }
 
          function rightkh(){document.getElementById("box").value=document.getElementById("box").value+")";
