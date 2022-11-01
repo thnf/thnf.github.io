@@ -21,7 +21,7 @@
 开源地址：https://github.com/daidr/douBoard
 -->
 
-<body>
+<body id="body">
     <canvas height="100%" width="100%" id="mainCanvas"></canvas>
     <div id="toolbar-container">
         <div class="eraser"></div>
@@ -72,6 +72,7 @@
      var thnf=getmsg("thnf");
      if(thnf!=""){
         body.style.background = "url('"+thnf+"')";
+       body.background-size="100% 100%";
      }
        
        }
