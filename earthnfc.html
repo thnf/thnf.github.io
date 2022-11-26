@@ -848,6 +848,41 @@ div.sticky {
 
           <div class="main">
             <div class="search">
+            <form action="https://so.thnf.ml/" method="get" target="_blank" style="position: relative;">
+            <input class="input-text" type="search" name="q" value="" placeholder="输入想要搜索的关键词" id="ssk" style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" autocomplete="off"><input class="input-submit" type="submit" value="EARTHNFC搜索" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)">
+            <input type="hidden" name="transfrom" value="auto">
+            <input type="hidden" name="transto" value="zh-CHS">
+            <input type="hidden" name="model" value="general">
+            <div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div><div class="suggestion" style="position: absolute; display: none; top: 50px; left: 0px; width: 229.109px;"><ul></ul></div></form>
+            </div>
+            <script type="text/javascript">
+                          $('.search input[type="search"]').suggestion({
+                            url: 'https://www.baidu.com/sugrec',
+                            FieldName: 'wd',
+                            parameter: {
+                              'ie': 'utf-8',
+                              'json': 1,
+                              'prod': 'pc',
+                              'from': 'pc_web'
+                            },
+                            jsonp: 'cb',
+                            onCallback: function (data) {
+                              var result = [];
+                              if (data['g']) {
+                                result = data['g'].map(function (item) {
+                                  return {
+                                    'value': item['q'],
+                                    'name': item['q']
+                                  };
+                                });
+                              }
+                              return result;
+                            }
+                          });
+                        </script>
+            </div>
+          <div class="main">
+            <div class="search">
               <form action="https://www.baidu.com/s" method="get" target="_blank">
                 <input class="input-text" type="search" name="wd" value="" placeholder="输入想要搜索的关键词" id="ssk"
                   style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)" required><input class="input-submit"
