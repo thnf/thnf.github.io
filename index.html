@@ -170,7 +170,7 @@
               var mo='<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"><svg viewBox="-1.6 -1.6 35.2 35.2"><path fill="#333" stroke="transparent" stroke-width="0" d="M23.893,29.75L23.893,29.75c-8.04,0-14.559-6.326-14.559-14.132c0-7.805,6.519-14.132,14.559-14.132l0,0 c-4.582,3.336-7.279,8.572-7.279,14.132S19.311,26.413,23.893,29.75z"></path></svg></svg>';
             document.getElementById("moshi").innerHTML=mo;
             document.getElementById("moshi").name="yejian";
-            var st='-webkit-filter: invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%); filter: invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%);';
+            var st='-webkit-filter:grayscale(100%)invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%); filter:grayscale(100%) invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%);  ';
             document.getElementById("html").style=st;
           }
         }
@@ -241,7 +241,6 @@
             str = '阁下 ，真的不准备睡觉吗？';
             url = 'wuye.jpg';
         }
-str = '永垂不朽，一路走好……';
         titleText.innerHTML ='<span style="white-space: per-warp;" >'+str+'</span>';
         background.src = './'+url;
           }
