@@ -192,7 +192,7 @@
                 </div>
             </div>
         </div>
-      <div id="audio"></div><div id="audio1"></div>
+      <div id="audio"></div><div id="audio1"></div><div id="audio2"></div>
        <script>
            window.onload=againl();
           function hellowl(){
@@ -481,6 +481,18 @@ xia += "            <source type=\"audio\/mpeg\" src=\"https:\/\/api.thnf.ml\/%E
 xia += "            <embed src=\"https:\/\/api.thnf.ml\/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97.php?msg=%E7%8E%B0%E5%9C%A8%E6%AD%A3%E5%BC%8F%E4%B8%8B%E8%AF%BE\" width=\"100\" height=\"50\">";
 xia += "          <\/audio>";
 
+   var music="";
+music += " <audio autoplay=\"autoplay\" >";
+music += "<source type=\"audio\/mpeg\" src=\"https:\/\/api.uomg.com\/api\/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C\">";
+music += "<embed src=\"https:\/\/api.uomg.com\/api\/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C\" width=\"100\" height=\"50\">";
+music += "<\/audio>";
+
+   var smu="";
+smu += " <audio autoplay=\"autoplay\" >";
+smu += "<source type=\"audio\/mpeg\" src=\"https:\/\/www.thnf.ml\/%E6%A0%A1%E6%AD%8C%E7%BB%83%E4%B9%A0%E9%99%8DE%E8%B0%83.mp3\">";
+smu += "<embed src=\"https:\/\/www.thnf.ml\/%E6%A0%A1%E6%AD%8C%E7%BB%83%E4%B9%A0%E9%99%8DE%E8%B0%83.mp3\" width=\"100\" height=\"50\">";
+smu += "<\/audio>";
+
 
 function showLogin()
 {
@@ -493,7 +505,12 @@ function showLogin()
  var m=myDate.getMinutes();
  var s=myDate.getSeconds();
 for(var ii=0;ii<14;ii++){
-   
+    if(h==9&m==20&s==10||h==15&m==20&s==10){
+     document.getElementById("audio2").innerHTML=smu;
+}
+   if(h==9&m==21&s==30||h==15&m==21&s==30){
+     document.getElementById("audio2").innerHTML=music;
+}
 if(h==shangh[ii]&m==shangm[ii]&s==0){
   document.getElementById("audio1").innerHTML=ling;
   document.getElementById("audio").innerHTML=shang;
@@ -504,9 +521,13 @@ if(h==xiah[ii]&m==xiam[ii]&s==0){
   document.getElementById("audio").innerHTML=xia;
 }
 }
-
 }
 setInterval( " showLogin() " , " 1000" );
- 
+ /*
+ <audio autoplay="autoplay" >
+<source type="audio/mpeg" src="https://www.thnf.ml/%E9%93%83%E5%A3%B0.mp3">
+<embed src="https://www.thnf.ml/%E9%93%83%E5%A3%B0.mp3" width="100" height="50">
+</audio>
+*/
  </script>
 </body></html>
