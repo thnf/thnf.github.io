@@ -493,7 +493,15 @@ smu += "<source type=\"audio\/mpeg\" src=\"https:\/\/www.thnf.ml\/%E6%A0%A1%E6%A
 smu += "<embed src=\"https:\/\/www.thnf.ml\/%E6%A0%A1%E6%AD%8C%E7%BB%83%E4%B9%A0%E9%99%8DE%E8%B0%83.mp3\" width=\"100\" height=\"50\">";
 smu += "<\/audio>";
 
-	 
+	  function yuyin(ms) {
+	   var xa="";
+xa += " <audio autoplay=\"autoplay\" >";
+xa += "            <source type=\"audio\/mpeg\" src=\"https:\/\/api.thnf.ml\/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97.php?msg="+ms+"\">";
+xa += "            <embed src=\"https:\/\/api.thnf.ml\/%E8%AF%AD%E9%9F%B3%E8%BD%AC%E6%96%87%E5%AD%97.php?msg="+ms+"\" width=\"100\" height=\"50\">";
+xa += "          <\/audio>";
+     alert(xa);
+     return xa;
+	 }
 
 function showLogin()
 {
@@ -528,6 +536,7 @@ if(h==xiah[ii]&m==xiam[ii]&s==0){
 }
 setInterval( " showLogin() " , " 1000" );
  /*
+ document.getElementById("audio").innerHTML=yuyin(encodeURI("现在开始自修"));
  <audio autoplay="autoplay" >
 <source type="audio/mpeg" src="https://www.thnf.ml/%E9%93%83%E5%A3%B0.mp3">
 <embed src="https://www.thnf.ml/%E9%93%83%E5%A3%B0.mp3" width="100" height="50">
