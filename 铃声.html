@@ -493,6 +493,7 @@ smu += "<source type=\"audio\/mpeg\" src=\"https:\/\/www.thnf.ml\/%E6%A0%A1%E6%A
 smu += "<embed src=\"https:\/\/www.thnf.ml\/%E6%A0%A1%E6%AD%8C%E7%BB%83%E4%B9%A0%E9%99%8DE%E8%B0%83.mp3\" width=\"100\" height=\"50\">";
 smu += "<\/audio>";
 
+	 
 
 function showLogin()
 {
@@ -508,6 +509,9 @@ for(var ii=0;ii<14;ii++){
     if(h==9&m==20&s==10||h==15&m==20&s==10){
      document.getElementById("audio2").innerHTML=smu;
 }
+	if(h==13&m==0&s==0){
+		document.getElementById("audio1").innerHTML=ling;
+	}
    if(h==9&m==21&s==30||h==15&m==21&s==30){
      document.getElementById("audio2").innerHTML=music;
 }
