@@ -474,6 +474,11 @@ music += " <audio autoplay=\"autoplay\" >";
 music += "<source type=\"audio\/mpeg\" src=\"https:\/\/api.uomg.com\/api\/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C\">";
 music += "<embed src=\"https:\/\/api.uomg.com\/api\/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C\" width=\"100\" height=\"50\">";
 music += "<\/audio>";
+		var news="";
+news += " <audio autoplay=\"autoplay\" >";
+news += "<source type=\"audio\/mpeg\" src=\"https:\/\/api.thnf.ml\/%E6%96%B0%E9%97%BB.php\">";
+news += "<embed src=\"https:\/\/api.thnf.ml\/%E6%96%B0%E9%97%BB.php\" width=\"100\" height=\"50\">";
+news += "<\/audio>";
 
    var smu="";
 smu += " <audio autoplay=\"autoplay\" >";
@@ -504,6 +509,9 @@ for(var ii=0;ii<14;ii++){
     if(h==9&m==20&s==10||h==15&m==20&s==10){
      document.getElementById("audio2").innerHTML=smu;
 }
+	 if(h==17&m==32&s==0){
+    document.getElementById("audio2").innerHTML=news;
+	}
 	if(h==13&m==10&s==0){
 		document.getElementById("audio1").innerHTML=ling;
     document.getElementById("audio").innerHTML=yuyin(encodeURI("现在起床了！"));
@@ -549,6 +557,7 @@ setInterval( " showLogin() " , " 1000" );
 <source type="audio/mpeg" src="https://www.thnf.ml/%E9%93%83%E5%A3%B0.mp3">
 <embed src="https://www.thnf.ml/%E9%93%83%E5%A3%B0.mp3" width="100" height="50">
 </audio>
+https://c.runoob.com/front-end/846/
 */
  </script>
 </body></html>
