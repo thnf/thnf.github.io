@@ -3,6 +3,15 @@
  */
 
 function main() {
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?a1eeff4645cec4aac23892317199cf28";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+
   // Suppress in ReplView
   if (window.location.hostname.split('.')[1] === 'id') return;
 
