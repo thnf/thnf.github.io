@@ -103,11 +103,16 @@
            }
            return(false);
        }
-       var thnf=getmsg("thnf");
-       if(thnf!=""){
-            document.getElementById("thnf").src=thnf;
+      var thnf=getmsg("thnf");
+     if(thnf!=""){
+          var thnf=getmsg("thnf");
+     if(thnf!=""){
+        body.style.background = "url('"+thnf+"')";
+       body.style.backgroundSize = "100% 100%";
+     }
+      
+     }
        }
-         }
   function url(){
      if(bool2==0){
              document.getElementById("urll").style="";
