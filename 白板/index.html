@@ -55,7 +55,7 @@
           <div class="eraser"></div>
           <div class="toolbar">
               <div class="toolbar-pen active">笔</div>
-              <div class="toolbar-eraser">橡皮</div>
+              <div class="toolbar-eraser"><button title="单击切换为“移动”，双击橡皮（清空）" onclick="bg()">橡皮</button></div>
           </div><div id="toolbar-container" class="">
           <div class="toolbarmenu">
               <div class="toolbarmenu-pen">
@@ -124,6 +124,7 @@
             bool2=0;
           }
   }
+
        function  bg(){
           if(bool==0){
             document.getElementById("thnf").style="z-index=10;width:100%; height:100%;position:absolute;";
