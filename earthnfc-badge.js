@@ -10,7 +10,8 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-
+ charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js">
+LA.init({id:"JuwJmSVQNTdeACxY",ck:"JuwJmSVQNTdeACxY",autoTrack:true,hashMode:true})
 
   // Suppress in ReplView
   if (window.location.hostname.split('.')[1] === 'id') return;
