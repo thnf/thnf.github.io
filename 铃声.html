@@ -259,7 +259,7 @@ setInterval("hellowl();",4*44*888);
       <li><a href="#"><i class="fa fa-telegram"></i>商品分类</a></li>-->
       <li><textarea   id="contentmain" placeholder="输入课表" style="height: 180px;width: 100%; text-align: left;
                font: 32px 楷体;
-               border: 0 border-radius: 5px;background: rgb(19, 203, 247); color: rgb(255, 255, 255);"></textarea></li>
+               border: 0 ;border-radius: 5px;background: rgb(19, 203, 247); color: rgb(255, 255, 255);"></textarea></li>
      <table>  <tr><th><li><a href="#"><i class="fa fa-address-book"></i><button onclick="zhuye()" style="border-radius: 14px; padding: 5px; height: 44px; border-color: #ff9800; background-color:#ff9800;">主页</button></a></li>
      </th><th>  <li><a href="#"><i class="fa fa-address-book"></i><button onclick="jiaoyu()" style="border-radius: 14px; padding: 5px; height: 44px; border-color: rgb(52, 152, 219); background-color:rgb(52, 152, 219);">教育版</button></a></li>
       </th><th> <li><a href="#"><i class="fa fa-address-book"></i><button onclick="yule()" style="border-radius: 14px; padding: 5px; height: 44px; border-color: #ffeb3b;background-color:#ffeb3b;">娱乐版</button></a></li>
@@ -512,9 +512,12 @@ for(var ii=0;ii<14;ii++){
      document.getElementById("audio2").innerHTML=smu;
 }
 	 if(h==17&m==30&s==40||h==11&m==30&s==40){
-		  document.getElementById("audio").innerHTML=yuyin(encodeURI("现在开始播放新闻！"));
     document.getElementById("audio2").innerHTML=news;
 	}
+  if(h==17&m==30&s==54||h==11&m==30&s==54){
+    document.getElementById("audio").innerHTML=yuyin(encodeURI("现在开始播放新闻！"));
+  document.getElementById("audio2").innerHTML=news;
+}
 	if(h==13&m==10&s==0){
 		document.getElementById("audio1").innerHTML=ling;
     document.getElementById("audio").innerHTML=yuyin(encodeURI("现在起床了！"));
