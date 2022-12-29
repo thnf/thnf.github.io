@@ -58,7 +58,7 @@
     window.onresize();
 
     canDraw = false;
-    let baseLineList = [6, 10, 15, 25];
+    let baseLineList = [4, 6, 10, 20];
     let baseLineMode = 0;
     let lineColorList = ["#000", "#5B2D90", "#0069BF", "#F6630C", "#AB228B", "#B7B7B7", "#E3E3E3", "#E71224", "#D20078", "#02A556", "#C09E66", "#FFC114"]; //线条颜色列表
     let lineColorMode = 0;
