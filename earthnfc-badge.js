@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
   }
   </style>
   
-  <a id="earthnfc-badge" href="https://home.thnf.ml/" target="_blank">
+  <a id="earthnfc-badge" href="https://www.thnf.ml/" target="_blank">
 
 
 
