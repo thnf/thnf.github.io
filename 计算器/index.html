@@ -121,23 +121,29 @@ function c(){document.getElementById("box").value="";
 
          
          function enter(){
-           document.getElementById("box").value=document.getElementById("box").value+",";
+           var putvalue=",";
+           getValue("box", putvalue);
          }
-function squre(){document.getElementById("box").value=document.getElementById("box").value+")^(";
+function squre(){var putvalue=")^(";
+getValue("box", putvalue);
 }
 
-function sqrt(){document.getElementById("box").value=document.getElementById("box").value+"sqrt(";
+function sqrt(){var putvalue="sqrt(";
+getValue("box", putvalue);
 }
 
-         function rightkh(){document.getElementById("box").value=document.getElementById("box").value+")";
+         function rightkh(){var putvalue=")";
+         getValue("box", putvalue);
 }
 
-function leftkh(){document.getElementById("box").value=document.getElementById("box").value+"(";
+function leftkh(){var putvalue="(";
+getValue("box", putvalue);
 }
 
 
          
-         function sqrt(){document.getElementById("box").value=document.getElementById("box").value+"sqrt(";
+         function sqrt(){var putvalue="sqrt(";
+         getValue("box", putvalue);
 }
          
 function delete1(){  
@@ -151,49 +157,106 @@ function delete1(){
   document.getElementById("box").value=out;
         }
 
-         function x(){  document.getElementById("box").value=document.getElementById("box").value+"x";
+         function x(){  var putvalue="x";
+         getValue("box", putvalue);
         }
-         function y(){  document.getElementById("box").value=document.getElementById("box").value+"y";
+         function y(){  var putvalue="y";
+         getValue("box", putvalue);
         }
-         function put(){  document.getElementById("box").value=document.getElementById("box").value+"+";
+         function put(){  var putvalue="+";
+         getValue("box", putvalue);
         }
          function cut(){  
-           document.getElementById("box").value=document.getElementById("box").value+"-";
+           var putvalue="-";
+           getValue("box", putvalue);
         }
-         function ride(){  document.getElementById("box").value=document.getElementById("box").value+"*";
+         function ride(){  var putvalue="*";
+         getValue("box", putvalue);
         }
-         function division(){  document.getElementById("box").value=document.getElementById("box").value+"/";
+         function division(){  var putvalue="/";
+         getValue("box", putvalue);
         }
-         function point(){  document.getElementById("box").value=document.getElementById("box").value+".";
+         function point(){  var putvalue=".";
+         getValue("box", putvalue);
         }
-         function same(){  document.getElementById("box").value=document.getElementById("box").value+"=";
+         function same(){  var putvalue="=";
+         getValue("box", putvalue);
                way="方程";          
         }
 
          
       //数字
-         function one(){  document.getElementById("box").value=document.getElementById("box").value+"1";
+         function one(){  var putvalue="1";
+         getValue("box", putvalue);
         }
 
-         function two(){  document.getElementById("box").value=document.getElementById("box").value+"2";
+         function two(){  var putvalue="2";
+         getValue("box", putvalue);
         }
-         function three(){  document.getElementById("box").value=document.getElementById("box").value+"3";
+         function three(){  var putvalue="3";
+         getValue("box", putvalue);
         }
-         function four(){  document.getElementById("box").value=document.getElementById("box").value+"4";
+         function four(){  var putvalue="4";
+         getValue("box", putvalue);
         }
-         function five(){  document.getElementById("box").value=document.getElementById("box").value+"5";
+         function five(){  var putvalue="5";
+         getValue("box", putvalue);
         }
-         function six(){  document.getElementById("box").value=document.getElementById("box").value+"6";
+         function six(){  var putvalue="6";
+         getValue("box", putvalue);
         }
-         function seven(){  document.getElementById("box").value=document.getElementById("box").value+"7";
+         function seven(){  var putvalue="7";
+         getValue("box", putvalue);
         }
-         function eight(){  document.getElementById("box").value=document.getElementById("box").value+"8";
+         function eight(){  var putvalue="8";
+         getValue("box", putvalue);
         }
-         function nine(){  document.getElementById("box").value=document.getElementById("box").value+"9";
+         function nine(){  var putvalue="9";
+         getValue("box", putvalue);
         }
-         function zero(){  document.getElementById("box").value=document.getElementById("box").value+"0";
+         function zero(){  var putvalue="0";
+         getValue("box", putvalue);
         }
       </script> <script src="https://www.thnf.ml/earthnfc-badge.js" theme="blue" defer=""></script>
+      <script type="text/javascript">
+    
+        //了在IE、Firefox、Opera等主流浏览器的获取光标位置（getCursortPosition）以及设置光标位置（setCursorPosition）的函数    
+        //objid：textarea的id   str：要插入的内容
+        function getValue(objid,str){
+           var myField=document.getElementById(""+objid);
+           //IE浏览器
+             if (document.selection) {
+               myField.focus();
+               sel = document.selection.createRange();
+               sel.text = str;
+               sel.select();
+             }
+           
+             //火狐/网景 浏览器
+             else if (myField.selectionStart || myField.selectionStart == '0')
+             {
+             //得到光标前的位置
+               var startPos = myField.selectionStart;
+               //得到光标后的位置
+               var endPos = myField.selectionEnd;
+               // 在加入数据之前获得滚动条的高度
+               var restoreTop = myField.scrollTop;
+               myField.value = myField.value.substring(0, startPos) + str + myField.value.substring(endPos, myField.value.length);
+               //如果滚动条高度大于0
+               if (restoreTop > 0) {
+                 // 返回
+                 myField.scrollTop = restoreTop;
+               }
+               myField.focus();
+               myField.selectionStart = startPos + str.length;
+               myField.selectionEnd = startPos + str.length;
+             }
+             else {
+               myField.value += str;
+               myField.focus();
+             }
+           }
+        </script>
      免责声明： 内核由Microsoft Math Solver与数学帝国提供，本站仅提供链接跳转。
     </body>
 </html>
