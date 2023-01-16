@@ -293,6 +293,35 @@ for (let day of days) {
     }
 }
 
+let daysl = ['1.20', '1.21'];
+for (let day of daysl) {
+    let d = day.split('.');
+    if (mon == d[0] && date == d[1]) {
+       // 新春灯笼 （ 需要时可取消注释 ）
+ new_element=document.createElement("link");
+ new_element.setAttribute("rel","stylesheet");
+ new_element.setAttribute("type","text/css");
+new_element.setAttribute("href","./css/lantern.css");
+ document.body.appendChild(new_element);
+
+ new_element=document.createElement("script");
+ new_element.setAttribute("type","text/javascript");
+new_element.setAttribute("src","./js/lantern.js");
+document.body.appendChild(new_element);
+        $("#change").html("Happy&nbsp;new&nbsp;year");
+        $("#change1").html("新年快乐");
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                iziToast.show({
+                    timeout: 14000,
+                    icon: "fa-solid fa-clock",
+                    message: '新&nbsp;年&nbsp;快&nbsp;乐'
+                });
+            }, 3800);
+        }, false);
+    }
+}
+
 //更多页面切换
 let shoemore = false;
 $('#switchmore').on('click', function () {
