@@ -540,6 +540,42 @@ div.sticky {
 
   <div class="main">
     <div class="search">
+      <form action="https://soupian.de/search" method="get" target="_blank">
+        <input class="input-text" type="search" name="key" value="" placeholder="输入想要搜索的关键词" id="ssk"
+          style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit"
+          value="搜片" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)">
+      </form>
+    </div>
+    <script type="text/javascript">
+      $('.search input[type="search"]').suggestion({
+        url: 'https://www.baidu.com/sugrec',
+        FieldName: 'wd',
+        parameter: {
+          'ie': 'utf-8',
+          'json': 1,
+          'prod': 'pc',
+          'from': 'pc_web'
+        },
+        jsonp: 'cb',
+        onCallback: function (data) {
+          var result = [];
+          if (data['g']) {
+            result = data['g'].map(function (item) {
+              return {
+                'value': item['q'],
+                'name': item['q']
+              };
+            });
+          }
+          return result;
+        }
+      });
+    </script>
+  </div>
+
+
+  <div class="main">
+    <div class="search">
       <form action="https://newfii.com/vodsearch/-------------.html" method="get" target="_blank">
         <input class="input-text" type="search" name="wd" value="" placeholder="输入想要搜索的关键词" id="ssk"
           style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit"
