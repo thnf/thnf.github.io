@@ -74,21 +74,21 @@
       height: 50px;
     }
   </style>
-  <style>
-    #ssk {
-      border-radius: 14px;
-      padding: 5px;
-      width: 64%;
-      height: 50px;
-    }
-  </style>
-  <style>
-    #ssb {
-      border-radius: 14px;
-      padding: 5px;
-      height: 50px;
-    }
-  </style>
+    <style>
+      .sousuo .input-text {
+        border-radius: 14px;
+        padding: 5px;
+        width: 64%;
+        height: 50px;
+      }
+    </style>
+    <style>
+      .sousuo .input-submit {
+        border-radius: 14px;
+        padding: 5px;
+        height: 50px;
+      }
+    </style>
   <style>
     .dropbtns {
       background-color: #0cb2e4;
@@ -502,7 +502,7 @@ div.sticky {
 
     </div>
   </div><br><br>
-
+<div class="sousuo">
   <div class="main">
     <div class="search">
       <form action="https://wannengthnf.thnf.ml/" method="get" target="_blank">
@@ -864,42 +864,7 @@ div.sticky {
       });
     </script>
   </div>
-
-  <div class="main">
-    <div class="search">
-      <form action="https://www.4ltv.com/search/-------------.html" method="get" target="_blank">
-        <input class="input-text" type="search" name="wd" value="" placeholder="输入想要搜索的关键词" id="ssk"
-          style="background: rgb(243, 156, 17); color: rgb(255, 255, 255)"><input class="input-submit" type="submit"
-          value="思乐影视搜索" id="ssb" style="color: rgb(255, 255, 255); background: rgb(19, 194, 194)">
-      </form>
-    </div>
-    <script type="text/javascript">
-      $('.search input[type="search"]').suggestion({
-        url: 'https://www.baidu.com/sugrec',
-        FieldName: 'wd',
-        parameter: {
-          'ie': 'utf-8',
-          'json': 1,
-          'prod': 'pc',
-          'from': 'pc_web'
-        },
-        jsonp: 'cb',
-        onCallback: function (data) {
-          var result = [];
-          if (data['g']) {
-            result = data['g'].map(function (item) {
-              return {
-                'value': item['q'],
-                'name': item['q']
-              };
-            });
-          }
-          return result;
-        }
-      });
-    </script>
-  </div>
-
+</div>
 
 
 
