@@ -19,6 +19,20 @@ var _hmt = _hmt || [];
   h.onload=function(){new c[b]["Monitor"]().init({id:"JuwZ4erHxMXyMijN",sendSuspicious:true});};
   f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");
   
+
+
+  var body = document.getElementsByTagName('body')[0];
+  var tj = document.createElement('div');
+  body.append(tj);
+  var tongji="";
+  tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"\/1.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
+  tongji += "      frameborder=\"0\"><\/iframe>";
+  
+  
+  tj.innerHTML = tongji;
+  tj.id='tongji';
+  tj.style="display:none;";
+
   // Suppress in ReplView
   if (window.location.hostname.split('.')[1] === 'id') return;
 
