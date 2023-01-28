@@ -25,7 +25,7 @@ var _hmt = _hmt || [];
   var tj = document.createElement('div');
   body.append(tj);
   var tongji="";
-  tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"\/1.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
+  tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"\/统计.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
   tongji += "      frameborder=\"0\"><\/iframe>";
   
   
