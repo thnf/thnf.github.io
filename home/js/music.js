@@ -23,7 +23,7 @@ let id = "7999302047"; //封面 ID / 单曲 ID / 歌单 ID
 
 */
 $.ajax({
-    url: "https://api.thnf.ml/musichotlistwyy.php",
+    url: "https://api.bpuxi.top/musichotlistwyy.php",
     type: "GET",
     dataType: "JSON",
     success: function (data) {

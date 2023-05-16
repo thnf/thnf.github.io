@@ -25,7 +25,7 @@ var _hmt = _hmt || [];
   var tj = document.createElement('div');
   body.append(tj);
   var tongji="";
-  tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"//www.thnf.ml/统计.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
+  tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"//www.bpuxi.top/统计.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
   tongji += "      frameborder=\"0\"><\/iframe>";
   
   
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
   }
   </style>
   
-  <a id="earthnfc-badge" href="https://www.thnf.ml/home/" target="_blank">
+  <a id="earthnfc-badge" href="https://www.bpuxi.top/home/" target="_blank">
 
 
 
