@@ -147,7 +147,7 @@
         c._cac = '';
         c._cam = '';
         c._ctkk = '449649.3822363247';
-        var h = 'translate.googleapis.com';
+        var h = 'proxy.bpuxi.eu.org/https/translate.googleapis.com';
         var s = (true ? 'https' : window.location.protocol == 'https:' ? 'https' : 'http') + '://';
         var b = s + h;
         c._pah = h;
@@ -158,7 +158,7 @@
         c._plla = h + '/translate_a/l';
         c._pmi = b + '/translate_static/img/mini_google.png';
         c._ps = b + '/translate_static/css/translateelement.css';
-        c._puh = 'translate.google.cn';
+        c._puh = 'proxy.bpuxi.eu.org/https/translate.google.com';
         _loadCss(c._ps);
         _loadJs(b + `/translate_static/js/element/main_${navigator.language || navigator.userLanguage}.js`);
     })();
