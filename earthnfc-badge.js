@@ -2,23 +2,15 @@
  * This script adds a "Made by 贝浦熙（Earthnfc）" badge when seen in full-browser view
  */
 
-function main() {
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?a1eeff4645cec4aac23892317199cf28";
+  hm.src = "https://hm.baidu.com/hm.js?599433e2313d5b601a736a6dea2770f3";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JuwJmSVQNTdeACxY",ck:"JuwJmSVQNTdeACxY",autoTrack:true,hashMode:true});
-  !(function(c,i,e,b){
-  var h=i.createElement("script");
-  var f=i.getElementsByTagName("script")[0];
-  h.type="text/javascript";
-  h.crossorigin=true;
-  h.onload=function(){new c[b]["Monitor"]().init({id:"JuwZ4erHxMXyMijN",sendSuspicious:true});};
-  f.parentNode.insertBefore(h,f);h.src=e;})(window,document,"https://sdk.51.la/perf/js-sdk-perf.min.js","LingQue");
   
+!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JuwJmSVQNTdeACxY",ck:"JuwJmSVQNTdeACxY"});
 
 
   var body = document.getElementsByTagName('body')[0];
