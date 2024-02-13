@@ -141,6 +141,5 @@ var _hmt = _hmt || [];
   `;
 
   document.body.insertAdjacentHTML('beforeend', badge);
-}
 
 main();
