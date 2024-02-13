@@ -25,9 +25,6 @@ var _hmt = _hmt || [];
   tj.id='tongji';
   tj.style="display:none;";
 
-  // Suppress in ReplView
-  if (window.location.hostname.split('.')[1] === 'id') return;
-
   // Theme is passed from the script tag, default blue
   const themes = {
     dark: { fg: '#F5F9FC', bg: '#130F26' },
