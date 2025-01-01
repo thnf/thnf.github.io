@@ -1,7 +1,13 @@
 /**
  * This script adds a "Made by 贝浦熙（Earthnfc）" badge when seen in full-browser view
  */
+ (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "pmp8on0d5k");
 
+    
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
