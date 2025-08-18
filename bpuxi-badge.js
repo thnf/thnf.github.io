@@ -73,7 +73,7 @@
         // 创建徽章样式
         const style = document.createElement('style');
         style.textContent = `
-            #earthnfc-badge {
+            #bpuxi-badge {
                 position: fixed;
                 cursor: pointer;
                 bottom: 16px;
@@ -82,14 +82,14 @@
                 transition: transform 0.3s ease;
             }
             
-            #earthnfc-badge svg {
+            #bpuxi-badge svg {
                 border-radius: 4px;
                 opacity: 0.7;
                 transition: opacity 0.3s ease, transform 0.3s ease;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             }
             
-            #earthnfc-badge:hover svg {
+            #bpuxi-badge:hover svg {
                 transform: scale(1.1);
                 opacity: 1;
                 box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -99,7 +99,7 @@
         
         // 创建徽章元素
         const badge = document.createElement('a');
-        badge.id = 'earthnfc-badge';
+        badge.id = 'bpuxi-badge';
         badge.href = 'https://www.bpuxi.top/home/';
         badge.target = '_blank';
         
