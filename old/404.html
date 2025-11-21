@@ -1,0 +1,48 @@
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<title>该页面不存在-404</title>
+<noscript><meta http-equiv="refresh" content="2; url='http://www.bpuxi.top/'"></noscript>
+  <style type="text/css">
+      body{font-family:Calibri,Candara,Segoe,"Segoe UI",Optima,Arial,sans-serif;}#page{display:table;}body{background:#0078d7;}body{color:#fefeff;}#page{height:100%;}body{height:100vh;}h3,h2,body,h1{margin-left:0;}body,#page{margin-bottom:0;}#page{margin-left:auto;}h1,h3,h2,body{margin-right:0;}body{margin-top:0;}h1{font-weight:normal;}h1{font-weight:300;}h2,h3,h1,h4{padding-left:0;}#page{margin-right:auto;}#page{margin-top:-.625pc;}#page{width:70%;}h3,h2,h4,h1{padding-bottom:0;}h4,h2,h1,h3{padding-right:0;}h4,h3,h2,h1{padding-top:0;}h1,h4,h3,h2{margin-bottom:18.75pt;}#page{font-size:1.9vw;}#container{display:table-cell;}#container{vertical-align:middle;}h2,h5,h3,h1,h4{margin-top:0;}h2{font-weight:normal;}#details{display:flex;}h2{font-weight:300;}#details{flex-flow:row;}h3{font-weight:normal;}h3{font-weight:300;}#details{flex-wrap:nowrap;}#image img{width:4em;}h4{font-weight:normal;}#details{padding-top:.104166667in;}h4{font-weight:300;}#image img{height:4em;}h4,h5{margin-left:0;}#qr{flex:0 1 auto;}h4,h5{margin-right:0;}h5{font-weight:normal;}h5{font-weight:300;}#image{background:white;}h5{padding-left:0;}h5{padding-bottom:0;}h5{padding-right:0;}h5{padding-top:0;}#image{padding-left:.052083333in;}h5{margin-bottom:18.75pt;}h1{font-size:6.5em;}h1{margin-bottom:10px;}h2{font-size:1.5em;}h4{font-size:1.4em;}h4{line-height:1.5em;}h5{line-height:1.1em;}#image{padding-bottom:.052083333in;}h5{font-size:1.3em;}#image{padding-right:.052083333in;}#image{padding-top:.052083333in;}#image{line-height:0;}#stopcode{padding-left:10px;}#stopcode{flex:1 1 auto;}@media (min-width: 840px){#page{font-size:140%;}#page{width:50pc;}}
+    </style>
+</head>
+<body>
+<div id="page">
+<div id="container">
+<h1>:(404</h1>
+<h2>你的网页遇到了一些问题，网页正在优化和上报故障信息，我们在未来将改善和减少这种情况的发生.</h2>
+<h2>完成 <span id="percentage">0</span>%</h2>
+<img id="fzf" alt="404" src="/4041.gif" width="300">
+</div>
+</div>
+  <script>
+     window.onload=fzf();
+    
+	function fzf()
+{
+  var a=Math.ceil(Math.random()*4);
+document.getElementById("fzf").src="/404"+a+".gif";
+}
+</script>
+<script type="text/javascript">
+  var percentageElement = document.getElementById("percentage");
+var percentage = 0;
+
+function process() {
+  percentage += parseInt(Math.random() * 10);
+  if (percentage > 100) {
+    percentage = 100;
+    window.location.href='https://thnf.github.io/';
+  }
+  percentageElement.innerText = percentage;
+  processInterval();
+}
+
+function processInterval() {
+  setTimeout(process, Math.random() * (1000 - 500) + 500)
+}
+processInterval();
+</script>
+
+
+</body></html>
