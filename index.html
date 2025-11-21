@@ -5,45 +5,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>信息学网站总网 导航</title>
-    <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "pmp8on0d5k");
-  </script>
 
-    <script type="text/javascript">
-           var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?599433e2313d5b601a736a6dea2770f3";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-    </script>
-
-      <script type="text/javascript">
-           !function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JuwJmSVQNTdeACxY",ck:"JuwJmSVQNTdeACxY"});
-    </script>
-
-      <script defer src="https://clarify.bpuxi.top/script.js" data-website-id="62c6aa81-f4ed-4ba7-bdfb-4d4c2eba865e"></script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family: "PingFang SC","Microsoft YaHei",sans-serif; }
   body, html { width:100%; height:100%; background:#f5f5f5; }
 
-  /* ================== Google 风格侧边栏 ================== */
   .sidebar {
-    position: fixed;
-    left:-250px;
-    top:0;
-    width:250px;
-    height:100%;
-    background:#ffffff;
-    border-right:1px solid #ddd;
-    transition:0.3s;
-    overflow-y:auto;
-    z-index:10;
+    position: fixed; left:-250px; top:0; width:250px; height:100%;
+    background:#ffffff; border-right:1px solid #ddd; transition:0.3s; overflow-y:auto; z-index:10;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
   .sidebar.open { left:0; }
@@ -56,23 +25,15 @@
   }
   .sidebar ul li button:hover { background:#f1f3f4; }
 
-  /* ================== 内容区 ================== */
-  .content {
-    margin-left:0;
-    transition:0.3s;
-    height:100vh;
-    overflow:hidden;
-  }
+  .content { margin-left:0; transition:0.3s; height:100vh; overflow:hidden; }
   .content.open { margin-left:250px; }
 
-  /* ================== 顶部按钮 ================== */
   #toggleSidebar {
     position:fixed; top:10px; left:10px; z-index:20;
     padding:8px 12px; background:#4285f4; color:#fff; border:none; border-radius:4px; cursor:pointer;
   }
   #toggleSidebar:hover { background:#357ae8; }
 
-  /* ================== 夜间切换按钮 ================== */
   #moshi {
     border-radius: 14px; padding: 8px 16px; height:40px;
     border:none; background-color:#00ffff; color:#333;
@@ -81,31 +42,22 @@
   }
   #moshi:hover { background-color:#00dddd; }
 
-  /* ================== 顶部问候文字 ================== */
   #titleText {
     font-size:16px; padding:10px; text-align:center; background:#f1f3f4;
   }
 
-  /* ================== iframe 样式 ================== */
-  #main {
-    width:100%; height:100%;
-    border:none;
-  }
-
-  /* ================== 手机端适配 ================== */
-  @media(max-width:768px) {
-    .sidebar { width:200px; }
-    .content.open { margin-left:200px; }
-  }
+  #main { width:100%; height:100%; border:none; }
 </style>
 </head>
 
 <body>
 <button id="toggleSidebar">☰</button>
+
 <div class="sidebar" id="sidebar">
   <div class="top">信息学总网导航</div>
   <div id="titleText">欢迎访问信息学网站总网</div>
   <button id="moshi" name="baitian" onclick="moshi()">切换夜间</button>
+
   <ul>
     <li><button onclick="openPage('bpuxi')">🏠 主页</button></li>
     <li><button onclick="openPage('jiaoyu')">🎓 教育版</button></li>
@@ -126,175 +78,117 @@
   const toggleBtn = document.getElementById('toggleSidebar');
   const html = document.getElementById('html');
   const mainIframe = document.getElementById('main');
-  
-  // 核心配置
-  const STORAGE_KEY = 'last_visited_iframe_page';
-  const ALLOWED_PREFIX = './page/';
-  const ALLOWED_PAGES = [
-    './page/bpuxi.html',
-    './page/jiaoyu.html',
-    './page/yule.html',
-    './page/tv.html',
-    './page/betaweb.html',
-    './page/tools.html'
-  ];
-  
-  // 实时缓存当前有效的页面路径（关键：避免关闭时再处理路径）
-  let currentValidPage = './page/bpuxi.html'; // 默认主页
 
-  // ================== 侧边栏开关 ==================
-  toggleBtn.onclick = ()=>{ 
+  // 侧栏开关
+  toggleBtn.onclick = () => { 
     sidebar.classList.toggle('open'); 
     content.classList.toggle('open'); 
-  }
+  };
 
-  // ================== 夜间模式切换 ==================
+  /* ===========================
+        夜间模式切换
+     =========================== */
   function moshi() {
     const btn = document.getElementById("moshi");
-    if(btn.name === "baitian") {
-      btn.name = "yejian"; 
+
+    if (btn.name === "baitian") {
+      btn.name = "yejian";
       btn.innerText = "切换日间";
-      html.style.filter = "grayscale(100%) invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%)";
-      btn.style.backgroundColor = "#333"; 
+      html.style.filter = "invert(80%) hue-rotate(180deg)";
+      btn.style.backgroundColor = "#333";
       btn.style.color = "#00ffff";
     } else {
-      btn.name = "baitian"; 
+      btn.name = "baitian";
       btn.innerText = "切换夜间";
       html.style.filter = "none";
-      btn.style.backgroundColor = "#00ffff"; 
+      btn.style.backgroundColor = "#00ffff";
       btn.style.color = "#333";
     }
   }
 
-  // ================== 路径处理（补全+验证） ==================
-  function processPath(path) {
-    if (!path) return null;
-    let cleanedPath = path.trim();
+  /* ===========================
+        页面白名单系统
+     =========================== */
 
-    // 禁止非法路径
-    if (cleanedPath.includes('../') || cleanedPath.includes('..\\') || 
-        cleanedPath.startsWith('http://') || cleanedPath.startsWith('https://') || cleanedPath.startsWith('//')) {
-      console.warn('非法路径拦截:', cleanedPath);
-      return null;
-    }
+  const ALLOWED_PAGES = [
+    "./page/bpuxi.html",
+    "./page/jiaoyu.html",
+    "./page/yule.html",
+    "./page/tv.html",
+    "./page/betaweb.html",
+    "./page/tools.html"
+  ];
 
-    // 补全前缀和后缀
-    if (!cleanedPath.startsWith(ALLOWED_PREFIX)) {
-      cleanedPath = ALLOWED_PREFIX + cleanedPath;
-    }
-    if (!cleanedPath.endsWith('.html')) {
-      cleanedPath += '.html';
-    }
+  const STORAGE_KEY = "last_visited_iframe_page";
 
-    // 白名单校验
-    if (!ALLOWED_PAGES.includes(cleanedPath)) {
-      console.warn('页面不在白名单:', cleanedPath);
-      return null;
-    }
-
-    return cleanedPath;
+  // 打开页面并保存记录
+  function openPage(name) {
+    const full = `./page/${name}.html`;
+    if (!ALLOWED_PAGES.includes(full)) return;
+    mainIframe.src = full;
+    saveVisit(full);
   }
 
-  // ================== 同步存储访问记录 ==================
-  function saveVisitRecord(page) {
-    if (!page || !ALLOWED_PAGES.includes(page)) return;
-    try {
-      // localStorage（同步操作，优先级最高）
-      localStorage.setItem(STORAGE_KEY, page);
-      // Cookie（同步操作，备用）
-      document.cookie = `${STORAGE_KEY}=${encodeURIComponent(page)}; max-age=${30*24*60*60}; path=/; SameSite=Lax`;
-      console.log('记录已保存:', page);
-    } catch (e) {
-      console.error('记录保存失败:', e);
-    }
+  // 保存记录（localStorage + cookie）
+  function saveVisit(page) {
+    localStorage.setItem(STORAGE_KEY, page);
+    document.cookie = `${STORAGE_KEY}=${page}; max-age=2592000; path=/;`;
   }
 
-  // ================== 读取访问记录 ==================
-  function getVisitRecord() {
-    // 1. 优先读取localStorage
-    const localRecord = localStorage.getItem(STORAGE_KEY);
-    if (localRecord && ALLOWED_PAGES.includes(localRecord)) {
-      console.log('从localStorage读取记录:', localRecord);
-      return localRecord;
+  // 读取记录
+  function loadRecord() {
+    const ls = localStorage.getItem(STORAGE_KEY);
+    if (ls && ALLOWED_PAGES.includes(ls)) return ls;
+
+    const cookie = document.cookie
+      .split(";")
+      .map(x => x.trim())
+      .find(x => x.startsWith(STORAGE_KEY + "="));
+
+    if (cookie) {
+      const val = cookie.split("=")[1];
+      if (ALLOWED_PAGES.includes(val)) return val;
     }
 
-    // 2. 读取Cookie
-    const cookies = document.cookie.split(';').map(c => c.trim());
-    const cookieRecord = cookies.find(c => c.startsWith(`${STORAGE_KEY}=`));
-    if (cookieRecord) {
-      const page = decodeURIComponent(cookieRecord.split('=')[1]);
-      if (page && ALLOWED_PAGES.includes(page)) {
-        console.log('从Cookie读取记录:', page);
-        return page;
-      }
-    }
-
-    // 3. 无记录返回默认页
-    return './page/bpuxi.html';
+    return "./page/bpuxi.html";
   }
 
-  // ================== 打开页面（实时更新当前页面缓存） ==================
-  function openPage(path) {
-    const validPage = processPath(path);
-    if (!validPage) return;
-
-    // 更新当前有效页面缓存（关键）
-    currentValidPage = validPage;
-    // 加载页面并立即存储
-    mainIframe.src = validPage;
-    saveVisitRecord(validPage);
-  }
-
-  // ================== 顶部问候功能 ==================
+  /* ===========================
+        顶部动态问候
+     =========================== */
   function hellowl() {
-    const titleText = document.getElementById('titleText');
-    const hour = new Date().getHours();
-    let str = '阁下，请稍等…';
-    if(hour >=23 || hour <3){ str='阁下，午夜了，还不休息吗？'; }
-    else if(hour >=22){ str='阁下，是时候睡觉了呢！'; }
-    else if(hour >=18){ str='阁下，晚上好！'; }
-    else if(hour >=13){ str='阁下，下午好，有尝试美味的下午茶吗？'; }
-    else if(hour >=12){ str='阁下，午好，午饭食用了吗？'; }
-    else if(hour >=8){ str='阁下，上午好！'; }
-    else { str='阁下，早上好！'; }
-    titleText.innerText = str;
+    const title = document.getElementById('titleText');
+    const h = new Date().getHours();
+
+    if (h >= 23 || h < 3) title.innerText = '阁下，午夜了，还不休息吗？';
+    else if (h >= 22) title.innerText = '阁下，是时候睡觉了呢！';
+    else if (h >= 18) title.innerText = '阁下，晚上好！';
+    else if (h >= 13) title.innerText = '阁下，下午好！';
+    else if (h >= 12) title.innerText = '阁下，午好，午饭食用了吗？';
+    else if (h >= 8) title.innerText = '阁下，上午好！';
+    else title.innerText = '阁下，早上好！';
   }
 
-  // ================== 页面关闭/刷新时强制保存（按要求使用 window.onbeforeunload） ==================
-  window.onbeforeunload = function () {
-    // 直接使用缓存的当前页面，快速存储（避免浏览器拦截）
-    saveVisitRecord(currentValidPage);
-    // 部分浏览器要求返回非空字符串才能触发事件（不影响功能，仅兼容）
-    return '';
-  }
+  /* ===========================
+        页面关闭前保存记录
+     =========================== */
+  window.onbeforeunload = () => {
+    const current = mainIframe.src.replace(location.origin, ".");
+    saveVisit(current);
+  };
 
-  // ================== 页面初始化 ==================
-  window.onload = function() {
+  /* ===========================
+        初始化
+     =========================== */
+  window.onload = () => {
     hellowl();
     setInterval(hellowl, 60000);
 
-    // 恢复上次访问页面
-    const lastPage = getVisitRecord();
-    currentValidPage = lastPage; // 初始化缓存
+    const lastPage = loadRecord();
     mainIframe.src = lastPage;
-
-    // 监听iframe加载成功（确认页面有效，更新缓存）
-    mainIframe.onload = function() {
-      const pageFromSrc = processPath(mainIframe.src.split('/').pop().replace('.html', ''));
-      if (pageFromSrc) {
-        currentValidPage = pageFromSrc;
-        saveVisitRecord(pageFromSrc); // 二次确认存储
-      }
-    };
-
-    // 监听iframe加载失败（ fallback 到默认页）
-    mainIframe.onerror = function() {
-      console.error('iframe加载失败，切换到默认页');
-      currentValidPage = './page/bpuxi.html';
-      mainIframe.src = currentValidPage;
-      saveVisitRecord(currentValidPage);
-    };
-  }
+  };
 </script>
+
+
 </body>
 </html>
