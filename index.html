@@ -107,12 +107,12 @@
   <div id="titleText">欢迎访问信息学网站总网</div>
   <button id="moshi" name="baitian" onclick="moshi()">切换夜间</button>
   <ul>
-    <li><button onclick="openPage('./page/bpuxi.html')">🏠 主页</button></li>
-    <li><button onclick="openPage('./page/jiaoyu.html')">🎓 教育版</button></li>
-    <li><button onclick="openPage('./page/yule.html')">🎭 娱乐版</button></li>
-    <li><button onclick="openPage('./page/tv.html')">📺 TV版</button></li>
-    <li><button onclick="openPage('./page/betaweb.html')">⚡ 抢先版</button></li>
-    <li><button onclick="openPage('./page/tools.html')">🧰 工具箱</button></li>
+    <li><button onclick="openPage('bpuxi')">🏠 主页</button></li>
+    <li><button onclick="openPage('jiaoyu')">🎓 教育版</button></li>
+    <li><button onclick="openPage('yule')">🎭 娱乐版</button></li>
+    <li><button onclick="openPage('tv')">📺 TV版</button></li>
+    <li><button onclick="openPage('betaweb')">⚡ 抢先版</button></li>
+    <li><button onclick="openPage('tools')">🧰 工具箱</button></li>
   </ul>
 </div>
 
@@ -126,9 +126,10 @@
   const toggleBtn = document.getElementById('toggleSidebar');
   const html = document.getElementById('html');
   const mainIframe = document.getElementById('main');
-  // 允许加载的页面前缀（限制仅 ./page/ 目录下的页面）
+  // 核心配置：统一存储键名（避免混淆）
+  const STORAGE_KEY = 'last_visited_iframe_page';
+  // 允许加载的页面前缀和白名单
   const ALLOWED_PREFIX = './page/';
-  // 允许加载的页面列表（白名单，进一步限制非法页面）
   const ALLOWED_PAGES = [
     './page/bpuxi.html',
     './page/jiaoyu.html',
@@ -162,96 +163,82 @@
     }
   }
 
-  // ================== 验证页面合法性（核心函数：新增.html补全） ==================
-  function validateAndCompletePath(path) {
+  // ================== 路径处理（补全+验证） ==================
+  function processPath(path) {
     if (!path) return null;
-    
-    // 1. 清除空格，防止恶意空格绕过验证
     let cleanedPath = path.trim();
-    
-    // 2. 禁止目录遍历（防止访问上级目录文件）
-    if (cleanedPath.includes('../') || cleanedPath.includes('..\\')) {
-      console.warn('非法访问：禁止目录遍历');
+
+    // 禁止非法路径
+    if (cleanedPath.includes('../') || cleanedPath.includes('..\\') || 
+        cleanedPath.startsWith('http://') || cleanedPath.startsWith('https://') || cleanedPath.startsWith('//')) {
+      console.warn('非法路径拦截:', cleanedPath);
       return null;
     }
-    
-    // 3. 禁止外部链接（仅允许相对路径）
-    if (cleanedPath.startsWith('http://') || cleanedPath.startsWith('https://') || cleanedPath.startsWith('//')) {
-      console.warn('非法访问：禁止加载外部网页');
-      return null;
-    }
-    
-    // 4. 补全 ./page/ 前缀（如果缺少）
+
+    // 补全前缀和后缀
     if (!cleanedPath.startsWith(ALLOWED_PREFIX)) {
-      // 处理直接传文件名的情况（如 ?page=jiaoyu → ./page/jiaoyu）
       cleanedPath = ALLOWED_PREFIX + cleanedPath;
     }
-    
-    // 5. 补全 .html 后缀（如果缺少）
     if (!cleanedPath.endsWith('.html')) {
       cleanedPath += '.html';
     }
-    
-    // 6. 检查是否在白名单内（最终验证）
+
+    // 白名单校验
     if (!ALLOWED_PAGES.includes(cleanedPath)) {
-      console.warn(`非法访问：页面 ${cleanedPath} 不在允许列表中`);
+      console.warn('页面不在白名单:', cleanedPath);
       return null;
     }
-    
+
     return cleanedPath;
   }
 
-  // ================== 打开页面函数（强化记录功能） ==================
-  function openPage(url) {
-    // 验证路径合法性
-    const validUrl = validateAndCompletePath(url);
-    if (!validUrl) return;
-    
-    // 加载合法页面
-    mainIframe.src = validUrl;
-    
-    // 强化访问记录：同时保存到 cookie 和 localStorage（双重保险）
-    // cookie：跨会话持久化（30天）
-    document.cookie = `lastVisitedPage=${encodeURIComponent(validUrl)}; max-age=${30*24*60*60}; path=/`;
-    // localStorage：本地存储，避免 cookie 被清除
-    localStorage.setItem('lastVisitedPage', validUrl);
+  // ================== 存储访问记录（核心函数） ==================
+  function saveVisitRecord(page) {
+    if (!page || !ALLOWED_PAGES.includes(page)) return;
+    try {
+      // 1. 存储到 localStorage（优先级高，不易丢失）
+      localStorage.setItem(STORAGE_KEY, page);
+      // 2. 存储到 cookie（备用，跨浏览器/设备兼容）
+      document.cookie = `${STORAGE_KEY}=${page}; max-age=${30*24*60*60}; path=/; SameSite=Lax`;
+      console.log('记录保存成功:', page);
+    } catch (e) {
+      console.error('记录保存失败:', e);
+    }
   }
 
-  // ================== 恢复最后访问页面（优化逻辑） ==================
-  function restoreLastPage() {
-    let targetUrl = null;
-    
-    // 1. 优先处理 URL 传参（如 ?page=jiaoyu 或 ?page=./page/tv）
-    const urlParams = new URLSearchParams(window.location.search);
-    const pageParam = urlParams.get('page');
-    if (pageParam) {
-      targetUrl = validateAndCompletePath(pageParam);
+  // ================== 读取访问记录（核心函数） ==================
+  function getVisitRecord() {
+    // 1. 优先读取 localStorage
+    const localRecord = localStorage.getItem(STORAGE_KEY);
+    if (localRecord && ALLOWED_PAGES.includes(localRecord)) {
+      console.log('从localStorage读取记录:', localRecord);
+      return localRecord;
     }
-    
-    // 2. 传参非法或不存在时，从 localStorage 恢复
-    if (!targetUrl) {
-      targetUrl = localStorage.getItem('lastVisitedPage');
-      // 验证 localStorage 中的路径（防止篡改）
-      targetUrl = validateAndCompletePath(targetUrl);
-    }
-    
-    // 3. localStorage 无有效记录时，从 cookie 恢复
-    if (!targetUrl) {
-      const cookies = document.cookie.split(';').map(c => c.trim());
-      const lastPageCookie = cookies.find(c => c.startsWith('lastVisitedPage='));
-      if (lastPageCookie) {
-        const encodedUrl = lastPageCookie.split('=')[1];
-        targetUrl = validateAndCompletePath(decodeURIComponent(encodedUrl));
+
+    // 2. 读取 cookie
+    const cookies = document.cookie.split(';').map(c => c.trim());
+    const cookieRecord = cookies.find(c => c.startsWith(`${STORAGE_KEY}=`));
+    if (cookieRecord) {
+      const page = cookieRecord.split('=')[1];
+      if (page && ALLOWED_PAGES.includes(page)) {
+        console.log('从cookie读取记录:', page);
+        return page;
       }
     }
-    
-    // 4. 最终 fallback：加载默认主页
-    if (!targetUrl) {
-      targetUrl = './page/bpuxi.html';
-    }
-    
-    // 加载目标页面
-    mainIframe.src = targetUrl;
+
+    // 3. 无记录返回默认页
+    console.log('无访问记录，返回默认页');
+    return './page/bpuxi.html';
+  }
+
+  // ================== 打开页面（整合记录功能） ==================
+  function openPage(path) {
+    const validPage = processPath(path);
+    if (!validPage) return;
+
+    // 加载页面并强制存储记录
+    mainIframe.src = validPage;
+    saveVisitRecord(validPage); // 立即存储（防止iframe加载失败）
   }
 
   // ================== 顶部问候功能 ==================
@@ -269,32 +256,38 @@
     titleText.innerText = str;
   }
 
-  // ================== 页面初始化 ==================
+  // ================== 页面初始化（确保记录恢复） ==================
   window.onload = function() {
     hellowl();
-    restoreLastPage();
-    // 每分钟更新一次问候语
     setInterval(hellowl, 60000);
-    
-    // 监听 iframe 加载完成事件，确保记录正确
+
+    // 恢复上次访问页面
+    const lastPage = getVisitRecord();
+    mainIframe.src = lastPage;
+
+    // 监听 iframe 加载成功（二次确认存储，防止首次加载失败）
     mainIframe.onload = function() {
-      const currentUrl = mainIframe.src;
-      // 仅记录合法页面（处理 iframe 可能的异常跳转）
-      const validUrl = validateAndCompletePath(currentUrl);
-      if (validUrl) {
-        document.cookie = `lastVisitedPage=${encodeURIComponent(validUrl)}; max-age=${30*24*60*60}; path=/`;
-        localStorage.setItem('lastVisitedPage', validUrl);
+      const currentPage = mainIframe.src.split('/').pop(); // 提取文件名
+      const validPage = processPath(currentPage.replace('.html', ''));
+      if (validPage) {
+        saveVisitRecord(validPage);
       }
-    }
+    };
+
+    // 监听 iframe 加载失败（ fallback 到默认页）
+    mainIframe.onerror = function() {
+      console.error('iframe加载失败，切换到默认页');
+      const defaultPage = './page/bpuxi.html';
+      mainIframe.src = defaultPage;
+      saveVisitRecord(defaultPage);
+    };
   }
 
-  // ================== 页面关闭/刷新时保存记录 ==================
+  // ================== 页面关闭/刷新时强制保存 ==================
   window.onbeforeunload = function() {
-    const currentUrl = mainIframe.src;
-    const validUrl = validateAndCompletePath(currentUrl);
-    if (validUrl) {
-      document.cookie = `lastVisitedPage=${encodeURIComponent(validUrl)}; max-age=${30*24*60*60}; path=/`;
-      localStorage.setItem('lastVisitedPage', validUrl);
+    const currentPage = processPath(mainIframe.src);
+    if (currentPage) {
+      saveVisitRecord(currentPage);
     }
   }
 </script>
