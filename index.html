@@ -195,13 +195,13 @@
     return cleanedPath;
   }
 
-  // ================== 同步存储访问记录（关键：同步执行，无延迟） ==================
+  // ================== 同步存储访问记录 ==================
   function saveVisitRecord(page) {
     if (!page || !ALLOWED_PAGES.includes(page)) return;
     try {
-      // 1. localStorage（同步操作，优先级最高）
+      // localStorage（同步操作，优先级最高）
       localStorage.setItem(STORAGE_KEY, page);
-      // 2. Cookie（同步操作，备用）
+      // Cookie（同步操作，备用）
       document.cookie = `${STORAGE_KEY}=${encodeURIComponent(page)}; max-age=${30*24*60*60}; path=/; SameSite=Lax`;
       console.log('记录已保存:', page);
     } catch (e) {
@@ -260,17 +260,13 @@
     titleText.innerText = str;
   }
 
-  // ================== 页面关闭/刷新时强制保存（核心修复） ==================
-  function handleBeforeUnload() {
-    // 直接使用缓存的当前页面，无需再处理路径（节省时间）
+  // ================== 页面关闭/刷新时强制保存（按要求使用 window.onbeforeunload） ==================
+  window.onbeforeunload = function () {
+    // 直接使用缓存的当前页面，快速存储（避免浏览器拦截）
     saveVisitRecord(currentValidPage);
-    // 部分浏览器需要返回一个字符串（可选，不影响存储）
+    // 部分浏览器要求返回非空字符串才能触发事件（不影响功能，仅兼容）
     return '';
   }
-
-  // 双事件监听（覆盖所有关闭/刷新场景）
-  window.addEventListener('beforeunload', handleBeforeUnload);
-  window.addEventListener('pagehide', handleBeforeUnload); // 补充移动端/特殊场景
 
   // ================== 页面初始化 ==================
   window.onload = function() {
