@@ -126,9 +126,11 @@
 <header id="main-header" class="fixed top-0 left-0 right-0 bg-white shadow-md z-40">
   <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
     <div class="flex items-center mb-4 md:mb-0">
-      <i class="fa fa-code text-primary text-3xl mr-3"></i>
-      <h1 class="text-xl md:text-2xl font-bold text-dark">信息学网站总网</h1>
-    </div>
+  <!-- 给logo添加尺寸控制、间距和适配样式，确保和标题对齐 -->
+  <img src="../APPlogo.png" alt="信息学网站总网logo" 
+       class="h-8 w-auto object-contain mr-3"> <!-- 高度匹配原图标尺寸，自动适应宽度 -->
+  <h1 class="text-xl md:text-2xl font-bold text-dark">信息学网站总网</h1>
+</div>
     <!-- 导航栏：恢复为header内部元素（移除单独fixed） -->
     <nav class="flex flex-wrap justify-center gap-2 md:gap-4">
       <a href="./bpuxi.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">主页</a>
