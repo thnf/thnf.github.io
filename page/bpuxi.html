@@ -114,28 +114,105 @@
     .search-input-group {
       position: relative;
     }
+    /* header隐藏过渡优化（新增） */
+#main-header {
+  transition: transform 300ms ease-in-out;
+}
   </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
   <!-- 顶部导航 -->
-  <header class="bg-white shadow-md sticky top-0 z-40">
-    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
-      <div class="flex items-center mb-4 md:mb-0">
-        <i class="fa fa-code text-primary text-3xl mr-3"></i>
-        <h1 class="text-xl md:text-2xl font-bold text-dark">信息学网站总网</h1>
-      </div>
-      
-      <nav class="flex flex-wrap justify-center gap-2 md:gap-4">
-        <a href="./bpuxi.html" class="px-3 py-2 rounded-md bg-primary text-white font-medium hover:bg-primary/90 transition-all-300">主页</a>
-        <a href="./jiaoyu.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">教育版</a>
-        <a href="./yule.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">娱乐版</a>
-        <a href="./tools.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">工具版</a>
-        <a href="./betaweb.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">抢先</a>
-      </nav>
+ <!-- 顶部导航 -->
+<header id="main-header" class="fixed top-0 left-0 right-0 bg-white shadow-md z-40">
+  <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+    <div class="flex items-center mb-4 md:mb-0">
+      <i class="fa fa-code text-primary text-3xl mr-3"></i>
+      <h1 class="text-xl md:text-2xl font-bold text-dark">信息学网站总网</h1>
     </div>
-  </header>
+    <!-- 导航栏：恢复为header内部元素（移除单独fixed） -->
+    <nav class="flex flex-wrap justify-center gap-2 md:gap-4">
+      <a href="./bpuxi.html" class="px-3 py-2 rounded-md bg-primary text-white font-medium hover:bg-primary/90 transition-all-300">主页</a>
+      <a href="./jiaoyu.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">教育版</a>
+      <a href="./yule.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">娱乐版</a>
+      <a href="./tools.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">工具版</a>
+      <a href="./betaweb.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">抢先</a>
+    </nav>
+  </div>
+</header>
 
-  <main class="container mx-auto px-4 py-8">
+
+<!-- 修复后的滚动监听JS（优化定位逻辑+调试兼容） -->
+<script>
+$(document).ready(function() {
+  // 统一配置项（便于维护）
+  const config = {
+    extraPadding: 16, // 额外间距（避免内容紧贴header）
+    debounceDelay: 300, // 防抖延迟（优化resize性能）
+    hiddenPadding: 8 // header隐藏时的顶部间距（紧凑布局）
+  };
+
+  // 核心元素缓存（避免重复DOM查询）
+  const $header = $('#main-header');
+  const $main = $('main');
+  let resizeTimer = null; // 防抖计时器
+  let isHeaderVisible = true; // header状态标识
+
+  // 1. 计算并设置main的顶部间距（核心工具函数）
+  function updateMainPadding() {
+    if (isHeaderVisible) {
+      // header显示：间距 = header实际高度 + 额外间距
+      const headerHeight = $header.outerHeight();
+      $main.css('padding-top', `${headerHeight + config.extraPadding}px`);
+    } else {
+      // header隐藏：使用紧凑间距
+      $main.css('padding-top', `${config.hiddenPadding}px`);
+    }
+  }
+
+  // 2. 防抖处理窗口resize（避免频繁计算）
+  function handleResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // 窗口变化时重新计算（适配导航栏换行等场景）
+      updateMainPadding();
+    }, config.debounceDelay);
+  }
+
+  // 3. header显示/隐藏核心逻辑（联动间距调整）
+  function toggleHeaderVisibility() {
+    const scrollTop = $(window).scrollTop();
+    const newVisibleState = scrollTop === 0; // 仅顶部时显示header
+
+    // 状态变化时才执行操作（避免重复DOM操作）
+    if (newVisibleState !== isHeaderVisible) {
+      isHeaderVisible = newVisibleState;
+      
+      // 更新header显示状态
+      $header.css('transform', isHeaderVisible ? 'translateY(0)' : 'translateY(-100%)');
+      
+      // 同步更新main间距
+      updateMainPadding();
+    }
+  }
+
+  // 4. 初始化执行（确保DOM完全渲染后计算高度）
+  $(window).on('load', function() {
+    updateMainPadding(); // 初始化间距
+    toggleHeaderVisibility(); // 初始化header状态
+  });
+
+  // 5. 事件监听（滚动+窗口变化）
+  $(window)
+    .scroll(toggleHeaderVisibility) // 滚动时联动状态
+    .resize(handleResize); // 窗口变化时防抖更新
+
+  // 6. 兼容初始状态（防止DOM加载顺序问题）
+  updateMainPadding();
+});
+</script>
+
+<!-- 主体内容（避免header遮挡） -->
+<main class="container mx-auto px-4 pb-8">
     <!-- 广告模块 -->
     <div style="background: #fcfcfc; border-radius: 5px; box-shadow: 1px 1px 8px #000; margin-bottom: 16px;">
       <div style="margin: 4px; line-height: auto; text-align: left">
