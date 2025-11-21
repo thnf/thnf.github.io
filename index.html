@@ -126,9 +126,9 @@
   const toggleBtn = document.getElementById('toggleSidebar');
   const html = document.getElementById('html');
   const mainIframe = document.getElementById('main');
-  // 核心配置：统一存储键名（避免混淆）
+  
+  // 核心配置
   const STORAGE_KEY = 'last_visited_iframe_page';
-  // 允许加载的页面前缀和白名单
   const ALLOWED_PREFIX = './page/';
   const ALLOWED_PAGES = [
     './page/bpuxi.html',
@@ -138,6 +138,9 @@
     './page/betaweb.html',
     './page/tools.html'
   ];
+  
+  // 实时缓存当前有效的页面路径（关键：避免关闭时再处理路径）
+  let currentValidPage = './page/bpuxi.html'; // 默认主页
 
   // ================== 侧边栏开关 ==================
   toggleBtn.onclick = ()=>{ 
@@ -192,53 +195,54 @@
     return cleanedPath;
   }
 
-  // ================== 存储访问记录（核心函数） ==================
+  // ================== 同步存储访问记录（关键：同步执行，无延迟） ==================
   function saveVisitRecord(page) {
     if (!page || !ALLOWED_PAGES.includes(page)) return;
     try {
-      // 1. 存储到 localStorage（优先级高，不易丢失）
+      // 1. localStorage（同步操作，优先级最高）
       localStorage.setItem(STORAGE_KEY, page);
-      // 2. 存储到 cookie（备用，跨浏览器/设备兼容）
-      document.cookie = `${STORAGE_KEY}=${page}; max-age=${30*24*60*60}; path=/; SameSite=Lax`;
-      console.log('记录保存成功:', page);
+      // 2. Cookie（同步操作，备用）
+      document.cookie = `${STORAGE_KEY}=${encodeURIComponent(page)}; max-age=${30*24*60*60}; path=/; SameSite=Lax`;
+      console.log('记录已保存:', page);
     } catch (e) {
       console.error('记录保存失败:', e);
     }
   }
 
-  // ================== 读取访问记录（核心函数） ==================
+  // ================== 读取访问记录 ==================
   function getVisitRecord() {
-    // 1. 优先读取 localStorage
+    // 1. 优先读取localStorage
     const localRecord = localStorage.getItem(STORAGE_KEY);
     if (localRecord && ALLOWED_PAGES.includes(localRecord)) {
       console.log('从localStorage读取记录:', localRecord);
       return localRecord;
     }
 
-    // 2. 读取 cookie
+    // 2. 读取Cookie
     const cookies = document.cookie.split(';').map(c => c.trim());
     const cookieRecord = cookies.find(c => c.startsWith(`${STORAGE_KEY}=`));
     if (cookieRecord) {
-      const page = cookieRecord.split('=')[1];
+      const page = decodeURIComponent(cookieRecord.split('=')[1]);
       if (page && ALLOWED_PAGES.includes(page)) {
-        console.log('从cookie读取记录:', page);
+        console.log('从Cookie读取记录:', page);
         return page;
       }
     }
 
     // 3. 无记录返回默认页
-    console.log('无访问记录，返回默认页');
     return './page/bpuxi.html';
   }
 
-  // ================== 打开页面（整合记录功能） ==================
+  // ================== 打开页面（实时更新当前页面缓存） ==================
   function openPage(path) {
     const validPage = processPath(path);
     if (!validPage) return;
 
-    // 加载页面并强制存储记录
+    // 更新当前有效页面缓存（关键）
+    currentValidPage = validPage;
+    // 加载页面并立即存储
     mainIframe.src = validPage;
-    saveVisitRecord(validPage); // 立即存储（防止iframe加载失败）
+    saveVisitRecord(validPage);
   }
 
   // ================== 顶部问候功能 ==================
@@ -256,39 +260,44 @@
     titleText.innerText = str;
   }
 
-  // ================== 页面初始化（确保记录恢复） ==================
+  // ================== 页面关闭/刷新时强制保存（核心修复） ==================
+  function handleBeforeUnload() {
+    // 直接使用缓存的当前页面，无需再处理路径（节省时间）
+    saveVisitRecord(currentValidPage);
+    // 部分浏览器需要返回一个字符串（可选，不影响存储）
+    return '';
+  }
+
+  // 双事件监听（覆盖所有关闭/刷新场景）
+  window.addEventListener('beforeunload', handleBeforeUnload);
+  window.addEventListener('pagehide', handleBeforeUnload); // 补充移动端/特殊场景
+
+  // ================== 页面初始化 ==================
   window.onload = function() {
     hellowl();
     setInterval(hellowl, 60000);
 
     // 恢复上次访问页面
     const lastPage = getVisitRecord();
+    currentValidPage = lastPage; // 初始化缓存
     mainIframe.src = lastPage;
 
-    // 监听 iframe 加载成功（二次确认存储，防止首次加载失败）
+    // 监听iframe加载成功（确认页面有效，更新缓存）
     mainIframe.onload = function() {
-      const currentPage = mainIframe.src.split('/').pop(); // 提取文件名
-      const validPage = processPath(currentPage.replace('.html', ''));
-      if (validPage) {
-        saveVisitRecord(validPage);
+      const pageFromSrc = processPath(mainIframe.src.split('/').pop().replace('.html', ''));
+      if (pageFromSrc) {
+        currentValidPage = pageFromSrc;
+        saveVisitRecord(pageFromSrc); // 二次确认存储
       }
     };
 
-    // 监听 iframe 加载失败（ fallback 到默认页）
+    // 监听iframe加载失败（ fallback 到默认页）
     mainIframe.onerror = function() {
       console.error('iframe加载失败，切换到默认页');
-      const defaultPage = './page/bpuxi.html';
-      mainIframe.src = defaultPage;
-      saveVisitRecord(defaultPage);
+      currentValidPage = './page/bpuxi.html';
+      mainIframe.src = currentValidPage;
+      saveVisitRecord(currentValidPage);
     };
-  }
-
-  // ================== 页面关闭/刷新时强制保存 ==================
-  window.onbeforeunload = function() {
-    const currentPage = processPath(mainIframe.src);
-    if (currentPage) {
-      saveVisitRecord(currentPage);
-    }
   }
 </script>
 </body>
