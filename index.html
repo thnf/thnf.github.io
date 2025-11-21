@@ -32,67 +32,47 @@
   * { margin:0; padding:0; box-sizing:border-box; font-family: "PingFang SC","Microsoft YaHei",sans-serif; }
   body, html { width:100%; height:100%; background:#f5f5f5; }
 
-  /* ================== Google 风格侧边栏 ================== */
+  /* 侧边栏样式 */
   .sidebar {
-    position: fixed;
-    left:-250px;
-    top:0;
-    width:250px;
-    height:100%;
-    background:#ffffff;
-    border-right:1px solid #ddd;
-    transition:0.3s;
-    overflow-y:auto;
-    z-index:10;
+    position: fixed; left:-250px; top:0; width:250px; height:100%;
+    background:#fff; border-right:1px solid #ddd; transition:0.3s; overflow-y:auto; z-index:10;
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
   .sidebar.open { left:0; }
   .sidebar .top { font-size:18px; padding:16px; text-align:center; background:#f1f3f4; font-weight:bold; }
-  .sidebar ul { list-style:none; }
-  .sidebar ul li { border-bottom:1px solid #eee; }
+  .sidebar ul { list-style:none; margin:0; padding:0; }
   .sidebar ul li button {
-    width:100%; padding:12px; border:none; background:none; text-align:left; font-size:16px;
+    width:100%; padding:12px 20px; border:none; background:none; text-align:left; font-size:16px;
     cursor:pointer; transition:0.2s;
   }
   .sidebar ul li button:hover { background:#f1f3f4; }
 
-  /* ================== 内容区 ================== */
-  .content {
-    margin-left:0;
-    transition:0.3s;
-    height:100vh;
-    overflow:hidden;
-  }
+  /* 内容区样式 */
+  .content { margin-left:0; transition:0.3s; height:100vh; overflow:hidden; }
   .content.open { margin-left:250px; }
 
-  /* ================== 顶部按钮 ================== */
+  /* 顶部按钮 */
   #toggleSidebar {
     position:fixed; top:10px; left:10px; z-index:20;
     padding:8px 12px; background:#4285f4; color:#fff; border:none; border-radius:4px; cursor:pointer;
   }
   #toggleSidebar:hover { background:#357ae8; }
 
-  /* ================== 夜间切换按钮 ================== */
+  /* 夜间模式按钮 */
   #moshi {
-    border-radius: 14px; padding: 8px 16px; height:40px;
-    border:none; background-color:#00ffff; color:#333;
-    font-weight:bold; font-size:14px; cursor:pointer;
-    box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:0.3s; margin:8px;
+    border-radius:14px; padding:8px 16px; height:40px; margin:8px;
+    border:none; background:#00ffff; color:#333; font-weight:bold; font-size:14px; cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:0.3s;
   }
-  #moshi:hover { background-color:#00dddd; }
+  #moshi:hover { background:#00dddd; }
 
-  /* ================== 顶部问候文字 ================== */
-  #titleText {
-    font-size:16px; padding:10px; text-align:center; background:#f1f3f4;
-  }
+  /* 问候文字 */
+  #titleText { font-size:16px; padding:10px; text-align:center; background:#f1f3f4; }
 
-  /* ================== iframe 样式 ================== */
-  #main {
-    width:100%; height:100%;
-    border:none;
-  }
+  /* iframe样式 */
+  #main { width:100%; height:100%; border:none; }
 
-  /* ================== 手机端适配 ================== */
+  /* 手机适配 */
   @media(max-width:768px) {
     .sidebar { width:200px; }
     .content.open { margin-left:200px; }
@@ -107,12 +87,12 @@
   <div id="titleText">欢迎访问信息学网站总网</div>
   <button id="moshi" name="baitian" onclick="moshi()">切换夜间</button>
   <ul>
-    <li><button onclick="openPage('./page/bpuxi.html')">🏠 主页</button></li>
-    <li><button onclick="openPage('./page/jiaoyu.html')">🎓 教育版</button></li>
-    <li><button onclick="openPage('./page/yule.html')">🎭 娱乐版</button></li>
-    <li><button onclick="openPage('./page/tv.html')">📺 TV版</button></li>
-    <li><button onclick="openPage('./page/betaweb.html')">⚡ 抢先版</button></li>
-    <li><button onclick="openPage('./page/tools.html')">🧰 工具箱</button></li>
+    <li><button onclick="switchPage('bpuxi')">🏠 主页</button></li>
+    <li><button onclick="switchPage('jiaoyu')">🎓 教育版</button></li>
+    <li><button onclick="switchPage('yule')">🎭 娱乐版</button></li>
+    <li><button onclick="switchPage('tv')">📺 TV版</button></li>
+    <li><button onclick="switchPage('betaweb')">⚡ 抢先版</button></li>
+    <li><button onclick="switchPage('tools')">🧰 工具箱</button></li>
   </ul>
 </div>
 
@@ -121,200 +101,155 @@
 </div>
 
 <script>
-  const sidebar = document.getElementById('sidebar');
-  const content = document.getElementById('content');
-  const toggleBtn = document.getElementById('toggleSidebar');
-  const html = document.getElementById('html');
-  const mainIframe = document.getElementById('main');
-  // 允许加载的页面前缀（限制仅 ./page/ 目录下的页面）
-  const ALLOWED_PREFIX = './page/';
-  // 允许加载的页面列表（白名单，进一步限制非法页面）
-  const ALLOWED_PAGES = [
-    './page/bpuxi.html',
-    './page/jiaoyu.html',
-    './page/yule.html',
-    './page/tv.html',
-    './page/betaweb.html',
-    './page/tools.html'
-  ];
+  // 核心配置（极简：只保留必要白名单）
+  const STORAGE_KEY = 'last_visited_page';
+  const VALID_FILES = ['bpuxi.html', 'jiaoyu.html', 'yule.html', 'tv.html', 'betaweb.html', 'tools.html'];
+  const IFRAME_ID = 'main';
 
-  // ================== 侧边栏开关 ==================
-  toggleBtn.onclick = ()=>{ 
-    sidebar.classList.toggle('open'); 
-    content.classList.toggle('open'); 
+  // 全局变量
+  let currentIframe = document.getElementById(IFRAME_ID);
+
+  // ================== 侧边栏切换 ==================
+  document.getElementById('toggleSidebar').onclick = function() {
+    document.querySelector('.sidebar').classList.toggle('open');
+    document.querySelector('.content').classList.toggle('open');
   }
 
-  // ================== 夜间模式切换 ==================
+  // ================== 夜间模式 ==================
   function moshi() {
-    const btn = document.getElementById("moshi");
-    if(btn.name === "baitian") {
-      btn.name = "yejian"; 
-      btn.innerText = "切换日间";
-      html.style.filter = "grayscale(100%) invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%)";
-      btn.style.backgroundColor = "#333"; 
-      btn.style.color = "#00ffff";
+    const btn = document.getElementById('moshi');
+    const html = document.getElementById('html');
+    if (btn.name === 'baitian') {
+      btn.name = 'yejian';
+      btn.innerText = '切换日间';
+      html.style.filter = 'grayscale(100%) invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%)';
+      btn.style.backgroundColor = '#333';
+      btn.style.color = '#00ffff';
     } else {
-      btn.name = "baitian"; 
-      btn.innerText = "切换夜间";
-      html.style.filter = "none";
-      btn.style.backgroundColor = "#00ffff"; 
-      btn.style.color = "#333";
+      btn.name = 'baitian';
+      btn.innerText = '切换夜间';
+      html.style.filter = 'none';
+      btn.style.backgroundColor = '#00ffff';
+      btn.style.color = '#333';
     }
   }
 
-  // ================== 验证页面合法性（核心函数：新增.html补全） ==================
-  function validateAndCompletePath(path) {
-    if (!path) return null;
-    
-    // 1. 清除空格，防止恶意空格绕过验证
-    let cleanedPath = path.trim();
-    
-    // 2. 禁止目录遍历（防止访问上级目录文件）
-    if (cleanedPath.includes('../') || cleanedPath.includes('..\\')) {
-      console.warn('非法访问：禁止目录遍历');
-      return null;
+  // ================== 1. 核心：获取iframe真实URL（按要求强制使用contentWindow） ==================
+  function getIframeTrueURL() {
+    try {
+      // 强制使用目标API：parent.document.getElementById(IFRAME_ID).contentWindow.location.href
+      const trueURL = parent.document.getElementById(IFRAME_ID).contentWindow.location.href;
+      console.log('[获取成功] iframe真实URL:', trueURL);
+      return trueURL;
+    } catch (error) {
+      // 本地file协议兼容：部分浏览器本地环境限制contentWindow，降级用src
+      const fallbackURL = currentIframe.src;
+      console.log('[获取失败（本地兼容）] 降级使用src:', fallbackURL, '错误原因:', error.message);
+      return fallbackURL;
     }
-    
-    // 3. 禁止外部链接（仅允许相对路径）
-    if (cleanedPath.startsWith('http://') || cleanedPath.startsWith('https://') || cleanedPath.startsWith('//')) {
-      console.warn('非法访问：禁止加载外部网页');
-      return null;
-    }
-    
-    // 4. 补全 ./page/ 前缀（如果缺少）
-    if (!cleanedPath.startsWith(ALLOWED_PREFIX)) {
-      // 处理直接传文件名的情况（如 ?page=jiaoyu → ./page/jiaoyu）
-      cleanedPath = ALLOWED_PREFIX + cleanedPath;
-    }
-    
-    // 5. 补全 .html 后缀（如果缺少）
-    if (!cleanedPath.endsWith('.html')) {
-      cleanedPath += '.html';
-    }
-    
-    // 6. 检查是否在白名单内（最终验证）
-    if (!ALLOWED_PAGES.includes(cleanedPath)) {
-      console.warn(`非法访问：页面 ${cleanedPath} 不在允许列表中`);
-      return null;
-    }
-    
-    return cleanedPath;
   }
 
-  // ================== 打开页面函数（强化记录功能） ==================
-  function openPage(url) {
-    // 验证路径合法性
-    const validUrl = validateAndCompletePath(url);
-    if (!validUrl) return;
-    
-    // 加载合法页面
-    mainIframe.src = validUrl;
-    
-    // 强化访问记录：同时保存到 cookie 和 localStorage（双重保险）
-    // cookie：跨会话持久化（30天）
-    document.cookie = `lastVisitedPage=${encodeURIComponent(validUrl)}; max-age=${30*24*60*60}; path=/`;
-    // localStorage：本地存储，避免 cookie 被清除
-    localStorage.setItem('lastVisitedPage', validUrl);
+  // ================== 2. 从URL提取文件名（极简逻辑） ==================
+  function getFileNameFromURL(url) {
+    return url.split('/').pop().split('?')[0].split('#')[0];
   }
 
-  // ================== 恢复最后访问页面（优化逻辑） ==================
-  function restoreLastPage() {
-    let targetUrl = null;
+  // ================== 3. 保存记录（只存文件名，避免路径兼容问题） ==================
+  function saveRecord() {
+    const trueURL = getIframeTrueURL();
+    const fileName = getFileNameFromURL(trueURL);
     
-    // 1. 优先处理 URL 传参（如 ?page=jiaoyu 或 ?page=./page/tv）
-    const urlParams = new URLSearchParams(window.location.search);
-    const pageParam = urlParams.get('page');
-    if (pageParam) {
-      targetUrl = validateAndCompletePath(pageParam);
+    // 只保存合法文件
+    if (VALID_FILES.includes(fileName)) {
+      // localStorage存储
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(STORAGE_KEY, fileName);
+        console.log('[保存成功] 记录文件名:', fileName);
+      }
+      // Cookie存储（备用）
+      document.cookie = `${STORAGE_KEY}=${fileName}; max-age=${30*24*60*60}; path=/; SameSite=Lax`;
+    } else {
+      console.log('[保存失败] 非法文件:', fileName);
     }
-    
-    // 2. 传参非法或不存在时，从 localStorage 恢复
-    if (!targetUrl) {
-      targetUrl = localStorage.getItem('lastVisitedPage');
-      // 验证 localStorage 中的路径（防止篡改）
-      targetUrl = validateAndCompletePath(targetUrl);
-    }
-    
-    // 3. localStorage 无有效记录时，从 cookie 恢复
-    if (!targetUrl) {
-      const cookies = document.cookie.split(';').map(c => c.trim());
-      const lastPageCookie = cookies.find(c => c.startsWith('lastVisitedPage='));
-      if (lastPageCookie) {
-        const encodedUrl = lastPageCookie.split('=')[1];
-        targetUrl = validateAndCompletePath(decodeURIComponent(encodedUrl));
+  }
+
+  // ================== 4. 读取记录（只读文件名，直接拼接路径） ==================
+  function loadRecord() {
+    // 优先读localStorage
+    if (typeof localStorage !== 'undefined') {
+      const savedFile = localStorage.getItem(STORAGE_KEY);
+      if (savedFile && VALID_FILES.includes(savedFile)) {
+        console.log('[读取成功] 本地存储记录:', savedFile);
+        return savedFile;
       }
     }
-    
-    // 4. 最终 fallback：加载默认主页
-    if (!targetUrl) {
-      targetUrl = './page/bpuxi.html';
+
+    // 读Cookie
+    const cookies = document.cookie.split(';').map(c => c.trim());
+    for (const cookie of cookies) {
+      if (cookie.startsWith(`${STORAGE_KEY}=`)) {
+        const savedFile = cookie.split('=')[1];
+        if (savedFile && VALID_FILES.includes(savedFile)) {
+          console.log('[读取成功] Cookie记录:', savedFile);
+          return savedFile;
+        }
+      }
     }
-    
-    // 加载目标页面
-    mainIframe.src = targetUrl;
+
+    // 默认返回主页
+    console.log('[读取失败] 无记录，返回主页');
+    return 'bpuxi.html';
   }
 
-  // ================== 顶部问候功能 ==================
+  // ================== 5. 切换页面（直接拼接路径，无冗余逻辑） ==================
+  function switchPage(pageKey) {
+    const targetFile = `${pageKey}.html`;
+    if (VALID_FILES.includes(targetFile)) {
+      const targetPath = `./page/${targetFile}`;
+      currentIframe.src = targetPath;
+      console.log('[切换页面] 目标路径:', targetPath);
+      // 切换后立即保存（避免未加载完成就关闭）
+      setTimeout(saveRecord, 500);
+    }
+  }
+
+  // ================== 6. 页面加载完成后保存记录（确保URL稳定） ==================
+  currentIframe.onload = function() {
+    console.log('[iframe加载完成] 开始同步记录');
+    saveRecord();
+  }
+
+  // ================== 7. 关闭/刷新时强制保存（无弹框） ==================
+  window.onbeforeunload = function() {
+    saveRecord();
+    // 不返回任何值，彻底消除弹框
+  }
+
+  // ================== 初始化：加载保存的记录 ==================
+  window.onload = function() {
+    const savedFile = loadRecord();
+    const initPath = `./page/${savedFile}`;
+    currentIframe.src = initPath;
+    console.log('[初始化完成] 加载路径:', initPath);
+    // 初始化问候语
+    hellowl();
+    setInterval(hellowl, 60000);
+  }
+
+  // ================== 问候语功能 ==================
   function hellowl() {
     const titleText = document.getElementById('titleText');
     const hour = new Date().getHours();
     let str = '阁下，请稍等…';
-    if(hour >=23 || hour <3){ str='阁下，午夜了，还不休息吗？'; }
-    else if(hour >=22){ str='阁下，是时候睡觉了呢！'; }
-    else if(hour >=18){ str='阁下，晚上好！'; }
-    else if(hour >=13){ str='阁下，下午好，有尝试美味的下午茶吗？'; }
-    else if(hour >=12){ str='阁下，午好，午饭食用了吗？'; }
-    else if(hour >=8){ str='阁下，上午好！'; }
-    else { str='阁下，早上好！'; }
+    if (hour >=23 || hour <3) str='阁下，午夜了，还不休息吗？';
+    else if (hour >=22) str='阁下，是时候睡觉了呢！';
+    else if (hour >=18) str='阁下，晚上好！';
+    else if (hour >=13) str='阁下，下午好，有尝试美味的下午茶吗？';
+    else if (hour >=12) str='阁下，午好，午饭食用了吗？';
+    else if (hour >=8) str='阁下，上午好！';
+    else str='阁下，早上好！';
     titleText.innerText = str;
   }
-
-  // ================== 页面初始化 ==================
-  window.onload = function() {
-    hellowl();
-    restoreLastPage();
-    // 每分钟更新一次问候语
-    setInterval(hellowl, 60000);
-    
-    // 监听 iframe 加载完成事件，确保记录正确
-    mainIframe.onload = function() {
-      const currentUrl = mainIframe.src;
-      // 仅记录合法页面（处理 iframe 可能的异常跳转）
-      const validUrl = validateAndCompletePath(currentUrl);
-      if (validUrl) {
-        document.cookie = `lastVisitedPage=${encodeURIComponent(validUrl)}; max-age=${30*24*60*60}; path=/`;
-        localStorage.setItem('lastVisitedPage', validUrl);
-      }
-    }
-  }
-
-  // ================== 页面关闭/刷新时保存记录 ==================
-// ========== 打开页面（入口点，保证路径已经合法） ==========
-function openPage(url) {
-    const validUrl = validateAndCompletePath(url);
-    if (!validUrl) return;
-
-    mainIframe.src = validUrl;
-
-    // 保存最新记录
-    saveLastPage(validUrl);
-}
-
-// ========== 保存方法（封装） ==========
-function saveLastPage(url) {
-    // cookie 保存 30 天
-    document.cookie = `lastVisitedPage=${encodeURIComponent(url)}; max-age=${30*24*60*60}; path=/`;
-    // localStorage 保存本地
-    localStorage.setItem('lastVisitedPage', url);
-}
-
-// ========== iframe 加载完成后保存（确保为最终页面） ==========
-mainIframe.onload = function() {
-    const currentUrl = mainIframe.getAttribute("src");
-    const validUrl = validateAndCompletePath(currentUrl);
-    if (validUrl) saveLastPage(validUrl);
-};
-
 </script>
 </body>
 </html>
