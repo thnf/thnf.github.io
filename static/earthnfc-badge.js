@@ -43,7 +43,7 @@
         var clarifyScript = document.createElement('script');
         clarifyScript.defer = true;
         clarifyScript.src = "https://clarify.bpuxi.top/script.js";
-        clarifyScript.setAttribute('data-website-id', '62c6aa81-f4ed-4ba7-bdfb-4d4c2eba865e');
+        clarifyScript.setAttribute('data-website-id', 'a2949097-ebcf-45d1-985b-5a6512050bc1');
         document.body.appendChild(clarifyScript);
     }
 

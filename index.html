@@ -1,292 +1,202 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html id="html" lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>网站重构中 - 敬请期待</title>
-  <!-- 引入Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 引入Font Awesome -->
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <!-- 引入Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
-  <!-- 配置Tailwind -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#165DFF',
-            secondary: '#4080FF',
-            accent: '#7CB305',
-            dark: '#1D2939',
-            light: '#F9FAFB'
-          },
-          fontFamily: {
-            inter: ['Inter', 'system-ui', 'sans-serif'],
-          },
-        },
-      }
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>信息学网站总网 导航</title>
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "pmp8on0d5k");
   </script>
-  <style type="text/tailwindcss">
-    @layer utilities {
-      .content-auto {
-        content-visibility: auto;
-      }
-      .text-shadow {
-        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      .animate-pulse-slow {
-        animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-      }
-      .bg-gradient-primary {
-        background: linear-gradient(135deg, #165DFF 0%, #4080FF 100%);
-      }
-      .particle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(22, 93, 255, 0.1);
-        animation: float 8s infinite ease-in-out;
-      }
-    }
 
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-      100% { transform: translateY(0px) rotate(360deg); }
-    }
-  </style>
-  <!-- 引入Google字体 -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+           var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?599433e2313d5b601a736a6dea2770f3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+    </script>
+
+      <script type="text/javascript">
+           !function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JuwJmSVQNTdeACxY",ck:"JuwJmSVQNTdeACxY"});
+    </script>
+
+      <script defer src="https://clarify.bpuxi.top/script.js" data-website-id="62c6aa81-f4ed-4ba7-bdfb-4d4c2eba865e"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: "PingFang SC","Microsoft YaHei",sans-serif; }
+  body, html { width:100%; height:100%; background:#f5f5f5; }
+
+  /* ================== Google 风格侧边栏 ================== */
+  .sidebar {
+    position: fixed;
+    left:-250px;
+    top:0;
+    width:250px;
+    height:100%;
+    background:#ffffff;
+    border-right:1px solid #ddd;
+    transition:0.3s;
+    overflow-y:auto;
+    z-index:10;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  }
+  .sidebar.open { left:0; }
+  .sidebar .top { font-size:18px; padding:16px; text-align:center; background:#f1f3f4; font-weight:bold; }
+  .sidebar ul { list-style:none; }
+  .sidebar ul li { border-bottom:1px solid #eee; }
+  .sidebar ul li button {
+    width:100%; padding:12px; border:none; background:none; text-align:left; font-size:16px;
+    cursor:pointer; transition:0.2s;
+  }
+  .sidebar ul li button:hover { background:#f1f3f4; }
+
+  /* ================== 内容区 ================== */
+  .content {
+    margin-left:0;
+    transition:0.3s;
+    height:100vh;
+    overflow:hidden;
+  }
+  .content.open { margin-left:250px; }
+
+  /* ================== 顶部按钮 ================== */
+  #toggleSidebar {
+    position:fixed; top:10px; left:10px; z-index:20;
+    padding:8px 12px; background:#4285f4; color:#fff; border:none; border-radius:4px; cursor:pointer;
+  }
+  #toggleSidebar:hover { background:#357ae8; }
+
+  /* ================== 夜间切换按钮 ================== */
+  #moshi {
+    border-radius: 14px; padding: 8px 16px; height:40px;
+    border:none; background-color:#00ffff; color:#333;
+    font-weight:bold; font-size:14px; cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,0.2); transition:0.3s; margin:8px;
+  }
+  #moshi:hover { background-color:#00dddd; }
+
+  /* ================== 顶部问候文字 ================== */
+  #titleText {
+    font-size:16px; padding:10px; text-align:center; background:#f1f3f4;
+  }
+
+  /* ================== iframe 样式 ================== */
+  #main {
+    width:100%; height:100%;
+    border:none;
+  }
+
+  /* ================== 手机端适配 ================== */
+  @media(max-width:768px) {
+    .sidebar { width:200px; }
+    .content.open { margin-left:200px; }
+  }
+</style>
 </head>
-<body class="font-inter bg-light text-dark min-h-screen flex flex-col relative overflow-x-hidden">
-  <!-- 粒子背景效果 -->
-  <div id="particles" class="fixed inset-0 z-0 pointer-events-none"></div>
 
-  <!-- 导航栏 -->
-  <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <div class="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
-          <i class="fa fa-code text-white text-xl"></i>
-        </div>
-        <span class="text-xl font-semibold text-primary">贝浦熙（Bpuxi）</span>
-      </div>
-      <div class="hidden md:flex items-center space-x-6">
-        <a href="#" class="text-gray-600 hover:text-primary transition-colors duration-300">
-          <i class="fa fa-home mr-1"></i> 首页
-        </a>
-      </div>
-      <button class="md:hidden text-gray-600 hover:text-primary transition-colors duration-300">
-        <i class="fa fa-bars text-xl"></i>
-      </button>
-    </div>
-  </nav>
+<body>
+<button id="toggleSidebar">☰</button>
+<div class="sidebar" id="sidebar">
+  <div class="top">信息学总网导航</div>
+  <div id="titleText">欢迎访问信息学网站总网</div>
+  <button id="moshi" name="baitian" onclick="moshi()">切换夜间</button>
+  <ul>
+    <li><button onclick="openPage('./page/bpuxi.html')">🏠 主页</button></li>
+    <li><button onclick="openPage('./page/jiaoyu.html')">🎓 教育版</button></li>
+    <li><button onclick="openPage('./page/yule.html')">🎭 娱乐版</button></li>
+    <li><button onclick="openPage('./page/tv.html')">📺 TV版</button></li>
+    <li><button onclick="openPage('./page/betaweb.html')">⚡ 抢先版</button></li>
+    <li><button onclick="openPage('./page/tools.html')">🧰 工具箱</button></li>
+  </ul>
+</div>
 
-  <!-- 主要内容 -->
-  <main class="flex-grow container mx-auto px-4 pt-32 pb-20 relative z-10">
-    <div class="max-w-4xl mx-auto text-center">
-      <!-- 图标 -->
-      <div class="w-24 h-24 mx-auto mb-8 bg-primary/10 rounded-full flex items-center justify-center animate-float">
-        <i class="fa fa-refresh text-primary text-4xl animate-spin" style="animation-duration: 3s;"></i>
-      </div>
+<div class="content" id="content">
+  <iframe id="main" src="
+  "></iframe>
+</div>
 
-      <!-- 标题 -->
-      <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark mb-6 leading-tight text-shadow">
-        网站正在<span class="text-primary">全面重构</span>
-      </h1>
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const content = document.getElementById('content');
+  const toggleBtn = document.getElementById('toggleSidebar');
+  const html = document.getElementById('html');
 
-      <!-- 副标题 -->
-      <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-        我们正在打造全新的用户体验，为您提供更优质的服务和更流畅的交互。
-        感谢您的耐心等待，精彩即将呈现！
-      </p>
+  // ================== 侧边栏开关 ==================
+  toggleBtn.onclick = ()=>{ sidebar.classList.toggle('open'); content.classList.toggle('open'); }
 
-      <!-- 倒计时 -->
-      <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-12 max-w-2xl mx-auto transform transition-all duration-300 hover:shadow-xl">
-        <h2 class="text-xl font-semibold mb-6 text-gray-800">预计恢复时间</h2>
-        <div class="grid grid-cols-4 gap-4 md:gap-6">
-          <div class="countdown-item bg-primary/5 rounded-lg p-4">
-            <div id="days" class="text-3xl md:text-4xl font-bold text-primary">00</div>
-            <div class="text-sm text-gray-500 uppercase">天</div>
-          </div>
-          <div class="countdown-item bg-primary/5 rounded-lg p-4">
-            <div id="hours" class="text-3xl md:text-4xl font-bold text-primary">00</div>
-            <div class="text-sm text-gray-500 uppercase">时</div>
-          </div>
-          <div class="countdown-item bg-primary/5 rounded-lg p-4">
-            <div id="minutes" class="text-3xl md:text-4xl font-bold text-primary">00</div>
-            <div class="text-sm text-gray-500 uppercase">分</div>
-          </div>
-          <div class="countdown-item bg-primary/5 rounded-lg p-4">
-            <div id="seconds" class="text-3xl md:text-4xl font-bold text-primary">00</div>
-            <div class="text-sm text-gray-500 uppercase">秒</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 进度条 -->
-      <div class="max-w-2xl mx-auto mb-12">
-        <div class="flex justify-between mb-2">
-          <span class="text-sm text-gray-600">重构进度</span>
-          <span id="progress-percent" class="text-sm font-medium text-primary">75%</span>
-        </div>
-        <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-          <div id="progress-bar" class="bg-gradient-primary h-full rounded-full transition-all duration-1000" style="width: 75%"></div>
-        </div>
-      </div>
-
-
-
-  <!-- 页脚 -->
-  <footer class="bg-dark text-white py-10 relative z-10">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <div class="flex items-center space-x-2 mb-4">
-            <div class="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center">
-              <i class="fa fa-code text-white text-xl"></i>
-            </div>
-            <span class="text-xl font-semibold"></span>
-          </div>
-          <p class="text-gray-400 mb-4">
-            致力于为用户提供最优质的服务和体验，不断创新，追求卓越。
-          </p>
-          <p class="text-gray-500 text-sm">© 2025 贝浦熙（Bpuxi） 保留所有权利。</p>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-4">快速链接</h3>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="https://status.bpuxi.top" class="hover:text-primary transition-colors duration-300">状态页面</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold mb-4">联系我们</h3>
-          <ul class="space-y-2 text-gray-400">
-         
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script>
-    // 创建粒子背景
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 20;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // 随机大小、位置和动画延迟
-        const size = Math.random() * 100 + 50;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 5;
-        const duration = Math.random() * 10 + 5;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.animationDuration = `${duration}s`;
-        
-        particlesContainer.appendChild(particle);
-      }
+  // ================== 夜间模式切换 ==================
+  function moshi() {
+    const btn = document.getElementById("moshi");
+    if(btn.name === "baitian") {
+      btn.name = "yejian"; btn.innerText="切换日间";
+      html.style.filter="grayscale(100%) invert(74%) hue-rotate(74deg) brightness(84%) saturate(400%) contrast(200%) sepia(24%)";
+      btn.style.backgroundColor="#333"; btn.style.color="#00ffff";
+    } else {
+      btn.name = "baitian"; btn.innerText="切换夜间";
+      html.style.filter="none";
+      btn.style.backgroundColor="#00ffff"; btn.style.color="#333";
     }
+  }
 
-    // 倒计时功能
-    function startCountdown() {
-      // 设置目标日期（当前日期 + 7天）
-      const targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 7);
-      
-      function updateCountdown() {
-        const now = new Date();
-        const diff = targetDate - now;
-        
-        if (diff <= 0) {
-          document.getElementById('days').textContent = '00';
-          document.getElementById('hours').textContent = '00';
-          document.getElementById('minutes').textContent = '00';
-          document.getElementById('seconds').textContent = '00';
-          return;
-        }
-        
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-      }
-      
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+  // ================== 打开页面函数 ==================
+  function openPage(url) {
+    document.getElementById('main').src = url;
+    // 自动保存
+    document.cookie = `mainthnfstr=${url}; max-age=${30*24*60*60}`;
+  }
+
+  // ================== 恢复最后访问页面 ==================
+  function restoreLastPage() {
+    const mainIframe = document.getElementById("main");
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page');
+    if(pageParam) {
+      mainIframe.src = pageParam;
+      return;
     }
-
-    // 进度条动画
-    function animateProgress() {
-      const progressBar = document.getElementById('progress-bar');
-      const progressPercent = document.getElementById('progress-percent');
-      let progress = 75; // 当前进度
-      
-      function updateProgress() {
-        if (progress < 100) {
-          progress += 0.5;
-          if (progress > 100) progress = 100;
-          
-          progressBar.style.width = `${progress}%`;
-          progressPercent.textContent = `${Math.floor(progress)}%`;
-          
-          // 进度越接近100，增长越慢
-          const delay = progress > 95 ? 5000 : progress > 90 ? 2000 : 1000;
-          setTimeout(updateProgress, delay);
-        }
-      }
-      
-      // 初始动画
-      setTimeout(() => {
-        progressBar.style.width = '75%';
-      }, 500);
-      
-      // 后续缓慢增长
-      setTimeout(updateProgress, 3000);
+    const cookies = document.cookie.split(';').map(c=>c.trim());
+    const lastPageCookie = cookies.find(c=>c.startsWith('mainthnfstr='));
+    if(lastPageCookie) {
+      const lastPage = lastPageCookie.split('=')[1];
+      mainIframe.src = lastPage;
+    } else {
+      mainIframe.src = "./page/bpuxi.html"; // 默认主页
     }
+  }
 
-    // 导航栏滚动效果
-    function setupNavbarScroll() {
-      const navbar = document.querySelector('nav');
-      
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('py-2', 'shadow');
-          navbar.classList.remove('py-3');
-        } else {
-          navbar.classList.add('py-3');
-          navbar.classList.remove('py-2', 'shadow');
-        }
-      });
-    }
+  // ================== 顶部问候功能 ==================
+  function hellowl() {
+    const titleText = document.getElementById('titleText');
+    const hour = new Date().getHours();
+    let str='阁下，请稍等…';
+    if(hour >=23 || hour <3){ str='阁下，午夜了，还不休息吗？'; }
+    else if(hour >=22){ str='阁下，是时候睡觉了呢！'; }
+    else if(hour >=18){ str='阁下，晚上好！'; }
+    else if(hour >=13){ str='阁下，下午好，有尝试美味的下午茶吗？'; }
+    else if(hour >=12){ str='阁下，午好，午饭食用了吗？'; }
+    else if(hour >=8){ str='阁下，上午好！'; }
+    else { str='阁下，早上好！'; }
+    titleText.innerText = str;
+  }
 
-    // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', () => {
-      createParticles();
-      startCountdown();
-      animateProgress();
-      setupNavbarScroll();
-    });
-  </script>
+  // ================== 页面初始化 ==================
+  window.onload = function() {
+    hellowl();
+    restoreLastPage();
+    setInterval(hellowl, 60000);
+  }
+
+  // ================== 页面关闭自动保存 ==================
+  window.onbeforeunload = function() {
+    const mainIframe = document.getElementById("main");
+    document.cookie = `mainthnfstr=${mainIframe.src}; max-age=${30*24*60*60}`;
+  }
+</script>
 </body>
 </html>

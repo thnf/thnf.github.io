@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息学网站总网</title>
+  <meta name="description" content="信息学网站总网 - 整合C++编程、题库、教程、工具等优质资源">
+  <!-- 外部资源引入 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="../static/jquery.suggestion.js"></script>
+  <style type="text/css">
+    body {
+      background: url(https://api.bpuxi.top/bing.php/__devtools_wrapper.html) no-repeat center 0px;
+      background-position: center 0;
+      background-size: cover;
+      background-attachment: fixed;
+
+    }
+  </style>
+  <!-- Tailwind配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            secondary: '#10b981',
+            accent: '#f59e0b',
+            dark: '#1e293b',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .shadow-soft {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .transition-all-300 {
+        transition: all 300ms ease-in-out;
+      }
+      .favicon-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        vertical-align: middle;
+        border-radius: 3px;
+        object-fit: cover;
+      }
+    }
+  </style>
+  
+  <style>
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* 链接样式优化 */
+    .link-item {
+      display: flex;
+      align-items: center;
+      padding: 2px 0;
+    }
+    
+    /* 处理favicon加载失败 */
+    .favicon-icon[src=""] { display: none; }
+    .favicon-icon[src="https://favicon.im//"] { display: none; }
+
+    /* 搜索建议置顶优化 */
+    .suggestion {
+      position: absolute;
+      font-size: 14px;
+      background: #fff;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 999; /* 最高层级，确保覆盖所有元素 */
+      overflow: hidden;
+      width: 100%;
+      top: 100%;
+      left: 0;
+      margin-top: -1px;
+      max-height: 130px;
+      overflow-y: auto;
+    }
+    
+    .suggestion ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .suggestion li {
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .suggestion li:hover, .suggestion .active {
+      background-color: #f1f5f9;
+    }
+
+    /* 搜索框父容器定位上下文 */
+    .search-input-group {
+      position: relative;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- 顶部导航 -->
+  <header class="bg-white shadow-md sticky top-0 z-40">
+    <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center mb-4 md:mb-0">
+        <i class="fa fa-code text-primary text-3xl mr-3"></i>
+        <h1 class="text-xl md:text-2xl font-bold text-dark">信息学网站总网</h1>
+      </div>
+      
+      <nav class="flex flex-wrap justify-center gap-2 md:gap-4">
+        <a href="./bpuxi.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">主页</a>
+        <a href="./jiaoyu.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">教育版</a>
+        <a href="./yule.html" class="px-3 py-2 rounded-md bg-primary text-white font-medium hover:bg-primary/90 transition-all-300">娱乐版</a>
+        <a href="./tools.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">工具版</a>
+        <a href="./betaweb.html" class="px-3 py-2 rounded-md bg-gray-200 text-dark font-medium hover:bg-gray-300 transition-all-300">抢先</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- 广告模块 -->
+    <div style="background: #fcfcfc; border-radius: 5px; box-shadow: 1px 1px 8px #000; margin-bottom: 16px;">
+      <div style="margin: 4px; line-height: auto; text-align: left">
+        <center><div class="liti" id="lili"></div></center>
+        <script>$(document).ready(function () { $("#lili").load("https://api.bpuxi.top/%E6%AF%92%E9%B8%A1%E6%B1%A4.php"); });</script>
+      </div>
+    </div>
+
+    <!-- 搜索区域 -->
+    <section id="search" class="mb-12 bg-white rounded-xl shadow-soft p-6 transform hover:shadow-lg transition-all-300">
+      <h2 class="text-xl font-bold text-dark mb-6 flex items-center">
+        <i class="fa fa-search text-primary mr-2"></i> 全网搜索
+      </h2>
+      
+      <!-- BPUXI搜索 -->
+      <div class="mb-4 search-input-group">
+        <form action="https://so.bpuxi.top/" method="get" target="_blank" class="flex">
+          <input type="search" name="q" placeholder="BPUXI搜索 - 输入关键词..." 
+                 class="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                 autocomplete="off" id="bpuxi-search">
+          <input type="submit" value="搜索" 
+                 class="bg-primary text-white px-6 py-3 rounded-r-lg font-medium hover:bg-primary/90 transition-all-300">
+          <input type="hidden" name="transfrom" value="auto">
+          <input type="hidden" name="transto" value="zh-CHS">
+          <input type="hidden" name="model" value="general">
+        </form>
+        <div class="suggestion" id="bpuxi-suggestion"></div>
+      </div>
+      
+      <!-- 其他搜索引擎 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- 百度搜索 -->
+        <div class="search-input-group">
+          <form action="https://www.baidu.com/s" method="get" target="_blank" class="flex">
+            <input type="search" name="wd" placeholder="百度搜索 - 输入关键词..." 
+                   class="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                   autocomplete="off" id="baidu-search">
+            <input type="submit" value="百度" 
+                   class="bg-[#2288ff] text-white px-6 py-3 rounded-r-lg font-medium hover:bg-[#2288ff]/90 transition-all-300">
+            <input type="hidden" name="ie" value="utf-8">
+          </form>
+          <div class="suggestion" id="baidu-suggestion"></div>
+        </div>
+        
+        <!-- 搜狗搜索 -->
+        <div class="search-input-group">
+          <form action="https://www.sogou.com/web" method="get" target="_blank" class="flex">
+            <input type="search" name="query" placeholder="搜狗搜索 - 输入关键词..." 
+                   class="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                   autocomplete="off" id="sogou-search">
+            <input type="submit" value="搜狗" 
+                   class="bg-[#f8f005] text-[#333] px-6 py-3 rounded-r-lg font-medium hover:bg-[#f8f005]/90 transition-all-300">
+          </form>
+          <div class="suggestion" id="sogou-suggestion"></div>
+        </div>
+        
+        <!-- 360搜索 -->
+        <div class="search-input-group">
+          <form action="https://www.so.com/s" method="get" target="_blank" class="flex">
+            <input type="search" name="q" placeholder="360搜索 - 输入关键词..." 
+                   class="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                   autocomplete="off" id="360-search">
+            <input type="submit" value="360" 
+                   class="bg-[#f00] text-white px-6 py-3 rounded-r-lg font-medium hover:bg-[#f00]/90 transition-all-300">
+          </form>
+          <div class="suggestion" id="360-suggestion"></div>
+        </div>
+        
+        <!-- 手机百度 -->
+        <div class="search-input-group">
+          <form action="https://m.baidu.com/s" method="get" target="_blank" class="flex">
+            <input type="search" name="wd" placeholder="手机百度 - 输入关键词..." 
+                   class="flex-1 px-4 py-3 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
+                   autocomplete="off" id="mobile-baidu-search">
+            <input type="submit" value="手机百度" 
+                   class="bg-[#2288ff] text-white px-6 py-3 rounded-r-lg font-medium hover:bg-[#2288ff]/90 transition-all-300">
+            <input type="hidden" name="rn" value="0">
+          </form>
+          <div class="suggestion" id="mobile-baidu-suggestion"></div>
+        </div>
+      </div>
+    </section>
+    
+      <!-- 编程资源导航（核心分类） -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold text-dark mb-8 flex items-center bg-white px-4 py-2 rounded-lg">
+        <i class="fa fa-gamepad text-primary mr-2"></i> 娱乐工具资源
+      </h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 短视频工具 -->
+        <div id="video-tools" class="bg-white rounded-xl shadow-soft p-6 hover:shadow-lg transition-all-300 transform hover:-translate-y-1 relative z-10 hover:z-20">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mr-3">
+              <i class="fa fa-video-camera text-red-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">短视频工具</h3>
+          </div>
+          <ul class="space-y-2">
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.douyin.com/" alt="抖音短视频 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.douyin.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 抖音短视频
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.360kuai.com/" alt="快资讯短视频 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.360kuai.com/pc/detail?url=http%3A%2F%2Fvideo.news.so.com%2F9fe0b62c99d95348eb353f6f2b8e36e2&amp;check=406c9d3697e6560f&amp;uid=3ea02ad40edebb0ccccc1c423dabaff8&amp;sign=360%5F101b1016&amp;tj_url=9c451deb953f0edf9&amp;scene=101&amp;nsid=97275596-7e4f-4fb0-bb40-a6e3553ee7d7&amp;refer_scene=" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 快资讯短视频
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- VIP视频工具 -->
+        <div id="vip-video-tools" class="bg-white rounded-xl shadow-soft p-6 hover:shadow-lg transition-all-300 transform hover:-translate-y-1 relative z-10 hover:z-20">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+              <i class="fa fa-tv text-purple-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">VIP视频工具</h3>
+          </div>
+          <ul class="space-y-2">
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.bpuxi.top/tv.html" alt="信息学网站总网-TV版 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.bpuxi.top/tv.html" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 信息学网站总网-TV版
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- 游戏工具 -->
+        <div id="game-tools" class="bg-white rounded-xl shadow-soft p-6 hover:shadow-lg transition-all-300 transform hover:-translate-y-1 relative z-10 hover:z-20">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+              <i class="fa fa-gamepad text-green-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">游戏工具</h3>
+          </div>
+          <ul class="space-y-2">
+            <li class="link-item">
+              <img src="https://favicon.im/http://wzq.sygjx.com/" alt="五子棋 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="http://wzq.sygjx.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 五子棋
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/http://elsfk.sygjx.com/" alt="俄罗斯方块 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="http://elsfk.sygjx.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 俄罗斯方块
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/http://sl.sygjx.com/" alt="扫雷 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="http://sl.sygjx.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 扫雷
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/http://jyykc.sygjx.com/" alt="解压遥控车 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="http://jyykc.sygjx.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 解压遥控车
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.xiuxiandou.com/game/pintu/" alt="拼图 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.xiuxiandou.com/game/pintu/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 拼图
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- 休闲工具 -->
+        <div id="leisure-tools" class="bg-white rounded-xl shadow-soft p-6 hover:shadow-lg transition-all-300 transform hover:-translate-y-1 relative z-10 hover:z-20">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+              <i class="fa fa-coffee text-yellow-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">休闲工具</h3>
+          </div>
+          <ul class="space-y-2">
+            <li class="link-item">
+              <img src="https://favicon.im/https://services.shen88.cn/" alt="神巴巴测试 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://services.shen88.cn/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 神巴巴测试
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/http://m.weceshi.com/" alt="趣测 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="http://m.weceshi.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 趣测
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/http://cc.bjadjty.com/" alt="装逼生成器 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="http://cc.bjadjty.com/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 装逼生成器
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.bpuxi.top/宠物.html" alt="宠物 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.bpuxi.top/宠物.html" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 宠物
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- 更多游戏工具 -->
+        <div id="more-game-tools" class="bg-white rounded-xl shadow-soft p-6 hover:shadow-lg transition-all-300 transform hover:-translate-y-1 relative z-10 hover:z-20">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+              <i class="fa fa-gamepad text-blue-500 text-xl"></i>
+            </div>
+            <h3 class="font-bold text-lg">更多游戏工具</h3>
+          </div>
+          <ul class="space-y-2">
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.xiuxiandou.com/game/mikutap/" alt="指尖音乐 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.xiuxiandou.com/game/mikutap/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 指尖音乐
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.xiuxiandou.com/game/gailou/" alt="盖楼 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.xiuxiandou.com/game/gailou/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 盖楼
+              </a>
+            </li>
+            <li class="link-item">
+              <img src="https://favicon.im/https://www.xiuxiandou.com/game_bawang/" alt="小霸王游戏机 favicon" class="favicon-icon" onerror="this.style.display='none'">
+              <a href="https://www.xiuxiandou.com/game_bawang/" target="_blank" class="text-primary hover:underline flex items-center">
+                <i class="fa fa-external-link mr-1 text-sm"></i> 小霸王游戏机
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- 页脚 -->
+<footer class="bg-dark text-white py-8">
+  <div class="container mx-auto px-4">
+    <!-- 版权信息区域 -->
+<div class="mb-6 md:mb-0 text-center">
+  <p class="text-gray-300">
+    ©<span id="copyright">2023</span> 贝浦熙（Bpuxi）
+    <a href="https://icp.gov.moe/?keyword=20230585" target="_blank" 
+       class="text-primary hover:underline ml-2 transition-colors">
+      萌ICP备20230585号
+    </a>
+  </p>
+  <script>
+    document.getElementById('copyright').textContent = new Date().getFullYear();
+  </script>
+</div>
+
+    <!-- 辅助信息区域 - 响应式布局优化 -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-y-3 sm:gap-x-6 text-sm text-gray-400">
+      <!-- 状态页面链接 -->
+      <a href="https://status.bpuxi.top/" 
+         class="hover:text-white transition-colors flex items-center">
+        <i class="fa fa-server mr-1"></i> 状态页面
+      </a>
+      
+      <!-- 分隔线（仅在中等屏幕以上显示） -->
+      <span class="hidden sm:inline">|</span>
+      
+      <!-- 访客统计 -->
+      <div class="flex items-center">
+        您是本站第
+        <img src="https://api.bpuxi.top/统计.php" alt="访客计算" class="mx-1 inline-block align-middle">
+        位访客·在线
+        <img src="https://api.bpuxi.top/在线人数.php" alt="在线访客" class="mx-1 inline-block align-middle">
+        人
+      </div>
+      
+      <span class="hidden sm:inline">|</span>
+      
+      <!-- 联系邮箱 -->
+      <div class="flex items-center">
+        <i class="fa fa-envelope-o mr-1"></i>
+        <a href="mailto:bpuxi@bpuxi.top" class="hover:text-white transition-colors">
+          bpuxi@bpuxi.top
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+  
+  <!-- 回到顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all-300 hover:bg-primary/90">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    $(document).ready(function() {
+      // 搜索建议功能初始化
+      function setupSuggestion(inputId, suggestionId) {
+        $('#' + inputId).suggestion({
+          url: 'https://www.baidu.com/sugrec',
+          FieldName: 'wd',
+          parameter: { 'ie': 'utf-8', 'json': 1, 'prod': 'pc', 'from': 'pc_web' },
+          jsonp: 'cb',
+          onCallback: function(data) {
+            return data['g'] ? data['g'].map(item => ({ 'value': item['q'], 'name': item['q'] })) : [];
+          }
+        });
+      }
+      
+      // 初始化所有搜索框的建议功能
+      setupSuggestion('bpuxi-search', 'bpuxi-suggestion');
+      setupSuggestion('baidu-search', 'baidu-suggestion');
+      setupSuggestion('sogou-search', 'sogou-suggestion');
+      setupSuggestion('360-search', '360-suggestion');
+      setupSuggestion('mobile-baidu-search', 'mobile-baidu-suggestion');
+      
+      // 回到顶部按钮逻辑
+      const backToTopButton = $('#back-to-top');
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+          backToTopButton.removeClass('opacity-0 invisible').addClass('opacity-100 visible');
+        } else {
+          backToTopButton.removeClass('opacity-100 visible').addClass('opacity-0 invisible');
+        }
+      });
+      backToTopButton.click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 300);
+      });
+      
+      // 导航栏滚动效果
+      const header = $('header');
+      $(window).scroll(function() {
+        if ($(window).scrollTop() > 50) {
+          header.addClass('py-2').removeClass('py-4');
+        } else {
+          header.addClass('py-4').removeClass('py-2');
+        }
+      });
+
+      // favicon加载失败处理
+      $('img.favicon-icon').on('error', function() {
+        $(this).hide();
+      });
+    });
+  </script>
+</body>
+</html>
