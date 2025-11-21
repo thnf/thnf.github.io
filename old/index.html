@@ -543,24 +543,7 @@ var _hmt = _hmt || [];
 
 
 
-    window.onbeforeunload = function () {
 
-      function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = cname + "=" + cvalue + "; " + expires;
-      }
-      function thnfstr() {
-        str = parent.document.getElementById("main").contentWindow.location.href;
-        setCookie("mainthnfstr", str, 30);
-      }
-      thnfstr();
-    }
-/* var newUrl = "?thnf=" + url;
-var stateObject = 0;
-var title = "0"
-history.replaceState(stateObject, title, newUrl);*/
   </script>
 </body>
 
