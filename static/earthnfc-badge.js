@@ -33,7 +33,7 @@
         var tj = document.createElement('div');
         body.append(tj);
         var tongji="";
-        tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"//www.bpuxi.top/统计.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
+        tongji += "   <iframe style=\"display:none;\" allowtransparency=\"true\" src=\"//www.bpuxi.top/page/统计.html\" scrolling=\"no\" width=\"0\" height=\"0\"";
         tongji += "      frameborder=\"0\"><\/iframe>";
         tj.innerHTML = tongji;
         tj.id = 'tongji';
@@ -43,7 +43,7 @@
         var clarifyScript = document.createElement('script');
         clarifyScript.defer = true;
         clarifyScript.src = "https://clarify.bpuxi.top/script.js";
-        clarifyScript.setAttribute('data-website-id', 'a2949097-ebcf-45d1-985b-5a6512050bc1');
+        clarifyScript.setAttribute('data-website-id', '01e9700e-3e00-44b1-b9b5-4ccbd3a90d0a');
         document.body.appendChild(clarifyScript);
     }
 
