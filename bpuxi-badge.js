@@ -45,6 +45,13 @@
         clarifyScript.src = "https://clarify.bpuxi.top/script.js";
         clarifyScript.setAttribute('data-website-id', '01e9700e-3e00-44b1-b9b5-4ccbd3a90d0a');
         document.body.appendChild(clarifyScript);
+
+        // 添加Recorder脚本
+var recorderScript = document.createElement('script');
+recorderScript.defer = true;
+recorderScript.src = "https://clarify.bpuxi.top/recorder.js";
+recorderScript.setAttribute('data-website-id', '01e9700e-3e00-44b1-b9b5-4ccbd3a90d0a');
+document.body.appendChild(recorderScript);
     }
 
     // 创建品牌徽章
